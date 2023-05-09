@@ -71,6 +71,8 @@ function main(){
 
 while true
 do
+	current_time=$(date +%Y-%m-%d\ %T)
+	echo "-------------------------$current_time--------------------------"
 	if [ "$distributivelinex" == "Debian" ]; then
 		echo "Линекс: $distributivelinex"
 		if [ "$numberversionlinex" == 11 ]; then
