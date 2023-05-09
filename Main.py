@@ -1,6 +1,8 @@
 import os, sys, time, re, json, datetime, random
 from SettingApp import Setting
 
+dir_path = os.path.dirname(os.path.realpath(__file__))
+
 platform_select=sys.argv[1].lower()
 
 app = Setting()
