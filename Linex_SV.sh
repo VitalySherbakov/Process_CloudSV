@@ -27,9 +27,16 @@ function function_install_gpu(){
 	update_mashine
 	cd "$dirsource"
 	git clone "https://github.com/VitalySherbakov/hashcat"
-	sudo apt install cmake build-essential -y && apt install checkinstall git -y && cd hashcat && git submodule update --init && make && make install && pip install unrar
+	sudo apt install cmake build-essential -y && apt install checkinstall git -y && cd hashcat && git submodule update --init && make && make install
 	update_mashine
+	hashcat --help
 	cd_set_home
+}
+
+function function_run_gpu(){
+	nameuser=$USER
+	hashcat="/home/$nameuser/$dirsource/hashcat/hashcat"
+	hashcat --help
 }
 
 function function_install_cpu(){
@@ -73,6 +80,7 @@ function main(){
 	# Основное Меню
     echo "Команда: pack (Установка необходимых пакетов)"
 	echo "Команда: gpu (Установка необходимых пакетов)"
+	echo "Команда: gputest (Установка необходимых пакетов)"
 	echo "Команда: cpu (Установка необходимых пакетов)"
 	echo "Команда: run (Запуск Скрипта)"
 	echo "Команда: exit (Выход)"
@@ -83,6 +91,9 @@ function main(){
 	fi
 	if [ "$command" == "gpu" ]; then
 		function_install_gpu
+	fi
+	if [ "$command" == "gputest" ]; then
+		function_run_gpu
 	fi
 	if [ "$command" == "cpu" ]; then
 		function_install_cpu
