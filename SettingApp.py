@@ -1,10 +1,14 @@
 import os, sys, time, re, json, datetime, random
 
+dir_path = os.path.dirname(os.path.realpath(__file__))
+
 class Setting(object):
     settingfile="SettingApp.json"
     Version=""
     def __init__(self, encod="utf-8"):
         super(Setting, self).__init__()
+        print(dir_path)
+        print(self.settingfile)
         if os.path.exists(self.settingfile):
             try:
                 with open(self.settingfile, 'r', encoding=encod) as f:
