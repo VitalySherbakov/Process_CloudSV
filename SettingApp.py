@@ -19,7 +19,7 @@ class Setting(object):
             print(f"ERROR: Нету {self.settingfile} Файла!")
     def Title(self):
         """Титулка"""
-        title='title Linex (v {:.3f})'.format(self.Version)
+        title='title Linex v {:.3f}'.format(self.Version)
         os.system(title)
     def ReadDicts(self, file: str, encod="utf-8"):
         """Чтение Словарей"""
