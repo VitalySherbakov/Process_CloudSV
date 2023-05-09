@@ -11,8 +11,8 @@ class Setting(object):
             try:
                 with open(self.settingfile, 'r', encoding=encod) as f:
                     data = json.load(f)
-                    self.Version = float(data['Version'])
-                    os.system(f"title Linex (v {self.Version:.f3})")
+                    #self.Version = float(data['Version'])
+                    #os.system(f"title Linex (v {self.Version:.f3})")
             except Exception as ex:
                 print(f"ERROR SETTING: {ex}!")
         else:
