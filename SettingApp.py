@@ -12,12 +12,15 @@ class Setting(object):
                 with open(self.settingfile, 'r', encoding=encod) as f:
                     data = json.load(f)
                     self.Version = float(data['Version'])
-                    os.system(f"title Linex (v {self.Version:.3f})")
+                    self.Title()
             except Exception as ex:
                 print(f"ERROR SETTING: {ex}!")
         else:
             print(f"ERROR: Нету {self.settingfile} Файла!")
-
+    def Title(self):
+        """Титулка"""
+        title='title Linex (v {:.3f})'.format(self.Version)
+        os.system(title)
     def ReadDicts(self, file: str, encod="utf-8"):
         """Чтение Словарей"""
         data=None
