@@ -22,6 +22,23 @@ function update_mashine(){
 	apt-get update -y && apt-get upgrade -y
 }
 
+function function_install_gpu(){
+	# Установка GPU
+	update_mashine
+	cd "$dirsource"
+	git clone "https://github.com/VitalySherbakov/hashcat"
+	sudo apt install cmake build-essential -y && apt install checkinstall git -y && cd hashcat && git submodule update --init && make && make install && pip install unrar
+	update_mashine
+	cd_set_home
+}
+
+function function_install_cpu(){
+	# Установка CPU
+	update_mashine
+	update_mashine
+	cd_set_home
+}
+
 function function_install_python(){
 	# Установка Py 3.8.0
 	update_mashine
@@ -48,18 +65,27 @@ function function_pack10(){
 	update_mashine
 	echo "Загрузка Пакетов 2..."
 	function_install_python
+	function_install_gpu
 	echo "Установка Пакетов Завершена!"
 }
 
 function main(){
 	# Основное Меню
     echo "Команда: pack (Установка необходимых пакетов)"
+	echo "Команда: gpu (Установка необходимых пакетов)"
+	echo "Команда: cpu (Установка необходимых пакетов)"
 	echo "Команда: run (Запуск Скрипта)"
 	echo "Команда: exit (Выход)"
 	echo "Введите Команду:"
 	read command
 	if [ "$command" == "pack" ]; then
 		function_pack10
+	fi
+	if [ "$command" == "gpu" ]; then
+		function_install_gpu
+	fi
+	if [ "$command" == "cpu" ]; then
+		function_install_cpu
 	fi
 	if [ "$command" == "run" ]; then
 		python_run "Main"
