@@ -7,7 +7,7 @@ dirsource="Process_CloudSV"
 function python_run(){
 	nameuser=$USER
 	python="/home/$nameuser/Python-3.8.0/python"
-	$python "/home/$nameuser/$dirsource/$1.py linex"
+	$python "/home/$nameuser/$dirsource/$1.py" "linex"
 }
 
 function cd_set_home(){
