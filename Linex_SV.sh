@@ -5,6 +5,7 @@ numberversionlinex=$(lsb_release -rs)
 dirsource="Process_CloudSV"
 
 function python_run(){
+	# Запуск Скрипта
 	nameuser=$USER
 	python="/home/$nameuser/Python-3.8.0/python"
 	$python "/home/$nameuser/$dirsource/$1.py" "linex"
@@ -34,16 +35,35 @@ function function_install_gpu(){
 }
 
 function function_run_gpu(){
+	# Запуск GPU
 	nameuser=$USER
 	hashcat="/home/$nameuser/$dirsource/hashcat/hashcat"
-	hashcat --help
+	hashcat $1
 }
 
 function function_install_cpu(){
 	# Установка CPU
 	update_mashine
+	sudo apt-get install build-essential libssl-dev libnl-3-dev libnl-genl-3-dev pkg-config libsqlite3-dev libpcre3-dev ethtool
+	cd "$dirsource"
+	wget https://download.aircrack-ng.org/aircrack-ng-1.7.tar.gz
+	tar -xzvf aircrack-ng-1.7.tar.gz
+	rm -r "aircrack-ng-1.7.tar.gz"
+	cd aircrack-ng-1.7
+	./autogen.sh
+	./configure
+	make
+	sudo make install
 	update_mashine
+	aircrack-ng --help
 	cd_set_home
+}
+
+function function_run_cpu(){
+	# Запуск CPU
+	nameuser=$USER
+	aircrack_ng="/home/$nameuser/$dirsource/aircrack-ng-1.7/aircrack-ng"
+	aircrack_ng $1
 }
 
 function function_install_python(){
@@ -93,10 +113,13 @@ function main(){
 		function_install_gpu
 	fi
 	if [ "$command" == "gputest" ]; then
-		function_run_gpu
+		function_run_gpu "--help"
 	fi
 	if [ "$command" == "cpu" ]; then
 		function_install_cpu
+	fi
+	if [ "$command" == "cputest" ]; then
+		function_run_cpu "--help"
 	fi
 	if [ "$command" == "run" ]; then
 		python_run "Main"
