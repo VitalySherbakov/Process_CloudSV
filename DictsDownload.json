@@ -1,0 +1,155 @@
+[
+    {
+        "Name": "00000000_99999999",
+        "Files": ["00000000_99999999.txt"],
+        "Urls": [
+            {"7z": "https://drive.google.com/file/d/1M4mwThNYEiRnnOCSQpqrLLF3TpkCGv8H/view?usp=sharing"},
+            {"ZIP": "https://drive.google.com/file/d/1-17SM8W6lT8-UUwCJh00p3wVPOE3l0G0/view?usp=sharing"}, 
+            {"RAR": ""}]
+    },
+    {
+        "Name": "000000000-999999999_max",
+        "Files": ["000000000-999999999_max.txt"],
+        "Urls": [
+            {"7z": "https://drive.google.com/file/d/16-lj_JG0NTnr9oWWXeDUpVam0idcJgqZ/view?usp=sharing"},
+            {"ZIP": "https://drive.google.com/file/d/1-SvJzssWsIRy0wYKNdrPv-LZxQlMUSAw/view?usp=sharing"}, 
+            {"RAR": ""}]
+    },
+    {
+        "Name": "BEL_MOB",
+        "Files": ["BEL_MOB.txt"],
+        "Urls": [
+            {"7z": "https://drive.google.com/file/d/1-1VHtGd9YujRXbtpqA66PFVgV01CHgQ0/view?usp=sharing"},
+            {"ZIP": "https://drive.google.com/file/d/1-T_0yOXRb7oNz8hlHEMOuECgBaVk5GqZ/view?usp=sharing"}, 
+            {"RAR": ""}]
+    },
+    {
+        "Name": "Datas",
+        "Files": ["5_5.txt","6_6.txt","Datas.txt","Datas_X.txt"],
+        "Urls": [
+            {"7z": "https://drive.google.com/file/d/1tlBm1uYZCALLVLp6IggPSWqOnE3KTa2D/view?usp=sharing"},
+            {"ZIP": "https://drive.google.com/file/d/104nm6Yc2j14bpvKQ-s6I-h_dkzErfLs8/view?usp=sharing"}, 
+            {"RAR": ""}]
+    },
+    {
+        "Name": "Hashkiller_WPA",
+        "Files": ["Hashkiller_WPA.txt"],
+        "Urls": [
+            {"7z": "https://drive.google.com/file/d/1-6ovaqEdz_4U1sPZDqv7gDd0ShZ95WB-/view?usp=sharing"},
+            {"ZIP": "https://drive.google.com/file/d/1-eYqKXnczzjkFX7hcm8p56FYnSy05wdr/view?usp=sharing"}, 
+            {"RAR": ""}]
+    },
+    {
+        "Name": "IMENA_DATOS_1",
+        "Files": ["Imena_1.txt","Imena_2.txt","Imena_3.txt"],
+        "Urls": [
+            {"7z": "https://drive.google.com/file/d/18kKHP55K67e8pU4-MgiTohDTpDKwMLQP/view?usp=sharing"},
+            {"ZIP": "https://drive.google.com/file/d/10DQbixyhIceSSBWVJXSb2IsNPHcZub7k/view?usp=sharing"}, 
+            {"RAR": ""}]
+    },
+    {
+        "Name": "IMENA_DATOS_2",
+        "Files": ["Imena_4.txt","Imena_5.txt"],
+        "Urls": [
+            {"7z": "https://drive.google.com/file/d/1j1S4Bfssv31ipZBEEQymash4m-ywWEX_/view?usp=sharing"},
+            {"ZIP": "https://drive.google.com/file/d/10GBalAMkiHUrYL_J2dmyPBFn_V4zmr4f/view?usp=sharing"}, 
+            {"RAR": ""}]
+    },
+    {
+        "Name": "InsideProFull",
+        "Files": ["InsideProFull.txt"],
+        "Urls": [
+            {"7z": "https://drive.google.com/file/d/1-96ndYxqssanwvBqDeM2mueg1WC_89HL/view?usp=sharing"},
+            {"ZIP": "https://drive.google.com/file/d/1-dwiD615sU3fphePi5hrJxEEKCLHpdrF/view?usp=sharing"}, 
+            {"RAR": ""}]
+    },
+    {
+        "Name": "KAZ_MOB",
+        "Files": ["KAZ_MOB_7XXXXXXXXX.txt","KAZ_MOB_77XXXXXXXXX.txt","KAZ_MOB_87XXXXXXXXX.txt"],
+        "Urls": [
+            {"7z": "https://drive.google.com/file/d/1ooRhzjzjLHrj6RE0wRD55jEuaTz8Six8/view?usp=sharing"},
+            {"ZIP": "https://drive.google.com/file/d/1-lDPj1RK0tMQBToo8rFpDaKN1E7z97Ye/view?usp=sharing"}, 
+            {"RAR": ""}]
+    },
+    {
+        "Name": "Nummer_DB.Top_WPA",
+        "Files": ["Nummer_DB.Top_WPA.txt"],
+        "Urls": [
+            {"7z": "https://drive.google.com/file/d/1--ppLUbYavsa3tS11vW7g11Ub96jx_-y/view?usp=sharing"},
+            {"ZIP": "https://drive.google.com/file/d/1-qKasmHHEDx__dTVLUyEg_4HroPlYJye/view?usp=sharing"}, 
+            {"RAR": ""}]
+    },
+    {
+        "Name": "RUS_MOB_9XXXXXXXXXX",
+        "Files": ["RUS_MOB_9XXXXXXXXXX.txt"],
+        "Urls": [
+            {"7z": "https://drive.google.com/file/d/1d2l3wcGxcMEH0E6PC_6Sbkamx9t8Cm-p/view?usp=sharing"},
+            {"ZIP": "https://drive.google.com/file/d/1-rc8ns_BN4y379rPDENhlKjEvqNRAqEs/view?usp=sharing"}, 
+            {"RAR": ""}]
+    },
+    {
+        "Name": "RUS_MOB_89XXXXXXXXXX",
+        "Files": ["RUS_MOB_89XXXXXXXXXX.txt"],
+        "Urls": [
+            {"7z": "https://drive.google.com/file/d/1-14dwjOHaVlPLjZ0e1N_vjc8t-0MmfEO/view?usp=sharing"},
+            {"ZIP": "https://drive.google.com/file/d/1-sj6-8aMb6ZW_NbFY-53dPt0k4b-_YSp/view?usp=sharing"}, 
+            {"RAR": ""}]
+    },
+    {
+        "Name": "Top306Million-WPA",
+        "Files": ["Top306Million-WPA.txt"],
+        "Urls": [
+            {"7z": "https://drive.google.com/file/d/1-1jD-5AMod-K-Ey-d55o2p7Q-DAEK8hS/view?usp=sharing"},
+            {"ZIP": "https://drive.google.com/file/d/1-cnIlL_t0QIvLNjzBZj5_-IiuUgkEgF5/view?usp=sharing"}, 
+            {"RAR": ""}]
+    },
+    {
+        "Name": "TOP_VK-100M_WPA",
+        "Files": ["TOP_VK-100M_WPA.txt"],
+        "Urls": [
+            {"7z": "https://drive.google.com/file/d/1-1HCFMTjZyXVicq3cxdifffOfS7BI3p4/view?usp=sharing"},
+            {"ZIP": "https://drive.google.com/file/d/1-wOrxOYW_vjdX3rd5T_u0XSC6xLmrFfl/view?usp=sharing"}, 
+            {"RAR": ""}]
+    },
+    {
+        "Name": "UKR_MOB",
+        "Files": ["UKR_MOB_0XXXXXXXXX.txt","UKR_MOB_380XXXXXXXXX.txt"],
+        "Urls": [
+            {"7z": "https://drive.google.com/file/d/1-7zWFPArWVXKxOKh0_C7cgdXuHj7Du-R/view?usp=sharing"},
+            {"ZIP": "https://drive.google.com/file/d/1-1mYUpp2QRdbK4otRN2ennmmHhILJT_u/view?usp=sharing"}, 
+            {"RAR": ""}]
+    },
+    {
+        "Name": "UKrtelecom",
+        "Files": ["UKrtelecom.dic"],
+        "Urls": [
+            {"7z": "https://drive.google.com/file/d/1-8Gerou4cTDg83yz4Ltg1pMui4uvHlr_/view?usp=sharing"},
+            {"ZIP": "https://drive.google.com/file/d/1-dZmT3hqJZzWK8ywcfmQdX0G5f6Cy3I5/view?usp=sharing"}, 
+            {"RAR": ""}]
+    },
+    {
+        "Name": "UZB_MOB",
+        "Files": ["UZB_MOB_9XXXXXXXX.txt","UZB_MOB_9989XXXXXXXX.txt"],
+        "Urls": [
+            {"7z": "https://drive.google.com/file/d/1-A5hejcAzLqQY-Z19w66GcqBciiuWhU-/view?usp=sharing"},
+            {"ZIP": "https://drive.google.com/file/d/1-7kYQA9sTsjEB6sDP3YIuxGOf1Kflq38/view?usp=sharing"}, 
+            {"RAR": ""}]
+    },
+    {
+        "Name": "WiFi-DOM.ru-XXXX",
+        "Files": ["domru_dir300.dic","domru_dir615.dic","domru_wnr612ert_1.dic",
+        "domru_wnr612ert_2.dic","domru_wnr612ert_3.dic","domru_zxhn_h118n.dic","zxhn_h118n.dic"],
+        "Urls": [
+            {"7z": "https://drive.google.com/file/d/1-DmpiCwRgTwuoNHtyuQW1HoZzgfmTG5g/view?usp=sharing"},
+            {"ZIP": "https://drive.google.com/file/d/1-xHPfHnf6Q29L3D5Ye4gkxFUEcgGKAed/view?usp=sharing"}, 
+            {"RAR": ""}]
+    },
+    {
+        "Name": "WPS_Pins",
+        "Files": ["WPS_Pins.txt"],
+        "Urls": [
+            {"7z": "https://drive.google.com/file/d/1-GDkL_mfrvRGzrRj8CiA5meTpY2BFU06/view?usp=sharing"},
+            {"ZIP": "https://drive.google.com/file/d/1-11EXN5EXQUXp3rJ11JtSY5tWLRshuIH/view?usp=sharing"}, 
+            {"RAR": ""}]
+    }
+]
