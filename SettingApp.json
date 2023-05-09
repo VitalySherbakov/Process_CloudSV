@@ -1,4 +1,5 @@
 {
     "Version": 1.001,
+    "FileDicts":"DictsDownload.json",
     "Prioritet": [{"7z": 1}, {"RAR": 3}, {"ZIP": 2}]
 }

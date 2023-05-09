@@ -5,6 +5,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 class Setting(object):
     settingfile=f"{dir_path}/SettingApp.json"
     Version=""
+    Dicts=None
     def __init__(self, encod="utf-8"):
         super(Setting, self).__init__()
         if os.path.exists(self.settingfile):
@@ -12,7 +13,9 @@ class Setting(object):
                 with open(self.settingfile, 'r', encoding=encod) as f:
                     data = json.load(f)
                     self.Version = float(data['Version'])
-                    self.Title()
+                    filedicts=data['FileDicts']
+                    fullfiledicts=f"{dir_path}/{filedicts}"
+                    self.Dicts=self.ReadDicts(fullfiledicts)
             except Exception as ex:
                 print(f"ERROR SETTING: {ex}!")
         else:
