@@ -21,3 +21,5 @@ if platform_select=="linex":
             print("Не Выбрано 1 или 2")
 if platform_select=="service":
     pass
+if platform_select=="mobile":
+    pass
