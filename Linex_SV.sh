@@ -36,15 +36,15 @@ function function_install_gpu(){
 
 function function_run_gpu(){
 	# Запуск GPU
-	nameuser=$USER
-	hashcat="/home/$nameuser/$dirsource/hashcat/hashcat"
+	#nameuser=$USER
+	#hashcat="/home/$nameuser/$dirsource/hashcat/hashcat"
 	hashcat $1
 }
 
-function function_install_cpu(){
+function function_install_cpu_old(){
 	# Установка CPU
 	update_mashine
-	sudo apt-get install build-essential libssl-dev libnl-3-dev libnl-genl-3-dev pkg-config libsqlite3-dev libpcre3-dev ethtool
+	sudo apt-get install build-essential libssl-dev libnl-3-dev libnl-genl-3-dev pkg-config libsqlite3-dev libpcre3-dev ethtool libtool
 	cd "$dirsource"
 	wget https://download.aircrack-ng.org/aircrack-ng-1.7.tar.gz
 	tar -xzvf aircrack-ng-1.7.tar.gz
@@ -59,11 +59,20 @@ function function_install_cpu(){
 	cd_set_home
 }
 
+function function_install_cpu(){
+	# Установка CPU
+	update_mashine
+	sudo apt-get install aircrack-ng -y
+	update_mashine
+	aircrack-ng --help
+	cd_set_home
+}
+
 function function_run_cpu(){
 	# Запуск CPU
-	nameuser=$USER
-	aircrack_ng="/home/$nameuser/$dirsource/aircrack-ng-1.7/aircrack-ng"
-	aircrack_ng $1
+	#nameuser=$USER
+	#aircrack_ng="/home/$nameuser/$dirsource/aircrack-ng-1.7/aircrack-ng"
+	aircrack-ng $1
 }
 
 function function_install_python(){
@@ -93,16 +102,15 @@ function function_pack10(){
 	echo "Загрузка Пакетов 2..."
 	function_install_python
 	function_install_gpu
+	function_install_cpu
 	echo "Установка Пакетов Завершена!"
 }
 
 function main(){
 	# Основное Меню
     echo "Команда: pack (Установка необходимых пакетов)"
-	echo "Команда: gpu (Установка необходимых пакетов)"
-	echo "Команда: gputest (Установка необходимых пакетов)"
-	echo "Команда: cpu (Установка необходимых пакетов)"
-	echo "Команда: cputest (Установка необходимых пакетов)"
+	echo "Команда: gpu_test (Проверка GPU)"
+	echo "Команда: cpu_test (Проверка CPU)"
 	echo "Команда: run (Запуск Скрипта)"
 	echo "Команда: exit (Выход)"
 	echo "Введите Команду:"
@@ -110,16 +118,10 @@ function main(){
 	if [ "$command" == "pack" ]; then
 		function_pack10
 	fi
-	if [ "$command" == "gpu" ]; then
-		function_install_gpu
-	fi
-	if [ "$command" == "gputest" ]; then
+	if [ "$command" == "gpu_test" ]; then
 		function_run_gpu "--help"
 	fi
-	if [ "$command" == "cpu" ]; then
-		function_install_cpu
-	fi
-	if [ "$command" == "cputest" ]; then
+	if [ "$command" == "cpu_test" ]; then
 		function_run_cpu "--help"
 	fi
 	if [ "$command" == "run" ]; then
