@@ -70,3 +70,10 @@ class Setting(object):
             filename, file_extension = os.path.splitext(fileinfo) 
             Flag=True
         return [Flag,filename,file,file_extension]
+    def MaskValide(self, mask: str):
+        """Валидность Маски Устройства"""
+        pattern = re.compile(r'^([0-9A-Fa-f]{2}-){5}[0-9A-Fa-f]{2}$')
+        if pattern.match(mask):
+            return True
+        else:
+            return False

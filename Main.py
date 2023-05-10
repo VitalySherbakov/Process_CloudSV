@@ -15,13 +15,16 @@ if platform_select=="linex":
         select=input("Выберете CPU=1/GPU=2: ")
         if select=="1":
             print("Выбрано CPU")
-            hc22000=input("Файл hc22000: ")
-            res=app.GetFileInfo(hc22000)
+            hc22000cap=input("Файлы hc22000, cap: ")
+            res=app.GetFileInfo(hc22000cap)
+            mask=input("Маска WIFI: ")
+            res2=app.MaskValide(mask)
             print(res)
+            print(res2)
         if select=="2":
             print("Выбрано GPU")
-            hc22000=input("Файл hc22000: ")
-            res=app.GetFileInfo(hc22000)
+            hc22000cap=input("Файлы hc22000, cap: ")
+            res=app.GetFileInfo(hc22000cap)
             print(res)
         elif select!="1" and select!="2":
             print("Не Выбрано 1 или 2")
