@@ -9,6 +9,9 @@ app = Setting()
 
 if platform_select=="linex":
     while True:
+        current_date = datetime.datetime.now
+        current_date_str = current_date.strftime("%d.%m.%Y %H:%M:%S")
+        print(f"-------------------------{current_date_str}--------------------------")
         select=input("Выберете CPU=1/GPU=2: ")
         if select=="1":
             print("Выбрано CPU")
@@ -16,6 +19,5 @@ if platform_select=="linex":
             print("Выбрано GPU")
         elif select!="1" and select!="2":
             print("Не Выбрано 1 или 2")
-
 if platform_select=="service":
     pass
