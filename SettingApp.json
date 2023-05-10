@@ -1,5 +1,14 @@
 {
     "Version": 1.001,
     "FileDicts":"DictsDownload.json",
+    "Urls_GPU_CPU_Full": [
+        {
+            "GPU": "https://drive.google.com/file/d/19JWeGatEBh1-L322GlHbof-X4-rYsbb3/view?usp=sharing",
+            "Dir": "hashcat"
+        }, 
+        {
+            "CPU": "https://drive.google.com/file/d/1VGewhERFfRf8_NVESkYzInhRp1PrLqj_/view?usp=sharing",
+            "Dir": "aircrack-ng"
+        }],
     "Prioritet": [{"7z": 1}, {"RAR": 3}, {"ZIP": 2}]
 }

@@ -36,3 +36,16 @@ class Setting(object):
         else:
             print(f"ERROR: Нету {file} Файла!")
         return data
+    def GetGoogleLink(self, link: str):
+        """Получить Прямую Ссылку на Google Link"""
+        url_down=None
+        if not link.strip():
+            print("Ссылка Пуста!")
+        else:
+            repl="https://drive.google.com/file/d/"
+            link=link.strip() #удаления пробелов с начала и конца строки
+            id_disk=link.replace(repl,"")
+            masss=id_disk.split('/')
+            id_disk=masss[0]
+            url_down=f"https://drive.google.com/uc?export=download&confirm=no_antivirus&id={id_disk}"
+        return url_down
