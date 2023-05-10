@@ -9,7 +9,7 @@ app = Setting()
 
 if platform_select=="linex":
     while True:
-        current_date = datetime.datetime.now
+        current_date = datetime.datetime.now()
         current_date_str = current_date.strftime("%d.%m.%Y %H:%M:%S")
         print(f"-------------------------{current_date_str}--------------------------")
         select=input("Выберете CPU=1/GPU=2: ")
