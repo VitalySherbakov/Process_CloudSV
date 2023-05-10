@@ -109,6 +109,7 @@ function function_pack10(){
 function main(){
 	# Основное Меню
     echo "Команда: pack (Установка необходимых пакетов)"
+	echo "Конвентация *.cap в *.hc22000 по адресу https://hashcat.net/cap2hashcat/"
 	echo "Команда: gpu_test (Проверка GPU)"
 	echo "Команда: cpu_test (Проверка CPU)"
 	echo "Команда: run (Запуск Скрипта)"

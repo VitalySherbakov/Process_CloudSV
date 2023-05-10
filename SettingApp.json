@@ -1,6 +1,7 @@
 {
     "Version": 1.001,
     "FileDicts":"DictsDownload.json",
+    "FolderDicts": [{"Folder": "Dicts"}, {"ArhivesDown": "DictsPack"}],
     "Urls_GPU_CPU_Full": [
         {
             "GPU": "https://drive.google.com/file/d/19JWeGatEBh1-L322GlHbof-X4-rYsbb3/view?usp=sharing",
@@ -10,5 +11,27 @@
             "CPU": "https://drive.google.com/file/d/1VGewhERFfRf8_NVESkYzInhRp1PrLqj_/view?usp=sharing",
             "Dir": "aircrack-ng"
         }],
-    "Prioritet": [{"7z": 1}, {"RAR": 3}, {"ZIP": 2}]
+    "Prioritet": [{"7z": 1}, {"RAR": 3}, {"ZIP": 2}],
+    "ArhivesPack1": [
+        "00000000_99999999",
+        "000000000_999999999",
+        "Datas",
+        "IMENA_DATOS_1",
+        "IMENA_DATOS_2",
+        "WiFi-DOM.ru-XXXX"],
+    "ArhivesPack2": [
+        "RUS_MOB_9XXXXXXXXXX",
+        "RUS_MOB_89XXXXXXXXXX",
+        "UKR_MOB",
+        "UZB_MOB",
+        "BEL_MOB",
+        "KAZ_MOB"],
+    "ArhivesPack3": [
+        "WPS_Pins",
+        "TOP_VK-100M_WPA",
+        "Nummer_DB.Top_WPA",
+        "Hashkiller_WPA",
+        "UKrtelecom",
+        "InsideProFull",
+        "Top306Million-WPA"]
 }
