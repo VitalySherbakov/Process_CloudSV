@@ -14,18 +14,19 @@ if platform_select=="linex":
         print(f"-------------------------{current_date_str}--------------------------")
         select=input("Выберете CPU=1/GPU=2: ")
         if select=="1":
-            print("Выбрано CPU")
-            hc22000cap=input("Файлы hc22000, cap: ")
-            res=app.GetFileInfo(hc22000cap)
-            mask=input("Маска WIFI: ")
-            res2=app.MaskValide(mask)
-            print(res)
-            print(res2)
+            print("Выбрано CPU Медленый Процесс")
+            hc22000cap=app.InputWhile("Файлы hc22000, cap (dwn если надо скачать): ")
+            if hc22000cap=="dwn":
+                urldwn=app.InputWhile("Url: ")
+                filepath=app.InputWhile("Файлы hc22000, cap: ")
+                mask=app.InputWhile("Маска WIFI: ")
+                if app.LinkValid(urldwn) and app.MaskValide(mask) and app.GetFileInfo(filepath)[0]:
+                    res=app.DownloadFile(urldwn, filepath)
+                    if res:
+                        print(f"Файл {filepath} Скачен!")
         if select=="2":
-            print("Выбрано GPU")
-            hc22000cap=input("Файлы hc22000, cap: ")
-            res=app.GetFileInfo(hc22000cap)
-            print(res)
+            print("Выбрано GPU Ускоренный Процесс")
+            hc22000cap=input("Файлы hc22000, cap (dwn если надо скачать): ")
         elif select!="1" and select!="2":
             print("Не Выбрано 1 или 2")
 if platform_select=="service":

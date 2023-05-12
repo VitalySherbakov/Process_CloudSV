@@ -11,6 +11,20 @@ function python_run(){
 	$python "/home/$nameuser/$dirsource/$1.py" "linex"
 }
 
+function python_pip_update(){
+	# Обновление pip
+	nameuser=$USER
+	python="/home/$nameuser/Python-3.8.0/python"
+	$python "-m pip install --upgrade pip" "linex"
+}
+
+function python_pip_install(){
+	# Установка pip
+	nameuser=$USER
+	python="/home/$nameuser/Python-3.8.0/python"
+	$python "-m pip install $1" "linex"
+}
+
 function cd_set_home(){
 	# Вернуться на Исходные Позиции
 	nameuser=$USER
@@ -86,6 +100,10 @@ function function_install_python(){
 	make -j $(nproc)
 	sudo make altinstall
 	update_mashine
+	python_pip_update
+	python_pip_install requests
+	python_pip_install alive-progress
+	python_pip_install tqdm
 	python3.8 --version
 	cd_set_home
 }

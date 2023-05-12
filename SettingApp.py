@@ -1,11 +1,14 @@
 import os, sys, time, re, json, datetime, random
+import requests
+from alive_progress import alive_bar
+from alive_progress.styles import showtime
 from os.path import basename
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 class Setting(object):
     """Настройки Приложения"""
-    settingfile=f"{dir_path}/SettingApp.json"
+    __settingfile=f"{dir_path}/SettingApp.json"
     """Файл Настроек"""
     Version=""
     """Версия"""
@@ -15,9 +18,9 @@ class Setting(object):
     """Данные Настройки"""
     def __init__(self, encod="utf-8"):
         super(Setting, self).__init__()
-        if os.path.exists(self.settingfile):
+        if os.path.exists(self.__settingfile):
             try:
-                with open(self.settingfile, 'r', encoding=encod) as f:
+                with open(self.__settingfile, 'r', encoding=encod) as f:
                     data = json.load(f)
                     self.SettingApp=data
                     self.Version = float(data['Version'])
@@ -27,7 +30,7 @@ class Setting(object):
             except Exception as ex:
                 print(f"ERROR SETTING: {ex}!")
         else:
-            print(f"ERROR: Нету {self.settingfile} Файла!")
+            print(f"ERROR: Нету {self.__settingfile} Файла!")
     def Title(self):
         """Титулка"""
         title=f"title Linex v {self.Version:.3f}"
@@ -72,8 +75,61 @@ class Setting(object):
         return [Flag,filename,file,file_extension]
     def MaskValide(self, mask: str):
         """Валидность Маски Устройства"""
-        pattern = re.compile(r'^([0-9A-Fa-f]{2}-){5}[0-9A-Fa-f]{2}$')
-        if pattern.match(mask):
+        patterns = [
+            r'^([0-9A-Fa-f]{2}[-:]){5}[0-9A-Fa-f]{2}$',
+            r'^([0-9A-Fa-f]{2}[:]){5}[0-9A-Fa-f]{2}$',
+            r'^([0-9A-Fa-f]{2}[.]){5}[0-9A-Fa-f]{2}$',
+        ]
+        #regex = re.compile('|'.join(patterns))
+        pattern = r'^([0-9A-Za-z]{2}-){5}[0-9A-Za-z]{2}$'
+        #regex = re.compile(r'^([0-9A-Fa-f]{2}[-:]){5}[0-9A-Fa-f]{2}$')
+        if re.match(pattern, mask):
             return True
         else:
             return False
+    def DownloadFile(self, url: str, filepath: str, style="classic"):
+        """Загрузить Файл"""
+        Flag=False
+        try:
+            response = requests.get(url, stream=True)
+            total_size = int(response.headers.get("content-length", 0))
+            block_size = 1024  # задайте размер блока загрузки по вашему усмотрению
+            with open(filepath, "wb") as f, alive_bar(total_size, bar=style) as bar:
+                for data in response.iter_content(block_size):
+                    f.write(data)
+                    bar(len(data))
+            Flag=True
+        except Exception as ex:
+            print(f"ERROR DOWNLOAD: {ex}!")
+        return Flag
+    def LinkValid(self, url: str):
+        """Проверка Ссылка"""
+        Flag=False
+        response = requests.head(url)
+        if response.status_code == 200:
+            Flag=True
+        return Flag
+    def Input(self, text: str):
+        """Ввод Данных"""
+        Flag=False
+        res=input(text)
+        res=res.strip()
+        if not res.strip():
+            Flag=False
+        else:
+            Flag=True
+        return [Flag,res]
+    def InputWhile(self, text: str):
+        """Ввод Данных Цыкловый"""
+        Flag=False
+        while True:
+            res=input(text)
+            res=res.strip()
+            if not res.strip():
+                Flag=False
+                print("Пустое Значение!")
+            else:
+                Flag=True
+                break
+
+        

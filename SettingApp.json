@@ -1,7 +1,7 @@
 {
-    "Version": 1.001,
+    "Version": 1.003,
     "FileDicts":"DictsDownload.json",
-    "FolderDicts": [{"Folder": "Dicts"}, {"ArhivesDown": "DictsPack"}],
+    "FolderDicts": {"Folder": "Dicts", "ArhivesDown": "DictsPack"},
     "Urls_GPU_CPU_Full": [
         {
             "GPU": "https://drive.google.com/file/d/19JWeGatEBh1-L322GlHbof-X4-rYsbb3/view?usp=sharing",
@@ -11,7 +11,8 @@
             "CPU": "https://drive.google.com/file/d/1VGewhERFfRf8_NVESkYzInhRp1PrLqj_/view?usp=sharing",
             "Dir": "aircrack-ng"
         }],
-    "Prioritet": [{"7z": 1}, {"RAR": 3}, {"ZIP": 2}],
+    "Prioritet": {"7z": 1, "RAR": 3, "ZIP": 2},
+    "PrioritetDown": {"GoogleLink": 1, "Directlink": 0}, 
     "ArhivesPack1": [
         "00000000_99999999",
         "000000000_999999999",
