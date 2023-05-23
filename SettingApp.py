@@ -121,15 +121,13 @@ class Setting(object):
         return [Flag,res]
     def InputWhile(self, text: str):
         """Ввод Данных Цыкловый"""
-        Flag=False
-        while True:
-            res=input(text)
-            res=res.strip()
-            if not res.strip():
-                Flag=False
+        Flag,Res=True,""
+        while Flag:
+            Res=input(text)
+            if not Res.strip():
                 print("Пустое Значение!")
             else:
-                Flag=True
-                break
+                Flag=False
+        return Res
 
         

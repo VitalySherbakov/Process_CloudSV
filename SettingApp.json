@@ -2,6 +2,7 @@
     "Version": 1.003,
     "FileDicts":"DictsDownload.json",
     "FolderDicts": {"Folder": "Dicts", "ArhivesDown": "DictsPack"},
+    "FolderHC22000_Cap": "WIFI_Files",
     "Urls_GPU_CPU_Full": [
         {
             "GPU": "https://drive.google.com/file/d/19JWeGatEBh1-L322GlHbof-X4-rYsbb3/view?usp=sharing",

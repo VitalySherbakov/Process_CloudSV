@@ -104,6 +104,8 @@ function function_install_python(){
 	python_pip_install requests
 	python_pip_install alive-progress
 	python_pip_install tqdm
+	python_pip_install py7zr
+	python_pip_install rarfile
 	python3.8 --version
 	cd_set_home
 }
