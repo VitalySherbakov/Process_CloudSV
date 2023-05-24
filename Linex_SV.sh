@@ -11,6 +11,13 @@ function python_run(){
 	$python "/home/$nameuser/$dirsource/$1.py" "linex"
 }
 
+function python_pip_list_libs(){
+	# Список Библиотек pip
+	nameuser=$USER
+	python="/home/$nameuser/Python-3.8.0/python"
+	$python "-m pip freeze" "linex"
+}
+
 function python_pip_update(){
 	# Обновление pip
 	nameuser=$USER
@@ -128,14 +135,18 @@ function function_pack10(){
 
 function main(){
 	# Основное Меню
-    echo "Команда: pack (Установка необходимых пакетов)"
 	echo "Конвентация *.cap в *.hc22000 по адресу https://hashcat.net/cap2hashcat/"
+    echo "Команда: pack (Установка необходимых пакетов)"
+	echo "Команда: list (Список пакетов)"
 	echo "Команда: gpu_test (Проверка GPU)"
 	echo "Команда: cpu_test (Проверка CPU)"
 	echo "Команда: run (Запуск Скрипта)"
 	echo "Команда: exit (Выход)"
 	echo "Введите Команду:"
 	read command
+	if [ "$command" == "list" ]; then
+		python_pip_list_libs
+	fi
 	if [ "$command" == "pack" ]; then
 		function_pack10
 	fi
