@@ -47,6 +47,7 @@ function function_install_python(){
 	make -j $(nproc)
 	sudo make altinstall
 	update_mashine
+	pip_install_python
 	python_pip_update
 	python_pip_install requests
 	python_pip_install alive-progress
