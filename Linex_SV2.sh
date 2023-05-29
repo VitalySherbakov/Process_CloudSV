@@ -4,18 +4,36 @@ distributivelinex=$(lsb_release -is)
 numberversionlinex=$(lsb_release -rs)
 dirsource="Process_CloudSV"
 
+function python_run(){
+	# Запуск Скрипта
+	nameuser=$USER
+	#python="/home/$nameuser/Python-3.8.0/python"
+	#$python "/home/$nameuser/$dirsource/$1.py" "linex"
+	python3.8 "/home/$nameuser/$dirsource/$1.py" "linex"
+}
+
+function python_pip_list_libs(){
+	# Список Библиотек pip
+	nameuser=$USER
+	#python="/home/$nameuser/Python-3.8.0/python"
+	#$python "-m pip freeze" "linex"
+	python3.8 "-m pip freeze" "linex"
+}
+
 function python_pip_update(){
 	# Обновление pip
-	nameuser=$USER
-	python="/home/$nameuser/Python-3.8.0/python"
-	$python "-m pip install --upgrade pip" "linex"
+	#nameuser=$USER
+	#python="/home/$nameuser/Python-3.8.0/python"
+	#$python "-m pip install --upgrade pip" "linex"
+	python3.8 "-m pip install --upgrade pip" "linex"
 }
 
 function python_pip_install(){
 	# Установка pip пакета
 	nameuser=$USER
-	python="/home/$nameuser/Python-3.8.0/python"
-	$python "-m pip install $1" "linex"
+	#python="/home/$nameuser/Python-3.8.0/python"
+	#$python "-m pip install $1" "linex"
+	python3.8 "-m pip install $1" "linex"
 }
 
 function cd_set_home(){
