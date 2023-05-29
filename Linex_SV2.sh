@@ -17,7 +17,8 @@ function python_pip_list_libs(){
 	nameuser=$USER
 	#python="/home/$nameuser/Python-3.8.0/python"
 	#$python "-m pip freeze" "linex"
-	python3.8 "-m pip freeze" "linex"
+	#python3.8 "-m pip freeze" "linex"
+	pip freeze
 }
 
 function python_pip_update(){
@@ -25,7 +26,8 @@ function python_pip_update(){
 	#nameuser=$USER
 	#python="/home/$nameuser/Python-3.8.0/python"
 	#$python "-m pip install --upgrade pip" "linex"
-	python3.8 "-m pip install --upgrade pip" "linex"
+	#python3.8 "-m pip install --upgrade pip" "linex"
+	pip install --upgrade pip
 }
 
 function python_pip_install(){
@@ -33,7 +35,8 @@ function python_pip_install(){
 	nameuser=$USER
 	#python="/home/$nameuser/Python-3.8.0/python"
 	#$python "-m pip install $1" "linex"
-	python3.8 "-m pip install $1" "linex"
+	#python3.8 "-m pip install $1" "linex"
+	pip install $1
 }
 
 function cd_set_home(){
