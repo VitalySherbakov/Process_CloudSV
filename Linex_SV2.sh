@@ -57,6 +57,58 @@ function pip_install_python(){
 	sudo python3.8 get-pip.py
 }
 
+function function_install_gpu(){
+	# Установка GPU
+	update_mashine
+	cd "$dirsource"
+	git clone "https://github.com/VitalySherbakov/hashcat"
+	sudo apt install cmake build-essential -y && apt install checkinstall git -y && cd hashcat && git submodule update --init && make && make install
+	update_mashine
+	hashcat --help
+	cd_set_home
+}
+
+function function_run_gpu(){
+	# Запуск GPU
+	#nameuser=$USER
+	#hashcat="/home/$nameuser/$dirsource/hashcat/hashcat"
+	hashcat $1
+}
+
+function function_install_cpu_old(){
+	# Установка CPU
+	update_mashine
+	sudo apt-get install build-essential libssl-dev libnl-3-dev libnl-genl-3-dev pkg-config libsqlite3-dev libpcre3-dev ethtool libtool
+	cd "$dirsource"
+	wget https://download.aircrack-ng.org/aircrack-ng-1.7.tar.gz
+	tar -xzvf aircrack-ng-1.7.tar.gz
+	rm -r "aircrack-ng-1.7.tar.gz"
+	cd aircrack-ng-1.7
+	./autogen.sh
+	./configure
+	make
+	sudo make install
+	update_mashine
+	aircrack-ng --help
+	cd_set_home
+}
+
+function function_install_cpu(){
+	# Установка CPU
+	update_mashine
+	sudo apt-get install aircrack-ng -y
+	update_mashine
+	aircrack-ng --help
+	cd_set_home
+}
+
+function function_run_cpu(){
+	# Запуск CPU
+	#nameuser=$USER
+	#aircrack_ng="/home/$nameuser/$dirsource/aircrack-ng-1.7/aircrack-ng"
+	aircrack-ng $1
+}
+
 function function_install_python(){
 	# Установка Py 3.8.0
 	update_mashine
