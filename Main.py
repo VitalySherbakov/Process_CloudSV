@@ -83,4 +83,4 @@ if platform_select=="test":
     name_dict=input("Имя Архива: ")
     res=app_linex.DownLoad_Dicts_One(name_dict)
     print(res)
-    self.app_arhive.Extract(name_dict,"Dirs", SelectArhive.SEVENZ)
+    app_arhive.Extract(name_dict,"Dirs", SelectArhive.SEVENZ)
