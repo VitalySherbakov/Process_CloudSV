@@ -24,6 +24,12 @@ class AppProcessLinex(object):
         super(AppProcessLinex, self).__init__()
         self.app = Setting()
         self.arh=Arhive()
+    def GetNamesDicts(self):
+        """Список Имен Словарей"""
+        listing=[]
+        for li in self.app.Dicts:
+            listing.append(li["Name"])
+        return listing
     def DownLoad_Program(self, select: SelectProgram, file: str):
         """Загрузка Програмы CPU/GPU"""
         Flag=False
@@ -411,4 +417,4 @@ class AppProcessLinex(object):
 
 
 # app=AppProcessLinex()
-# app.DownLoad_Dicts_Pack(3)
+# app.GetNamesDicts()

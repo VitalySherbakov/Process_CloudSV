@@ -28,10 +28,14 @@ if platform_select=="linex":
                     res=app_linex.DownLoad_HC22000(urldwn, filepath)
                     if res:
                         print(f"Файл {filepath} Скачен!")
+                        print("Список Словарей 0-Все Словари")
                         print("Способ Расшыфровки 1-один словарь")
                         print("Способ Расшыфровки 2-пачка словарей")
                         print("Способ Расшыфровки 3-все словари")
-                        selectdicts=app.InputWhile("Выбрать способ Расшыфровки 1,2,3: ")
+                        selectdicts=app.InputWhile("Выбрать способ Расшыфровки 0,1,2,3: ")
+                        if selectdicts=="0":
+                            for i,li in enumerate(app_linex.GetNamesDicts()):
+                                print(f"{i}) {li}")
                         if selectdicts=="1":
                             name_dict=app.InputWhile("Укажы Имя Словаря: ")
                             res2=app_linex.DownLoad_Dicts_One(name_dict)
