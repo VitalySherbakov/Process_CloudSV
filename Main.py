@@ -1,6 +1,7 @@
 import os, sys, time, re, json, datetime, random
 from SettingApp import Setting
 from App_Process import AppProcessLinex
+from ArhivatorLib import ArhiveLinex, SelectArhive
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -8,6 +9,7 @@ platform_select=sys.argv[1].lower()
 
 app = Setting()
 app_linex=AppProcessLinex()
+app_arhive=ArhiveLinex()
 
 if platform_select=="linex":
     while True:
@@ -77,3 +79,8 @@ if platform_select=="service":
     pass
 if platform_select=="mobile":
     pass
+if platform_select=="test":
+    name_dict=input("Имя Архива: ")
+    res=app_linex.DownLoad_Dicts_One(name_dict)
+    print(res)
+    self.app_arhive.Extract(name_dict,"Dirs", SelectArhive.SEVENZ)

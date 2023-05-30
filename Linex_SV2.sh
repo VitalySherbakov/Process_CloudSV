@@ -4,6 +4,14 @@ distributivelinex=$(lsb_release -is)
 numberversionlinex=$(lsb_release -rs)
 dirsource="Process_CloudSV"
 
+function python_run_test(){
+	# Запуск Скрипта
+	nameuser=$USER
+	#python="/home/$nameuser/Python-3.8.0/python"
+	#$python "/home/$nameuser/$dirsource/$1.py" "linex"
+	python3.8 "/home/$nameuser/$dirsource/$1.py" "test"
+}
+
 function python_run(){
 	# Запуск Скрипта
 	nameuser=$USER
@@ -155,9 +163,13 @@ function main(){
 	echo "Команда: gpu_test (Проверка GPU)"
 	echo "Команда: cpu_test (Проверка CPU)"
 	echo "Команда: run (Запуск Скрипта)"
+	echo "Команда: test (Експерементально)"
 	echo "Команда: exit (Выход)"
 	echo "Введите Команду:"
 	read command
+	if [ "$command" == "test" ]; then
+		python_run_test "Main"
+	fi 
 	if [ "$command" == "list" ]; then
 		python_pip_list_libs
 	fi
