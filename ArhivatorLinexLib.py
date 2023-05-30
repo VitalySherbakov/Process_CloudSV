@@ -29,25 +29,32 @@ class ArhiveLinex(object):
         """Создание Архива"""
         Flag,arhivepath=False,""
         if select==SelectArhive.SEVENZ:
-            os.system(f"7z a '{arhive_name}.7z' '{dir}/*'")
+            command=f"7z a '{arhive_name}.7z' '{dir}/*'"
+            os.system(command)
             Flag=True
         if select==SelectArhive.ZIP:
-            os.system(f"zip -r -j '{arhive_name}.zip' '{dir}/'")
+            command=f"zip -r -j '{arhive_name}.zip' '{dir}/'"
+            os.system(command)
             Flag=True
         if select==SelectArhive.RAR:
-            os.system(f"rar a -ep1 '{arhive_name}.rar' '{dir}/'")
+            command=f"rar a -ep1 '{arhive_name}.rar' '{dir}/'"
+            os.system(command)
             Flag=True
         return [Flag,arhivepath,dir]
     def Extract(self, arhive_name: str, dir: str, select: SelectArhive):
         """Распаковка Архива"""
         Flag,arhivepath=False,""
         if select==SelectArhive.SEVENZ:
-            os.system(f"7z x '{arhive_name}.7z' -o '{dir}'")
+            command=f"7z x '{arhive_name}.7z' -o '{dir}'"
+            print(command)
+            os.system(command)
             Flag=True
         if select==SelectArhive.ZIP:
-            os.system(f"unzip '{arhive_name}.zip' -d '{dir}'")
+            command=f"unzip '{arhive_name}.zip' -d '{dir}'"
+            os.system(command)
             Flag=True
         if select==SelectArhive.RAR:
-            os.system(f"unrar '{arhive_name}.rar' x '{dir}'")
+            command=f"unrar '{arhive_name}.rar' x '{dir}'"
+            os.system(command)
             Flag=True
         return [Flag,arhivepath,dir] 
