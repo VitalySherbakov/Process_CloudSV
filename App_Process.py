@@ -245,23 +245,11 @@ class AppProcessLinex(object):
         for li in self.app.Dicts:
             if li["Name"]==name:
                 urldown=li["Urls"][keyarhiv]
-                print("\n\n")
-                print(urldown)
                 urldirect=self.app.GetGoogleLink(urldown)
-                print("\n\n")
-                print(urldirect)
                 filepath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}.{dictformats[keyarhiv]}"
-                print("\n\n")
-                print(filepath)
                 filepathname=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}"
-                print("\n\n")
-                print(filepathname)
                 dirpath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}"
-                print("\n\n")
-                print(dirpath)
                 dirpath_extract=f"{dir_path}/{self.app.SettingApp['FolderDicts']['Folder']}"
-                print("\n\n")
-                print(dirpath_extract)
                 self.app.CreateDir(dirpath)
                 res=self.app.DownloadFile(urldirect, filepath)
                 if res==False:
