@@ -250,16 +250,16 @@ class AppProcessLinex(object):
                 urldirect=self.app.GetGoogleLink(urldown)
                 print("\n\n")
                 print(urldirect)
-                filepath=f"{dir_path}\\{self.app.SettingApp['FolderDicts']['ArhivesDown']}\\{li['Name']}.{dictformats[keyarhiv]}"
+                filepath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}.{dictformats[keyarhiv]}"
                 print("\n\n")
                 print(filepath)
-                filepathname=f"{dir_path}\\{self.app.SettingApp['FolderDicts']['ArhivesDown']}\\{li['Name']}"
+                filepathname=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}"
                 print("\n\n")
                 print(filepathname)
-                dirpath=f"{dir_path}\\{self.app.SettingApp['FolderDicts']['ArhivesDown']}"
+                dirpath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}"
                 print("\n\n")
                 print(dirpath)
-                dirpath_extract=f"{dir_path}\\{self.app.SettingApp['FolderDicts']['Folder']}"
+                dirpath_extract=f"{dir_path}/{self.app.SettingApp['FolderDicts']['Folder']}"
                 print("\n\n")
                 print(dirpath_extract)
                 self.app.CreateDir(dirpath)
