@@ -4,7 +4,8 @@ from alive_progress import alive_bar
 from alive_progress.styles import showtime
 from os.path import basename
 from SettingApp import Setting
-from ArhivatorLib import Arhive, SelectArhive
+#from ArhivatorLib import Arhive, SelectArhive
+from ArhivatorLinexLib import ArhiveLinex, SelectArhive
 from enum import Enum
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -19,11 +20,13 @@ class SelectProgram(Enum):
 class AppProcessLinex(object):
     """Процесс Общий"""
     app=None
-    arh: Arhive
+    #arh: Arhive
+    arh: ArhiveLinex
     def __init__(self):
         super(AppProcessLinex, self).__init__()
         self.app = Setting()
-        self.arh=Arhive()
+        #self.arh=Arhive()
+        self.arh=ArhiveLinex()
     def GetNamesDicts(self):
         """Список Имен Словарей"""
         listing=[]
