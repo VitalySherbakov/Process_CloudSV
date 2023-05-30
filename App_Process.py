@@ -171,10 +171,10 @@ class AppProcessLinex(object):
         for li in self.app.Dicts:
             urldown=li["Urls"][keyarhiv]
             urldirect=self.app.GetGoogleLink(urldown)
-            filepath=f"{dir_path}\\{self.app.SettingApp['FolderDicts']['ArhivesDown']}\\{li['Name']}.{dictformats[keyarhiv]}"
-            filepathname=f"{dir_path}\\{self.app.SettingApp['FolderDicts']['ArhivesDown']}\\{li['Name']}"
-            dirpath=f"{dir_path}\\{self.app.SettingApp['FolderDicts']['ArhivesDown']}"
-            dirpath_extract=f"{dir_path}\\{self.app.SettingApp['FolderDicts']['Folder']}"
+            filepath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}.{dictformats[keyarhiv]}"
+            filepathname=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}"
+            dirpath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}"
+            dirpath_extract=f"{dir_path}/{self.app.SettingApp['FolderDicts']['Folder']}"
             self.app.CreateDir(dirpath)
             res=self.app.DownloadFile(urldirect, filepath)
             if res==False:
@@ -212,10 +212,10 @@ class AppProcessLinex(object):
             if li["Name"] in names:
                 urldown=li["Urls"][keyarhiv]
                 urldirect=self.app.GetGoogleLink(urldown)
-                filepath=f"{dir_path}\\{self.app.SettingApp['FolderDicts']['ArhivesDown']}\\{li['Name']}.{dictformats[keyarhiv]}"
-                filepathname=f"{dir_path}\\{self.app.SettingApp['FolderDicts']['ArhivesDown']}\\{li['Name']}"
-                dirpath=f"{dir_path}\\{self.app.SettingApp['FolderDicts']['ArhivesDown']}"
-                dirpath_extract=f"{dir_path}\\{self.app.SettingApp['FolderDicts']['Folder']}"
+                filepath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}.{dictformats[keyarhiv]}"
+                filepathname=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}"
+                dirpath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}"
+                dirpath_extract=f"{dir_path}/{self.app.SettingApp['FolderDicts']['Folder']}"
                 self.app.CreateDir(dirpath)
                 res=self.app.DownloadFile(urldirect, filepath)
                 if res==False:
@@ -291,10 +291,10 @@ class AppProcessLinex(object):
         for li in self.app.Dicts:
             urldown=li["Urls"][keyarhiv]
             urldirect=self.app.GetGoogleLink(urldown)
-            filepath=f"{dir_path}\\{self.app.SettingApp['FolderDicts']['ArhivesDown']}\\{li['Name']}.{dictformats[keyarhiv]}"
-            filepathname=f"{dir_path}\\{self.app.SettingApp['FolderDicts']['ArhivesDown']}\\{li['Name']}"
-            dirpath=f"{dir_path}\\{self.app.SettingApp['FolderDicts']['ArhivesDown']}"
-            dirpath_extract=f"{dir_path}\\{self.app.SettingApp['FolderDicts']['Folder']}"
+            filepath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}.{dictformats[keyarhiv]}"
+            filepathname=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}"
+            dirpath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}"
+            dirpath_extract=f"{dir_path}/{self.app.SettingApp['FolderDicts']['Folder']}"
             self.app.CreateDir(dirpath)
             res=self.app.DownloadFile(urldirect, filepath)
             if res==False:
@@ -331,10 +331,10 @@ class AppProcessLinex(object):
             if li in names:
                 urldown=li["Urls"][keyarhiv]
                 urldirect=self.app.GetGoogleLink(urldown)
-                filepath=f"{dir_path}\\{self.app.SettingApp['FolderDicts']['ArhivesDown']}\\{li['Name']}.{dictformats[keyarhiv]}"
-                filepathname=f"{dir_path}\\{self.app.SettingApp['FolderDicts']['ArhivesDown']}\\{li['Name']}"
-                dirpath=f"{dir_path}\\{self.app.SettingApp['FolderDicts']['ArhivesDown']}"
-                dirpath_extract=f"{dir_path}\\{self.app.SettingApp['FolderDicts']['Folder']}"
+                filepath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}.{dictformats[keyarhiv]}"
+                filepathname=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}"
+                dirpath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}"
+                dirpath_extract=f"{dir_path}/{self.app.SettingApp['FolderDicts']['Folder']}"
                 self.app.CreateDir(dirpath)
                 res=self.app.DownloadFile(urldirect, filepath)
                 if res==False:
@@ -364,10 +364,10 @@ class AppProcessLinex(object):
             if li["Name"]==name:
                 urldown=li["Urls"][keyarhiv]
                 urldirect=self.app.GetGoogleLink(urldown)
-                filepath=f"{dir_path}\\{self.app.SettingApp['FolderDicts']['ArhivesDown']}\\{li['Name']}.{dictformats[keyarhiv]}"
-                filepathname=f"{dir_path}\\{self.app.SettingApp['FolderDicts']['ArhivesDown']}\\{li['Name']}"
-                dirpath=f"{dir_path}\\{self.app.SettingApp['FolderDicts']['ArhivesDown']}"
-                dirpath_extract=f"{dir_path}\\{self.app.SettingApp['FolderDicts']['Folder']}"
+                filepath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}.{dictformats[keyarhiv]}"
+                filepathname=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}"
+                dirpath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}"
+                dirpath_extract=f"{dir_path}/{self.app.SettingApp['FolderDicts']['Folder']}"
                 self.app.CreateDir(dirpath)
                 res=self.app.DownloadFile(urldirect, filepath)
                 if res==False:
