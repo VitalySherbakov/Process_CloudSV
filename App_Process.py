@@ -401,6 +401,7 @@ class AppProcessLinex(object):
         return resultextract
     def __ExtractArhive(self, arhive_name: str, dir: str, select: SelectArhive):
         """Распаковка"""
+        self.__CreateFolder(dir) #Создание Папки куда распаковывать
         res=self.arh.Extract(arhive_name,dir,select)
         return res
     def __DownLoadGoogleLink(self, url: str, file: str):
