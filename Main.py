@@ -1,7 +1,7 @@
 import os, sys, time, re, json, datetime, random
 from SettingApp import Setting
 from App_Process import AppProcessLinex
-from ArhivatorLib import ArhiveLinex, SelectArhive
+from ArhivatorLinexLib import ArhiveLinex, SelectArhive
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
