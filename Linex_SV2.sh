@@ -147,6 +147,8 @@ function function_pack10(){
 	sudo apt-get install ssh -y
 	sudo apt-get install wget -y
 	sudo apt-get install git -y
+	sudo apt-get install p7zip-full -y
+	sudo apt-get install unrar-free -y
 	update_mashine
 	echo "Загрузка Пакетов 2..."
 	function_install_python

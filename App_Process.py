@@ -36,15 +36,31 @@ class AppProcessLinex(object):
     def DownLoad_Program(self, select: SelectProgram, file: str):
         """Загрузка Програмы CPU/GPU"""
         Flag=False
-        url=""
+        url,dirpath="",""
         if select==SelectProgram.GPU:
             url=self.app.SettingApp["Urls_GPU_CPU_Full"][0]["GPU"]
+            dirpath=self.app.SettingApp["Urls_GPU_CPU_Full"][0]["Dir"]
         if select==SelectProgram.CPU:
             url=self.app.SettingApp["Urls_GPU_CPU_Full"][1]["CPU"]
-        res=self.__DownLoadGoogleLink(url, file)
-        Flag=res[0]
-        if res[0]==False:
-            Flag=self.__DownLoadDirect(url, file)
+            dirpath=self.app.SettingApp["Urls_GPU_CPU_Full"][0]["Dir"]
+        if os.path.exists(f"{dir_path}/{dirpath}")==False: #Если нету то скачиваем
+            res=self.__DownLoadGoogleLink(url, f"{dir_path}/{file}")
+            Flag=res[0]
+            if res[0]==False:
+                Flag=self.__DownLoadDirect(url, f"{dir_path}/{file}")
+                res2=self.app.GetFileInfo(f"{dir_path}/{file}")
+                if res2[0]:
+                    self.__ExtractArhiveKey("7z",
+                                            f"{dir_path}/{res2[1]}",
+                                            f"{dir_path}/{dirpath}")
+            else:
+                res2=self.app.GetFileInfo(f"{dir_path}/{file}")
+                if res2[0]:
+                    self.__ExtractArhiveKey("7z",
+                                            f"{dir_path}/{res2[1]}",
+                                            f"{dir_path}/{dirpath}")
+                else:
+                    print(f"Программа {file} не Загружена!")
         return Flag
     def DownLoad_HC22000(self, url: str, file: str):
         """Загрузка hc22000"""

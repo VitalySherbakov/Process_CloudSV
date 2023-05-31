@@ -1,6 +1,6 @@
 import os, sys, time, re, json, datetime, random
 from SettingApp import Setting
-from App_Process import AppProcessLinex
+from App_Process import AppProcessLinex, SelectProgram
 from ArhivatorLinexLib import ArhiveLinex, SelectArhive
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -16,6 +16,8 @@ if platform_select=="linex":
         current_date = datetime.datetime.now()
         current_date_str = current_date.strftime("%d.%m.%Y %H:%M:%S")
         print(f"-------------------------{current_date_str}--------------------------")
+        app_linex.DownLoad_Program(SelectProgram.CPU) #Проверка CPU
+        app_linex.DownLoad_Program(SelectProgram.GPU) #Проверка GPU
         select=input("Выберете CPU=1/GPU=2: ")
         if select=="1":
             print("Выбрано CPU Медленый Процесс")

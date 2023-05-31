@@ -7,7 +7,7 @@ from enum import Enum
 # pip install rarfile
 #---------------------
 # apt-get install p7zip-full
-# sudo apt-get install rar
+# sudo apt-get install unrar-free
 # sudo apt-get install zip
 #---------------------
 
