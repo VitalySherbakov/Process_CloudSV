@@ -50,7 +50,7 @@ class AppProcessLinex(object):
         """Загрузка hc22000"""
         Flag=False
         dirpath=self.app.SettingApp["FolderHC22000_Cap"]
-        self.__CreateFolder(dirpath)
+        self.__CreateFolder(f"{dir_path}/{dirpath}")
         res=self.__DownLoadGoogleLink(url, f"{dir_path}/{dirpath}/{file}")
         Flag=res[0]
         if res[0]==False:
