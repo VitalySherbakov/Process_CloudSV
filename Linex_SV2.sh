@@ -120,7 +120,7 @@ function function_run_cpu(){
 function function_install_python(){
 	# Установка Py 3.8.0
 	update_mashine
-	sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev curl libbz2-dev
+	sudo apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libsqlite3-dev libreadline-dev libffi-dev curl libbz2-dev -y
 	wget https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tgz
 	tar -xf Python-3.8.0.tgz
 	cd Python-3.8.0
@@ -136,6 +136,13 @@ function function_install_python(){
 	python_pip_install py7zr
 	python_pip_install rarfile
 	python3.8 --version
+	curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+	sudo python3.8 get-pip.py
+	pip install requests
+	pip install alive-progress
+	pip install tqdm
+	pip install py7zr
+	pip install rarfile
 	cd_set_home
 }
 
