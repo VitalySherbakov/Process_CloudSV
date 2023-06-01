@@ -16,8 +16,8 @@ if platform_select=="linex":
         current_date = datetime.datetime.now()
         current_date_str = current_date.strftime("%d.%m.%Y %H:%M:%S")
         print(f"-------------------------{current_date_str}--------------------------")
-        app_linex.DownLoad_Program(SelectProgram.CPU) #Проверка CPU
-        app_linex.DownLoad_Program(SelectProgram.GPU) #Проверка GPU
+        app_linex.DownLoad_Program(SelectProgram.CPU,"CPU.7z") #Проверка CPU
+        app_linex.DownLoad_Program(SelectProgram.GPU,"GPU.7z") #Проверка GPU
         select=input("Выберете CPU=1/GPU=2: ")
         if select=="1":
             print("Выбрано CPU Медленый Процесс")
