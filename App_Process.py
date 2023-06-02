@@ -33,16 +33,18 @@ class AppProcessLinex(object):
         for li in self.app.Dicts:
             listing.append(li["Name"])
         return listing
-    def DownLoad_Program(self, select: SelectProgram, file: str):
+    def DownLoad_Program(self, select: SelectProgram):
         """Загрузка Програмы CPU/GPU"""
         Flag=False
-        url,dirpath="",""
+        url,dirpath,file="","",""
         if select==SelectProgram.GPU:
             url=self.app.SettingApp["Urls_GPU_CPU_Full"][0]["GPU"]
             dirpath=self.app.SettingApp["Urls_GPU_CPU_Full"][0]["Dir"]
+            file=self.app.SettingApp["Urls_GPU_CPU_Full"][0]["File"]
         if select==SelectProgram.CPU:
             url=self.app.SettingApp["Urls_GPU_CPU_Full"][1]["CPU"]
-            dirpath=self.app.SettingApp["Urls_GPU_CPU_Full"][0]["Dir"]
+            dirpath=self.app.SettingApp["Urls_GPU_CPU_Full"][1]["Dir"]
+            file=self.app.SettingApp["Urls_GPU_CPU_Full"][1]["File"]
         downprogram=f"{dir_path}/{file}" #загрузка програмы
         dirextract=f"{dir_path}/{dirpath}" #распаковка
         print(f"Файл: {downprogram}")

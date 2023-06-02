@@ -5,12 +5,14 @@
     "FolderHC22000_Cap": "WIFI_Files",
     "Urls_GPU_CPU_Full": [
         {
-            "GPU": "https://drive.google.com/file/d/19JWeGatEBh1-L322GlHbof-X4-rYsbb3/view?usp=sharing",
-            "Dir": "hashcat"
+            "GPU": "https://drive.google.com/file/d/1kvvscwHVxB9ufD1s544ggrwA6qMshp3m/view?usp=sharing",
+            "Dir": "hashcat",
+            "File": "hashcat.7z"
         }, 
         {
-            "CPU": "https://drive.google.com/file/d/1VGewhERFfRf8_NVESkYzInhRp1PrLqj_/view?usp=sharing",
-            "Dir": "aircrack-ng"
+            "CPU": "https://drive.google.com/file/d/1vmFLLO8t05NWLWBCuOStSKjPwXFz4Jpq/view?usp=sharing",
+            "Dir": "aircrack-ng",
+            "File": "aircrack-ng.7z"
         }],
     "Prioritet": {"7z": 1, "RAR": 3, "ZIP": 2},
     "PrioritetDown": {"GoogleLink": 1, "Directlink": 0}, 
