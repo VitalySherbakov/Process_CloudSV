@@ -50,25 +50,21 @@ class AppProcessLinex(object):
         if os.path.exists(dirextract)==False: #Если нету то скачиваем
             res=self.__DownLoadGoogleLink(url, downprogram)
             Flag=res[0]
-            if res[0]==False:
+            if Flag:
+                res2=self.app.GetFileInfo(downprogram)
+                if res2[0]:
+                    filename=f"{dir_path}/{res2[1]}"
+                    print(f"Имя2: {filename}")
+                    self.__ExtractArhiveKey("7z",filename,dirextract)
+                else:
+                    print(f"Программа2 {file} не Загружена!")
+            else:
                 Flag=self.__DownLoadDirect(url, downprogram)
                 res2=self.app.GetFileInfo(downprogram)
                 if res2[0]:
                     filename=f"{dir_path}/{res2[1]}"
                     print(f"Имя: {filename}")
-                    self.__ExtractArhiveKey("7z",
-                                            filename,
-                                            dirextract)
-            else:
-                res2=self.app.GetFileInfo(downprogram)
-                if res2[0]:
-                    filename=f"{dir_path}/{res2[1]}"
-                    print(f"Имя: {filename}")
-                    self.__ExtractArhiveKey("7z",
-                                            filename,
-                                            dirextract)
-                else:
-                    print(f"Программа {file} не Загружена!")
+                    self.__ExtractArhiveKey("7z",filename,dirextract)
         return Flag
     def DownLoad_HC22000(self, url: str, file: str):
         """Загрузка hc22000"""
