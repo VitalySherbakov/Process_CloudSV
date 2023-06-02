@@ -46,7 +46,7 @@ class ArhiveLinex(object):
         Flag,arhivepath=False,""
         if select==SelectArhive.SEVENZ:
             command=f"7z x '{arhive_name}.7z' -o'{dir}'"
-            print(command)
+            #print(command)
             os.system(command)
             Flag=True
         if select==SelectArhive.ZIP:
