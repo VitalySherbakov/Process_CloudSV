@@ -16,9 +16,13 @@ if platform_select=="linex":
         current_date = datetime.datetime.now()
         current_date_str = current_date.strftime("%d.%m.%Y %H:%M:%S")
         print(f"-------------------------{current_date_str}--------------------------")
-        app_linex.DownLoad_Program(SelectProgram.CPU) #Проверка CPU
-        app_linex.DownLoad_Program(SelectProgram.GPU) #Проверка GPU
-        select=input("Выберете CPU=1/GPU=2: ")
+        print("Скачать GPU-CPU=3")
+        print("Выбрать CPU=1")
+        print("Выбрать GPU=2")
+        select=input("Выберете 1/2/3: ")
+        if select=="3":
+            app_linex.DownLoad_Program(SelectProgram.CPU) #Проверка CPU
+            app_linex.DownLoad_Program(SelectProgram.GPU) #Проверка GPU
         if select=="1":
             print("Выбрано CPU Медленый Процесс")
             print("dwn - если надо скачать hc22000 или cap")

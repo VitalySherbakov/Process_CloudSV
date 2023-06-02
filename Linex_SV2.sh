@@ -168,6 +168,7 @@ function main(){
 	# Основное Меню
 	echo "Конвентация *.cap в *.hc22000 по адресу https://hashcat.net/cap2hashcat/"
     echo "Команда: pack (Установка необходимых пакетов)"
+	echo "Команда: prog (Установка GPU, CPU)"
 	echo "Команда: list (Список пакетов)"
 	echo "Команда: gpu_test (Проверка GPU)"
 	echo "Команда: cpu_test (Проверка CPU)"
