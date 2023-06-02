@@ -43,22 +43,30 @@ class AppProcessLinex(object):
         if select==SelectProgram.CPU:
             url=self.app.SettingApp["Urls_GPU_CPU_Full"][1]["CPU"]
             dirpath=self.app.SettingApp["Urls_GPU_CPU_Full"][0]["Dir"]
-        if os.path.exists(f"{dir_path}/{dirpath}")==False: #Если нету то скачиваем
-            res=self.__DownLoadGoogleLink(url, f"{dir_path}/{file}")
+        downprogram=f"{dir_path}/{file}" #загрузка програмы
+        dirextract=f"{dir_path}/{dirpath}" #распаковка
+        print(f"Файл: {downprogram}")
+        print(f"Распаковка: {dirextract}")
+        if os.path.exists(dirextract)==False: #Если нету то скачиваем
+            res=self.__DownLoadGoogleLink(url, downprogram)
             Flag=res[0]
             if res[0]==False:
-                Flag=self.__DownLoadDirect(url, f"{dir_path}/{file}")
-                res2=self.app.GetFileInfo(f"{dir_path}/{file}")
+                Flag=self.__DownLoadDirect(url, downprogram)
+                res2=self.app.GetFileInfo(downprogram)
                 if res2[0]:
+                    filename=f"{dir_path}/{res2[1]}"
+                    print(f"Имя: {filename}")
                     self.__ExtractArhiveKey("7z",
-                                            f"{dir_path}/{res2[1]}",
-                                            f"{dir_path}/{dirpath}")
+                                            filename,
+                                            dirextract)
             else:
-                res2=self.app.GetFileInfo(f"{dir_path}/{file}")
+                res2=self.app.GetFileInfo(downprogram)
                 if res2[0]:
+                    filename=f"{dir_path}/{res2[1]}"
+                    print(f"Имя: {filename}")
                     self.__ExtractArhiveKey("7z",
-                                            f"{dir_path}/{res2[1]}",
-                                            f"{dir_path}/{dirpath}")
+                                            filename,
+                                            dirextract)
                 else:
                     print(f"Программа {file} не Загружена!")
         return Flag
