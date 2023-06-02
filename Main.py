@@ -47,18 +47,21 @@ if platform_select=="linex":
                         if selectdicts=="1":
                             name_dict=app.InputWhile("Укажы Имя Словаря: ")
                             res2=app_linex.DownLoad_Dicts_One(name_dict)
-                            commandsintez=f""
+                            commandsintez=app_linex.GetCommand(SelectProgram.CPU)
                             print(commandsintez)
+                            os.system(commandsintez)
                         if selectdicts=="2":
                             number_dict=app.InputWhile("Укажы Номер Пачки Словарей 1-3: ")
                             number_dict=int(number_dict)
                             res2=app_linex.DownLoad_Dicts_Pack(number_dict)
-                            commandsintez=f""
+                            commandsintez=app_linex.GetCommand(SelectProgram.CPU)
                             print(commandsintez)
+                            os.system(commandsintez)
                         if selectdicts=="3":
                             app_linex.DownLoad_Dicts_All()
-                            commandsintez=f""
+                            commandsintez=app_linex.GetCommand(SelectProgram.CPU)
                             print(commandsintez)
+                            os.system(commandsintez)
                     else:
                         print(f"Файл {filepath} Не Скачен!")
                 else:

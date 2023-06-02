@@ -86,7 +86,7 @@ function function_run_gpu(){
 function function_install_cpu_old(){
 	# Установка CPU
 	update_mashine
-	sudo apt-get install build-essential libssl-dev libnl-3-dev libnl-genl-3-dev pkg-config libsqlite3-dev libpcre3-dev ethtool libtool
+	sudo apt-get install build-essential libssl-dev libnl-3-dev libnl-genl-3-dev pkg-config libsqlite3-dev libpcre3-dev ethtool libtool -y
 	cd "$dirsource"
 	wget https://download.aircrack-ng.org/aircrack-ng-1.7.tar.gz
 	tar -xzvf aircrack-ng-1.7.tar.gz
@@ -130,11 +130,6 @@ function function_install_python(){
 	update_mashine
 	pip_install_python
 	python_pip_update
-	python_pip_install requests
-	python_pip_install alive-progress
-	python_pip_install tqdm
-	python_pip_install py7zr
-	python_pip_install rarfile
 	python3.8 --version
 	curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 	sudo python3.8 get-pip.py

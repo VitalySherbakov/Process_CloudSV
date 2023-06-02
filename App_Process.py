@@ -27,6 +27,20 @@ class AppProcessLinex(object):
         self.app = Setting()
         #self.arh=Arhive()
         self.arh=ArhiveLinex()
+    def GetCommand(self, program: SelectProgram):
+        """Команды Запуска Прогамы"""
+        command=""
+        if program==SelectProgram.CPU:
+            dir=self.app.SettingApp["Urls_GPU_CPU_Full"][1]["Dir"]
+            file=self.app.SettingApp["Urls_GPU_CPU_Full"][1]["Run"]
+            runfile=f"{dir_path}/{dir}/{file}"
+            command=f"{runfile} --help"
+        if program==SelectProgram.GPU:
+            dir=self.app.SettingApp["Urls_GPU_CPU_Full"][0]["Dir"]
+            file=self.app.SettingApp["Urls_GPU_CPU_Full"][0]["Run"]
+            runfile=f"{dir_path}/{dir}/{file}"
+            command=f"{runfile} --help"
+        return command
     def GetNamesDicts(self):
         """Список Имен Словарей"""
         listing=[]
