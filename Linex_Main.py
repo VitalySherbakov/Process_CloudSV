@@ -30,6 +30,8 @@ while True:
             urldwn=app.InputWhile("Url: ")
             filepath=app.InputWhile("Имя файла hc22000 или cap: ")
             mask=app.InputWhile("Маска WIFI: ")
+            print(app.MaskValide(mask))
+            print(app.LinkValid(urldwn))
             if app.LinkValid(urldwn) and app.MaskValide(mask):
                 res=app_linex.DownLoad_HC22000(urldwn, filepath)
                 if res:
