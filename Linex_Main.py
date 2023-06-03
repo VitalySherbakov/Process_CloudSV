@@ -30,6 +30,10 @@ while True:
             urldwn=app.InputWhile("Url: ")
             filepath=app.InputWhile("Имя файла hc22000 или cap: ")
             mask=app.InputWhile("Маска WIFI: ")
+            if app.LinkValid(urldwn)==False:
+                print(f"Ссылка {urldwn} Указана Не Верно!")
+            if app.MaskValide(mask)==False:
+                print(f"Или Маска {mask} Указана Не Верно!")
             if app.LinkValid(urldwn) and app.MaskValide(mask):
                 res=app_linex.DownLoad_HC22000(urldwn, filepath)
                 if res:
@@ -62,10 +66,6 @@ while True:
                         os.system(commandsintez)
                 else:
                     print(f"Файл {filepath} Не Скачен!")
-            else:
-                print(f"Ссылка {urldwn} Указана Не Верно!")
-                print(f"Файла {filepath} по пути нету, укажыте другой!")
-                print(f"Или Маска {mask} Указана Не Верно!")
         if hc22000cap=="f":
             filepath=app.InputWhile("Путь к Файла hc22000, cap: ")
             mask=app.InputWhile("Маска WIFI: ")
