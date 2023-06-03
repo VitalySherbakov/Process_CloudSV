@@ -16,6 +16,12 @@ class SelectProgram(Enum):
     """CPU Программа -> aircrack-ng"""
     GPU=2
     """GPU Программа -> hashcat"""
+class SelectPlatform(Enum):
+    """Выбор Платформы"""
+    Debian=1
+    """Debian"""
+    Ubuntu=2
+    """Ubuntu"""
 
 class AppProcessLinex(object):
     """Процесс Общий"""
@@ -34,6 +40,7 @@ class AppProcessLinex(object):
             dir=self.app.SettingApp["Urls_GPU_CPU_Full"][1]["Dir"]
             file=self.app.SettingApp["Urls_GPU_CPU_Full"][1]["Run"]
             runfile=f"{dir_path}/{dir}/{file}"
+            os.system("chmod +x /home/debianserver2/Process_CloudSV/aircrack-ng/aircrack-ng")
             command=f"{runfile} --help"
         if program==SelectProgram.GPU:
             dir=self.app.SettingApp["Urls_GPU_CPU_Full"][0]["Dir"]

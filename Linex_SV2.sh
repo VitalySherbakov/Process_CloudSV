@@ -175,7 +175,7 @@ function main(){
 		function_run_cpu "--help"
 	fi
 	if [ "$command" == "run" ]; then
-		python_run "Linex_Main"
+		python_run "Linex_Main" $1
 	fi
 	if [ "$command" == "exit" ]; then
 		break
@@ -190,11 +190,11 @@ do
 		echo "Линекс: $distributivelinex"
 		if [ "$numberversionlinex" == 11 ]; then
 			echo "Версия: $numberversionlinex"
-            main
+            main "$distributivelinex"
         fi
         if [ "$numberversionlinex" == 10 ]; then
             echo "Версия: $numberversionlinex"
-            main
+            main "$distributivelinex"
         fi
         if [ "$numberversionlinex" == 9 ]; then
 			echo "Версия: $numberversionlinex"
