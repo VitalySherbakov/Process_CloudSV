@@ -102,11 +102,11 @@ class Setting(object):
         except Exception as ex:
             print(f"ERROR DOWNLOAD: {ex}!")
         return Flag
-    def LinkValid(self, url: str):
+    def LinkValid(self, url: str, codes=[200]):
         """Проверка Ссылка"""
         Flag=False
         response = requests.head(url)
-        if response.status_code == 200 or response.status_code==302:
+        if response.status_code in codes:
             Flag=True
         return Flag
     def Input(self, text: str):
