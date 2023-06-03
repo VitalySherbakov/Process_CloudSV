@@ -106,7 +106,7 @@ class Setting(object):
         """Проверка Ссылка"""
         Flag=False
         response = requests.head(url)
-        if response.status_code == 200:
+        if response.status_code == 200 or response.status_code==302:
             Flag=True
         return Flag
     def Input(self, text: str):
