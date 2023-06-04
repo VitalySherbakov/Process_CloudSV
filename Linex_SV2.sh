@@ -9,7 +9,7 @@ function python_run(){
 	nameuser=$USER
 	#python="/home/$nameuser/Python-3.8.0/python"
 	#$python "/home/$nameuser/$dirsource/$1.py" "linex"
-	python3.8 "/home/$nameuser/$dirsource/$1.py" "$1"
+	python3.8 "/home/$nameuser/$dirsource/$1.py" "$2"
 }
 
 function python_pip_list_libs(){
