@@ -175,7 +175,8 @@ function main(){
 		function_run_cpu "--help"
 	fi
 	if [ "$command" == "run" ]; then
-		python_run "Linex_Main" $1
+		echo "$1"
+		python_run "Linex_Main" "$1"
 	fi
 	if [ "$command" == "exit" ]; then
 		break
