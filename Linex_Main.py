@@ -5,13 +5,12 @@ from ArhivatorLinexLib import ArhiveLinex, SelectArhive
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
-platform_name=sys.argv[1]
+platform_name=sys.argv[0]
 print(f"Платформа: {platform_name}")
 
 app = Setting()
 app_linex=AppProcessLinex()
 app_arhive=ArhiveLinex()
-
 
 while True:
     current_date = datetime.datetime.now()
