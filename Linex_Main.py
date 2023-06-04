@@ -51,19 +51,22 @@ while True:
                     if selectdicts=="1":
                         name_dict=app.InputWhile("Укажы Имя Словаря: ")
                         res2=app_linex.DownLoad_Dicts_One(name_dict)
-                        commandsintez=app_linex.GetCommand(SelectProgram.CPU)
+                        platform=app_linex.GetPlatform(platform_name)
+                        commandsintez=app_linex.GetCommand(SelectProgram.CPU,platform)
                         print(commandsintez)
                         os.system(commandsintez)
                     if selectdicts=="2":
                         number_dict=app.InputWhile("Укажы Номер Пачки Словарей 1-3: ")
                         number_dict=int(number_dict)
                         res2=app_linex.DownLoad_Dicts_Pack(number_dict)
-                        commandsintez=app_linex.GetCommand(SelectProgram.CPU)
+                        platform=app_linex.GetPlatform(platform_name)
+                        commandsintez=app_linex.GetCommand(SelectProgram.CPU, platform)
                         print(commandsintez)
                         os.system(commandsintez)
                     if selectdicts=="3":
                         app_linex.DownLoad_Dicts_All()
-                        commandsintez=app_linex.GetCommand(SelectProgram.CPU)
+                        platform=app_linex.GetPlatform(platform_name)
+                        commandsintez=app_linex.GetCommand(SelectProgram.CPU,platform)
                         print(commandsintez)
                         os.system(commandsintez)
                 else:
