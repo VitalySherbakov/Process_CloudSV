@@ -18,6 +18,8 @@ class SelectProgram(Enum):
     """GPU Программа -> hashcat"""
 class SelectPlatform(Enum):
     """Выбор Платформы"""
+    NONE=0
+    """Пусто"""
     Debian=1
     """Debian"""
     Ubuntu=2
@@ -33,21 +35,40 @@ class AppProcessLinex(object):
         self.app = Setting()
         #self.arh=Arhive()
         self.arh=ArhiveLinex()
-    def GetCommand(self, program: SelectProgram):
+    def GetCommand(self, program: SelectProgram, selectplatform:  SelectPlatform):
         """Команды Запуска Прогамы"""
         command=""
         if program==SelectProgram.CPU:
             dir=self.app.SettingApp["Urls_GPU_CPU_Full"][1]["Dir"]
             file=self.app.SettingApp["Urls_GPU_CPU_Full"][1]["Run"]
             runfile=f"{dir_path}/{dir}/{file}"
-            os.system("chmod +x /home/debianserver2/Process_CloudSV/aircrack-ng/aircrack-ng")
+            #----------------Доступ-----------------
+            if selectplatform==SelectPlatform.Debian:
+                os.system(f"chmod +x {runfile}")
+            if selectplatform==SelectPlatform.Ubuntu:
+                os.system(f"chmod +x {runfile}")
+            #---------------------------------------
             command=f"{runfile} --help"
         if program==SelectProgram.GPU:
             dir=self.app.SettingApp["Urls_GPU_CPU_Full"][0]["Dir"]
             file=self.app.SettingApp["Urls_GPU_CPU_Full"][0]["Run"]
             runfile=f"{dir_path}/{dir}/{file}"
+            #----------------Доступ-----------------
+            if selectplatform==SelectPlatform.Debian:
+                os.system(f"chmod +x {runfile}")
+            if selectplatform==SelectPlatform.Ubuntu:
+                os.system(f"chmod +x {runfile}")
+            #---------------------------------------
             command=f"{runfile} --help"
         return command
+    def GetPlatform(self, platform_name: str):
+        """Получить Платформу"""
+        select=SelectPlatform.NONE
+        if platform_name=="Debian":
+            select=SelectPlatform.Debian
+        if platform_name=="Ubuntu":
+            select=SelectPlatform.Ubuntu
+        return select
     def GetNamesDicts(self):
         """Список Имен Словарей"""
         listing=[]
