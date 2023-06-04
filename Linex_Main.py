@@ -5,8 +5,7 @@ from ArhivatorLinexLib import ArhiveLinex, SelectArhive
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
-platform_name=sys.argv[1]
-print(f"Платформа: {platform_name}")
+platform_name=sys.argv[1] #Получить Платформу для доступа
 
 app = Setting()
 app_linex=AppProcessLinex()
@@ -16,6 +15,7 @@ while True:
     current_date = datetime.datetime.now()
     current_date_str = current_date.strftime("%d.%m.%Y %H:%M:%S")
     print(f"-------------------------{current_date_str}--------------------------")
+    print(f"Платформа: {platform_name}")
     print("Скачать GPU-CPU=3")
     print("Выбрать CPU=1")
     print("Выбрать GPU=2")
