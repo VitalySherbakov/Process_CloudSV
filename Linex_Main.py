@@ -51,9 +51,11 @@ while True:
                     if selectdicts=="1":
                         name_dict=app.InputWhile("Укажы Имя Словаря: ")
                         res2=app_linex.DownLoad_Dicts_One(name_dict)
+                        print(res2)
                         commandsintez=app_linex.GetCommand(SelectProgram.CPU)
                         os.system(f"cd {commandsintez[2]}") #переход к програме
                         os.system(f"{commandsintez[0]} --help")
+                        #os.system(f'{commandsintez[0]} -w ')
                     if selectdicts=="2":
                         number_dict=app.InputWhile("Укажы Номер Пачки Словарей 1-3: ")
                         number_dict=int(number_dict)
@@ -83,5 +85,5 @@ while True:
     if select=="2":
         print("Выбрано GPU Ускоренный Процесс")
         hc22000cap=app.InputWhile("Файлы hc22000, cap (dwn если надо скачать): ")
-    elif select!="1" and select!="2":
+    elif select!="1" and select!="2" and select!="3":
         print("Не Выбрано 1 или 2")
