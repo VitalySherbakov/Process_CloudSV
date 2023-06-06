@@ -146,8 +146,8 @@ function function_pack10(){
 	update_mashine
 	echo "Загрузка Пакетов 2..."
 	function_install_python
-	function_install_gpu
-	function_install_cpu
+	#function_install_gpu
+	#function_install_cpu
 	echo "Установка Пакетов Завершена!"
 }
 
