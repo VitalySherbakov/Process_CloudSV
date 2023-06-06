@@ -1,14 +1,14 @@
 [
     {
         "Name": "00000000_99999999",
-        "Files": ["00000000_99999999.txt"],
+        "Files": ["00000000-99999999.txt"],
         "Urls": {
             "7z": "https://drive.google.com/file/d/1M4mwThNYEiRnnOCSQpqrLLF3TpkCGv8H/view?usp=sharing",
             "ZIP": "https://drive.google.com/file/d/1-17SM8W6lT8-UUwCJh00p3wVPOE3l0G0/view?usp=sharing", 
             "RAR": ""}
     },
     {
-        "Name": "000000000-999999999_max",
+        "Name": "000000000_999999999_max",
         "Files": ["000000000-999999999_max.txt"],
         "Urls": {
             "7z": "https://drive.google.com/file/d/16-lj_JG0NTnr9oWWXeDUpVam0idcJgqZ/view?usp=sharing",

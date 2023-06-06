@@ -52,6 +52,7 @@ while True:
                         name_dict=app.InputWhile("Укажы Имя Словаря: ")
                         res2=app_linex.DownLoad_Dicts_One(name_dict)
                         commandsintez=app_linex.GetCommand(SelectProgram.CPU)
+                        print(f"cd {commandsintez[2]}")
                         os.system(f"cd {commandsintez[2]}") #переход к програме
                         #-----------------Тест------------------
                         #os.system(f"{commandsintez[0]} --help")
