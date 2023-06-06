@@ -28,39 +28,43 @@ class SelectPlatform(Enum):
 class AppProcessLinex(object):
     """Процесс Общий"""
     app=None
+    """Приложение"""
     #arh: Arhive
     arh: ArhiveLinex
-    def __init__(self):
+    """Архиватор"""
+    platform: SelectProgram
+    """Платформа"""
+    def __init__(self, platform_name: str):
         super(AppProcessLinex, self).__init__()
         self.app = Setting()
         #self.arh=Arhive()
         self.arh=ArhiveLinex()
-    def GetCommand(self, program: SelectProgram, selectplatform:  SelectPlatform):
+        self.platform=self.GetPlatform(platform_name)
+    def GetCommand(self, program: SelectProgram):
         """Команды Запуска Прогамы"""
-        command=""
         if program==SelectProgram.CPU:
             dir=self.app.SettingApp["Urls_GPU_CPU_Full"][1]["Dir"]
             file=self.app.SettingApp["Urls_GPU_CPU_Full"][1]["Run"]
             runfile=f"{dir_path}/{dir}/{file}"
-            #----------------Доступ-----------------
-            if selectplatform==SelectPlatform.Debian:
-                os.system(f"chmod +x {runfile}")
-            if selectplatform==SelectPlatform.Ubuntu:
-                os.system(f"chmod +x {runfile}")
-            #---------------------------------------
-            command=f"{runfile} --help"
+            rundir=f"{dir_path}/{dir}"
         if program==SelectProgram.GPU:
             dir=self.app.SettingApp["Urls_GPU_CPU_Full"][0]["Dir"]
             file=self.app.SettingApp["Urls_GPU_CPU_Full"][0]["Run"]
             runfile=f"{dir_path}/{dir}/{file}"
-            #----------------Доступ-----------------
-            if selectplatform==SelectPlatform.Debian:
-                os.system(f"chmod +x {runfile}")
-            if selectplatform==SelectPlatform.Ubuntu:
-                os.system(f"chmod +x {runfile}")
-            #---------------------------------------
-            command=f"{runfile} --help"
-        return command
+            rundir=f"{dir_path}/{dir}"
+        return [file, runfile, rundir]
+    def Access_Folder_Linex(self, folder: str, selectplatform:  SelectPlatform):
+        """Дать Полный Доступ к Папке и ей Подкоталогов"""
+        Flag=False
+        #----------------Доступ-----------------
+        if selectplatform==SelectPlatform.Debian:
+            os.system(f"chmod -R +x {folder}/*")
+            Flag=True
+        if selectplatform==SelectPlatform.Ubuntu:
+            os.system(f"chmod -R +x {folder}/*")
+            Flag=True
+        #---------------------------------------
+        return Flag
     def GetPlatform(self, platform_name: str):
         """Получить Платформу"""
         select=SelectPlatform.NONE
@@ -99,6 +103,7 @@ class AppProcessLinex(object):
                 filename=f"{dir_path}/{res2[1]}"
                 #print(f"Имя2: {filename}")
                 self.__ExtractArhiveKey("7z",filename,dirextract)
+                self.Access_Folder_Linex(dirextract, self.platform)
             else:
                 print(f"Программа2 {file} не Загружена!")
         else:
@@ -108,6 +113,7 @@ class AppProcessLinex(object):
                 filename=f"{dir_path}/{res2[1]}"
                 #print(f"Имя: {filename}")
                 self.__ExtractArhiveKey("7z",filename,dirextract)
+                self.Access_Folder_Linex(dirextract, self.platform)
         return Flag
     def DownLoad_HC22000(self, url: str, file: str):
         """Загрузка hc22000"""

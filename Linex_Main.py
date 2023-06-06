@@ -8,7 +8,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 platform_name=sys.argv[1] #Получить Платформу для доступа
 
 app = Setting()
-app_linex=AppProcessLinex()
+app_linex=AppProcessLinex(platform_name)
 app_arhive=ArhiveLinex()
 
 while True:
@@ -51,24 +51,22 @@ while True:
                     if selectdicts=="1":
                         name_dict=app.InputWhile("Укажы Имя Словаря: ")
                         res2=app_linex.DownLoad_Dicts_One(name_dict)
-                        platform=app_linex.GetPlatform(platform_name)
-                        commandsintez=app_linex.GetCommand(SelectProgram.CPU,platform)
-                        print(commandsintez)
-                        os.system(commandsintez)
+                        commandsintez=app_linex.GetCommand(SelectProgram.CPU)
+                        os.system(f"cd {commandsintez[2]}") #переход к програме
+                        os.system(f"{commandsintez[0]} --help")
                     if selectdicts=="2":
                         number_dict=app.InputWhile("Укажы Номер Пачки Словарей 1-3: ")
                         number_dict=int(number_dict)
                         res2=app_linex.DownLoad_Dicts_Pack(number_dict)
-                        platform=app_linex.GetPlatform(platform_name)
-                        commandsintez=app_linex.GetCommand(SelectProgram.CPU, platform)
-                        print(commandsintez)
-                        os.system(commandsintez)
+                        commandsintez=app_linex.GetCommand(SelectProgram.CPU)
+                        os.system(f"cd {commandsintez[2]}") #переход к програме
+                        os.system(f"{commandsintez[0]} --help")
                     if selectdicts=="3":
                         app_linex.DownLoad_Dicts_All()
                         platform=app_linex.GetPlatform(platform_name)
                         commandsintez=app_linex.GetCommand(SelectProgram.CPU,platform)
-                        print(commandsintez)
-                        os.system(commandsintez)
+                        os.system(f"cd {commandsintez[2]}") #переход к програме
+                        os.system(f"{commandsintez[0]} --help")
                 else:
                     print(f"Файл {filepath} Не Скачен!")
         if hc22000cap=="f":
