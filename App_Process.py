@@ -79,6 +79,13 @@ class AppProcessLinex(object):
         for li in self.app.Dicts:
             listing.append(li["Name"])
         return listing
+    def GetFilesFindDict(self, name: str):
+        """Найти Список Файлов Словарей под Именем"""
+        listing=[]
+        for li in self.app.Dicts:
+            if li["Name"]==name:
+                listing=li["Files"]
+        return listing
     def DownLoad_Program(self, select: SelectProgram):
         """Загрузка Програмы CPU/GPU"""
         Flag=False
