@@ -51,10 +51,10 @@ while True:
                     if selectdicts=="1":
                         name_dict=app.InputWhile("Укажы Имя Словаря: ")
                         res2=app_linex.DownLoad_Dicts_One(name_dict)
-                        print(res2)
                         commandsintez=app_linex.GetCommand(SelectProgram.CPU)
-                        os.system(f"cd {commandsintez[2]}") #переход к програме
-                        os.system(f"{commandsintez[0]} --help")
+                        #os.system(f"cd {commandsintez[2]}") #переход к програме
+                        #os.system(f"{commandsintez[0]} --help")
+                        print(res2)
                         #os.system(f'{commandsintez[0]} -w ')
                     if selectdicts=="2":
                         number_dict=app.InputWhile("Укажы Номер Пачки Словарей 1-3: ")
