@@ -53,12 +53,12 @@ while True:
                         res2=app_linex.DownLoad_Dicts_One(name_dict)
                         commandsintez=app_linex.GetCommand(SelectProgram.CPU)
                         os.system(f"cd {commandsintez[2]}") #переход к програме
-                        #-----test-----#
+                        #-----------------Тест------------------
                         #os.system(f"{commandsintez[0]} --help")
-                        #-----------------Dat------------------
+                        #-----------------Данные------------------
                         folderdicts=app_linex.app.SettingApp["FolderDicts"]["Folder"]
                         filecap=app_linex.app.SettingApp["FolderHC22000_Cap"]
-                        #-----------------Dicts------------------
+                        #-----------------Словари------------------
                         commanddicts=""
                         listdicts=app_linex.GetFilesFindDict(name_dict)
                         for li in listdicts:
@@ -66,8 +66,9 @@ while True:
                         commanddicts=commanddicts[:-1]
                         #----------------------------------------
                         commandrun=f'{commandsintez[0]} -w {commanddicts} -b "{mask}" "{dir_path}/{filecap}/{filepath}"'
-                        print(commandrun)
-                        os.system(commandrun)
+                        commandrun2=f'{commandsintez[0]} -w {commanddicts} "{dir_path}/{filecap}/{filepath}"'
+                        print(commandrun2)
+                        os.system(commandrun2)
                     if selectdicts=="2":
                         number_dict=app.InputWhile("Укажы Номер Пачки Словарей 1-3: ")
                         number_dict=int(number_dict)
