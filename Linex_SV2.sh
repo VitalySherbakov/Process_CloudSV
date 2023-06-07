@@ -67,6 +67,18 @@ function function_install_gpu(){
 	hashcat --help
 	cd_set_home
 }
+function function_install_cpu2(){
+	# Установка CPU 2
+	update_mashine
+	!sudo apt-get install build-essential libssl-dev libnl-3-dev libnl-genl-3-dev pkg-config libsqlite3-dev libpcre3-dev ethtool libtool -y
+	update_mashine
+	!git clone https://github.com/aircrack-ng/aircrack-ng
+	cd aircrack-ng
+	bash "./autogen.sh"
+	"./configure"
+	!make
+	!sudo make install
+}
 
 function function_run_gpu(){
 	# Запуск GPU
@@ -147,8 +159,8 @@ function function_pack10(){
 	update_mashine
 	echo "Загрузка Пакетов 2..."
 	function_install_python
-	#function_install_gpu
-	#function_install_cpu
+	function_install_gpu
+	function_install_cpu2
 	echo "Установка Пакетов Завершена!"
 }
 
