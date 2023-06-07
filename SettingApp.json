@@ -11,9 +11,9 @@
             "Run": "hashcat"
         }, 
         {
-            "CPU": "https://drive.google.com/file/d/1vmFLLO8t05NWLWBCuOStSKjPwXFz4Jpq/view?usp=sharing",
+            "CPU": "https://drive.google.com/file/d/13qLxk-JwIg8cHjhxQFMeCBYljWcAID9c/view?usp=sharing",
             "Dir": "aircrack-ng",
-            "File": "aircrack-ng.7z",
+            "File": "aircrack-ng2.7z",
             "Run": "aircrack-ng"
         }],
     "Prioritet": {"7z": 1, "RAR": 3, "ZIP": 2},
