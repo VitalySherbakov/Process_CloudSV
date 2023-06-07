@@ -4,6 +4,18 @@ distributivelinex=$(lsb_release -is)
 numberversionlinex=$(lsb_release -rs)
 dirsource="Process_CloudSV"
 
+function access_debian(){
+	# Debian полный доступ к папке
+	nameuser=$USER
+	chmod -R 777 "/home/$nameuser/$dirsource/"
+}
+
+function access_ubuntu(){
+	# Ubuntu полный доступ к папке
+	nameuser=$USER
+	chmod -R 777 "/home/$nameuser/$dirsource/"
+}
+
 function python_run(){
 	# Запуск Скрипта
 	nameuser=$USER
@@ -200,6 +212,7 @@ do
 	current_time=$(date +%d.%m.%Y\ %T) # тикущая дата
 	echo "-------------------------$current_time--------------------------"
 	if [ "$distributivelinex" == "Debian" ]; then
+		access_debian
 		echo "Линекс: $distributivelinex"
 		if [ "$numberversionlinex" == 11 ]; then
 			echo "Версия: $numberversionlinex"
@@ -215,6 +228,7 @@ do
 		fi
     fi
 	if [ "$distributivelinex" == "Ubuntu" ]; then
+		access_ubuntu
 		echo "Линекс: $distributivelinex"
 		echo "Пока не доступно!"
 	fi
