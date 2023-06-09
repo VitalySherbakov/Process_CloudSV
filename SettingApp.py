@@ -88,7 +88,7 @@ class Setting(object):
             return True
         else:
             return False
-    def DownloadFile(self, url: str, filepath: str, style="classic"):
+    def DownloadFile(self, url: str, filepath: str):
         """Загрузить Файл"""
         Flag=False
         try:
