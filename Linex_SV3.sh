@@ -102,6 +102,8 @@ function main(){
     echo "Команда: pack (Установка необходимых пакетов)"
     echo "Команда: run (Запуск Скрипта)"
     echo "Команда: exit (Выход)"
+    echo "Введите Команду:"
+    read command
     if [ "$command" == "pack" ]; then
 		function_pack10
 	fi
