@@ -117,8 +117,7 @@ function main(){
 		function_pack10
 	fi
     if [ "$command" == "run" ]; then
-        #python3.8 "/home/$namecp/$dirsource/Linex_Main2.py" "$1"
-        python3.8 "$dirsource/Linex_Main2.py" "$1"
+        python3.8 "./$dirsource/Linex_Main2.py" "$1"
 	fi
     if [ "$command" == "exit" ]; then
 		break
