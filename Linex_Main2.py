@@ -35,12 +35,12 @@ while True:
         if hc22000cap=="dwn":
             urldwn=app.InputWhile("Url: ")
             filepath=app.InputWhile("Имя файла hc22000 или cap: ")
-            mask=app.InputWhile("Маска WIFI: ")
-            if app.LinkValid(urldwn, [200,302,303])==False:
+            # mask=app.InputWhile("Маска WIFI: ")
+            if app.LinkValid(urldwn)==False:
                 print(f"Ссылка {urldwn} Указана Не Верно!")
-            if app.MaskValide(mask)==False:
-                print(f"Или Маска {mask} Указана Не Верно!")
-            if app.LinkValid(urldwn, [200,302,303]) and app.MaskValide(mask):
+            # if app.MaskValide(mask)==False:
+            #     print(f"Или Маска {mask} Указана Не Верно!")
+            if app.LinkValid(urldwn):
                 res=app_linex.DownLoad_HC22000(urldwn, filepath)
                 if res:
                     print(f"Файл {filepath} Скачен!")
@@ -70,7 +70,7 @@ while True:
                             commanddicts+=f'"{dir_path}/{folderdicts}/{li}" '
                         commanddicts=commanddicts[:-1]
                         #----------------------------------------
-                        commandrun=f'{commandsintez[0]} -w {commanddicts} -b "{mask}" "{dir_path}/{filecap}/{filepath}"'
+                        #commandrun=f'{commandsintez[0]} -w {commanddicts} -b "{mask}" "{dir_path}/{filecap}/{filepath}"'
                         commandrun2=f'{commandsintez[0]} -w {commanddicts} "{dir_path}/{filecap}/{filepath}"'
                         print(commandrun2)
                         os.system(commandrun2)
