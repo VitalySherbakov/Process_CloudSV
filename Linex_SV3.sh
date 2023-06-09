@@ -70,11 +70,11 @@ function function_install_python(){
 	python3.8 --version
 	curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
 	sudo python3.8 get-pip.py
-	pip install requests
-	pip install alive-progress
-	pip install tqdm
-	pip install py7zr
-	pip install rarfile
+	python3.8 -m pip install requests
+	python3.8 -m pip install alive-progress
+	python3.8 -m pip install tqdm
+	python3.8 -m pip install py7zr
+	python3.8 -m pip install rarfile
 	cd_set_home
 }
 
@@ -101,7 +101,8 @@ function python_ubuntu_run(){
 	nameuser=$USER
 	#python="/home/$nameuser/Python-3.8.0/python"
 	#$python "/home/$nameuser/$dirsource/$1.py" "linex"
-	python3.8 "/home/$nameuser/$dirsource/$1.py" "$2"
+	#python3.8 "/home/$nameuser/$dirsource/$1.py" "$2"
+    python3.8 "/home/$nameuser/$dirsource/$1.py" "$2"
 }
 
 function main(){
@@ -116,9 +117,8 @@ function main(){
 		function_pack10
 	fi
     if [ "$command" == "run" ]; then
-        echo "Введи Имя"
-        read namecp
-        python3.8 "/home/$namecp/$dirsource/Linex_Main.py" "$1"
+        #python3.8 "/home/$namecp/$dirsource/Linex_Main2.py" "$1"
+        python3.8 "/$dirsource/Linex_Main2.py" "$1"
 	fi
     if [ "$command" == "exit" ]; then
 		break

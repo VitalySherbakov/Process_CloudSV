@@ -1,7 +1,7 @@
 import os, sys, time, re, json, datetime, random
-import requests
-from alive_progress import alive_bar
-from alive_progress.styles import showtime
+#import requests
+#from alive_progress import alive_bar
+#from alive_progress.styles import showtime
 from os.path import basename
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -91,23 +91,28 @@ class Setting(object):
         """Загрузить Файл"""
         Flag=False
         try:
-            response = requests.get(url, stream=True)
-            total_size = int(response.headers.get("content-length", 0))
-            block_size = 1024  # задайте размер блока загрузки по вашему усмотрению
-            with open(filepath, "wb") as f, alive_bar(total_size, bar=style) as bar:
-                for data in response.iter_content(block_size):
-                    f.write(data)
-                    bar(len(data))
+            command=f'wget -O "{filepath}" "{url}"'
+            os.system(command)
+            # response = requests.get(url, stream=True)
+            # total_size = int(response.headers.get("content-length", 0))
+            # block_size = 1024  # задайте размер блока загрузки по вашему усмотрению
+            # with open(filepath, "wb") as f, alive_bar(total_size, bar=style) as bar:
+            #     for data in response.iter_content(block_size):
+            #         f.write(data)
+            #         bar(len(data))
             Flag=True
         except Exception as ex:
             print(f"ERROR DOWNLOAD: {ex}!")
         return Flag
-    def LinkValid(self, url: str, codes=[200]):
+    def LinkValid(self, url: str):
         """Проверка Ссылка"""
         Flag=False
-        response = requests.head(url)
-        if response.status_code in codes:
+        regex = r'^(https?://)?([a-zA-Z0-9-]+\.)*[a-zA-Z0-9-]+(\.[a-zA-Z]{2,})(:\d{2,5})?(/.*)?$'
+        if re.match(regex, url):
             Flag=True
+        # response = requests.head(url)
+        # if response.status_code in codes:
+        #     Flag=True
         return Flag
     def Input(self, text: str):
         """Ввод Данных"""
