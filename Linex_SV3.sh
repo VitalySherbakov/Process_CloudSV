@@ -13,19 +13,13 @@ function pip_install_python(){
 function access_ubuntu(){
 	# Ubuntu полный доступ к папке
 	nameuser=$USER
-	chmod -R 777 "/home/$nameuser/$dirsource/"
+	chmod -R 777 "$dirsource/"
 }
 
 function update_mashine(){
 	# Автообновления
 	echo "Автообновление..."
 	apt-get update -y && apt-get upgrade -y
-}
-
-function cd_set_home(){
-	# Вернуться на Исходные Позиции
-	nameuser=$USER
-	cd "/home/$nameuser"
 }
 
 function function_install_cpu(){
@@ -39,7 +33,7 @@ function function_install_cpu(){
     sudo make install
 	update_mashine
 	aircrack-ng --help
-	cd_set_home
+	cd ..
 }
 
 function function_install_gpu(){
@@ -50,7 +44,7 @@ function function_install_gpu(){
 	sudo apt install cmake build-essential -y && apt install checkinstall git -y && cd hashcat && git submodule update --init && make && make install
 	update_mashine
 	hashcat --help
-	cd_set_home
+	cd ..
 }
 
 function function_install_python(){
@@ -75,7 +69,7 @@ function function_install_python(){
 	python3.8 -m pip install tqdm
 	python3.8 -m pip install py7zr
 	python3.8 -m pip install rarfile
-	cd_set_home
+	cd ..
 }
 
 function function_pack10(){
@@ -94,15 +88,6 @@ function function_pack10(){
     function_install_cpu
     function_install_gpu
     echo "Установка Пакетов Завершена!"
-}
-
-function python_ubuntu_run(){
-	# Запуск Скрипта
-	nameuser=$USER
-	#python="/home/$nameuser/Python-3.8.0/python"
-	#$python "/home/$nameuser/$dirsource/$1.py" "linex"
-	#python3.8 "/home/$nameuser/$dirsource/$1.py" "$2"
-    python3.8 "/home/$nameuser/$dirsource/$1.py" "$2"
 }
 
 function main(){
@@ -128,9 +113,9 @@ while true
 do
     current_time=$(date +%d.%m.%Y\ %T) # тикущая дата
     echo "-------------------------$current_time--------------------------"
+    echo "Платформа: $distributivelinex"
     if [ "$distributivelinex" == "Ubuntu" ]; then
         access_ubuntu
-        echo "Линекс: $distributivelinex"
         main "$distributivelinex"
     fi
     read -p "Нажмите Enter, чтобы продолжить"
