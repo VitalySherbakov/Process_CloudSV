@@ -114,6 +114,7 @@ do
     current_time=$(date +%d.%m.%Y\ %T) # тикущая дата
     echo "-------------------------$current_time--------------------------"
     echo "Платформа: $distributivelinex"
+    echo "Версия: $numberversionlinex"
     if [ "$distributivelinex" == "Ubuntu" ]; then
         access_ubuntu
         main "$distributivelinex"
