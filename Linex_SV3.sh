@@ -32,6 +32,7 @@ function function_install_cpu(){
     make
     sudo make install
 	update_mashine
+    apt install aircrack-ng -y
 	aircrack-ng --help
 	cd ..
 }
