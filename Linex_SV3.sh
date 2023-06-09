@@ -96,7 +96,7 @@ function function_pack10(){
     echo "Установка Пакетов Завершена!"
 }
 
-function python_run(){
+function python_ubuntu_run(){
 	# Запуск Скрипта
 	nameuser=$USER
 	#python="/home/$nameuser/Python-3.8.0/python"
@@ -116,7 +116,9 @@ function main(){
 		function_pack10
 	fi
     if [ "$command" == "run" ]; then
-		python_run "Linex_Main" "$1"
+        echo "Введи Имя"
+        read namecp
+        python3.8 "/home/$namecp/$dirsource/Linex_Main.py" "$1"
 	fi
     if [ "$command" == "exit" ]; then
 		break
