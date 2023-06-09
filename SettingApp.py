@@ -92,8 +92,9 @@ class Setting(object):
         """Загрузить Файл"""
         Flag=False
         try:
-            command=f'wget -O "{filepath}" "{url}"'
-            os.system(command)
+            urllib.request.urlretrieve(url, filepath)
+            #command=f'wget -O "{filepath}" "{url}"'
+            #os.system(command)
             # response = requests.get(url, stream=True)
             # total_size = int(response.headers.get("content-length", 0))
             # block_size = 1024  # задайте размер блока загрузки по вашему усмотрению
