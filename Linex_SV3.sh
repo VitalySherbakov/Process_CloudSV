@@ -96,6 +96,14 @@ function function_pack10(){
     echo "Установка Пакетов Завершена!"
 }
 
+function python_run(){
+	# Запуск Скрипта
+	nameuser=$USER
+	#python="/home/$nameuser/Python-3.8.0/python"
+	#$python "/home/$nameuser/$dirsource/$1.py" "linex"
+	python3.8 "/home/$nameuser/$dirsource/$1.py" "$2"
+}
+
 function main(){
     # Основное Меню
     echo "Конвентация *.cap в *.hc22000 по адресу https://hashcat.net/cap2hashcat/"
