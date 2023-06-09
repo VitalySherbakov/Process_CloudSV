@@ -1,6 +1,6 @@
 import os, sys, time, re, json, datetime, random
 #import requests
-import urllib
+import urllib.request
 #from alive_progress import alive_bar
 #from alive_progress.styles import showtime
 from os.path import basename
