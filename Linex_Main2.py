@@ -75,6 +75,9 @@ while True:
                     commanddicts+=f'"{dir_path}/{folderdicts}/{li}" '
                 commanddicts=commanddicts[:-1]
                 #----------------------------------------
+                #-----------------Доступ-----------------
+                app_linex.Access_Folder_Linex(dir_path,SelectPlatform.NONE) #Доступ
+                #----------------------------------------
                 commandrun2=f'{commandsintez[0]} -w {commanddicts} "{dir_path}/{filecap}/{filepath}"'
                 print(commandrun2)
                 os.system(commandrun2)
@@ -95,6 +98,9 @@ while True:
                     commanddicts+=f'"{dir_path}/{folderdicts}/{li}" '
                 commanddicts=commanddicts[:-1]
                 #----------------------------------------
+                #-----------------Доступ-----------------
+                app_linex.Access_Folder_Linex(dir_path,SelectPlatform.NONE) #Доступ
+                #----------------------------------------
                 commandrun2=f'{commandsintez[0]} -w {commanddicts} "{dir_path}/{filecap}/{filepath}"'
                 print(commandrun2)
                 #os.system(commandrun2)
@@ -112,6 +118,9 @@ while True:
                 for li in listdicts:
                     commanddicts+=f'"{dir_path}/{folderdicts}/{li}" '
                 commanddicts=commanddicts[:-1]
+                #----------------------------------------
+                #-----------------Доступ-----------------
+                app_linex.Access_Folder_Linex(dir_path,SelectPlatform.NONE) #Доступ
                 #----------------------------------------
                 commandrun2=f'{commandsintez[0]} -w {commanddicts} "{dir_path}/{filecap}/{filepath}"'
                 print(commandrun2)
