@@ -59,9 +59,15 @@ class AppProcessLinex(object):
         #----------------Доступ-----------------
         if selectplatform==SelectPlatform.Debian:
             os.system(f"chmod -R +x {folder}/*")
+            os.system(f'chmod -R 777 "{folder}"')
             Flag=True
         if selectplatform==SelectPlatform.Ubuntu:
             os.system(f"chmod -R +x {folder}/*")
+            os.system(f'chmod -R 777 "{folder}"')
+            Flag=True
+        if selectplatform==SelectPlatform.NONE:
+            os.system(f"chmod -R +x {folder}/*")
+            os.system(f'chmod -R 777 "{folder}"')
             Flag=True
         #---------------------------------------
         return Flag
