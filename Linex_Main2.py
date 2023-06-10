@@ -16,6 +16,7 @@ app_linex=AppProcessLinex(platform_name)
 app_arhive=ArhiveLinex()
 
 Accesss=False #Доступ
+filepath=""
 
 while True:
     current_date = datetime.datetime.now()
