@@ -35,6 +35,7 @@ while True:
     #     app_linex.DownLoad_Program(SelectProgram.GPU) #Проверка GPU
     if select=="1":
         print("Выбрано CPU Медленый Процесс")
+        print("--------------Cap--------------")
         listwifis=app_linex.Get_HC22000_Files()
         for wifi in listwifis:
             print(f'{wifi["Number"]}) {wifi["File"]}')
@@ -64,14 +65,13 @@ while True:
             Accesss=app.GetFileInfo(filepath)[0]
         if Accesss:
             print(f"Файл {filepath} Есть!")
-            print("Список Словарей 0-Все Словари")
+            print("--------------Словари--------------")
+            for i,li in enumerate(app_linex.GetNamesDicts()):
+                    print(f"{i}) {li}")
             print("Способ Расшыфровки 1-один словарь")
             print("Способ Расшыфровки 2-пачка словарей")
             print("Способ Расшыфровки 3-все словари")
-            selectdicts=app.InputWhile("Выбрать способ Расшыфровки 0,1,2,3: ")
-            if selectdicts=="0":
-                for i,li in enumerate(app_linex.GetNamesDicts()):
-                    print(f"{i}) {li}")
+            selectdicts=app.InputWhile("Выбрать способ Расшыфровки 1,2,3: ")
             if selectdicts=="1":
                 name_dict=app.InputWhile("Укажы Имя Словаря: ")
                 #---------------Скачивание Словарей---------------
@@ -140,28 +140,29 @@ while True:
                 #os.system(commandrun2)
     if select=="2":
         print("Выбрано GPU Ускоренный Процесс")
+        print("--------------hc22000--------------")
         listwifis=app_linex.Get_HC22000_Files()
         for wifi in listwifis:
             print(f'{wifi["Number"]}) {wifi["File"]}')
-        print("s - если надо выбрать cap")
-        print("dwn - если надо скачать hc22000 или cap")
-        print("f - eсли надо указать путь к hc22000 или cap")
+        print("s - если надо выбрать hc22000")
+        print("dwn - если надо скачать hc22000")
+        print("f - eсли надо указать путь к hc22000")
         hc22000cap=app.InputWhile("Команда dwn/f: ")
         if hc22000cap=="dwn":
             urldwn=app.InputWhile("Url: ")
-            filepath=app.InputWhile("Имя файла hc22000 или cap: ")
+            filepath=app.InputWhile("Имя файла hc22000: ")
             if app.LinkValid(urldwn)==False:
                 print(f"Ссылка {urldwn} Указана Не Верно!")
             res=app_linex.DownLoad_HC220002(urldwn, filepath)
             filepath=res[1]
             Accesss=app.GetFileInfo(filepath)[0]
         if hc22000cap=="f":
-            filepath=app.InputWhile("Имя файла hc22000 или cap: ")
+            filepath=app.InputWhile("Имя файла hc22000: ")
             filecap=app_linex.app.SettingApp["FolderHC22000_Cap"]
             filepath=f"{dir_path}/{filecap}/{filepath}"
             Accesss=app.GetFileInfo(filepath)[0]
         if hc22000cap=="s":
-            numbercap=app.InputWhile("Выбрать по номеру cap: ")
+            numbercap=app.InputWhile("Выбрать по номеру hc22000: ")
             numbersel=int(numbercap)
             filepath=listwifis[numbersel]["File"]
             filecap=app_linex.app.SettingApp["FolderHC22000_Cap"]
@@ -169,14 +170,13 @@ while True:
             Accesss=app.GetFileInfo(filepath)[0]
         if Accesss:
             print(f"Файл {filepath} Есть!")
-            print("Список Словарей 0-Все Словари")
+            print("--------------Словари--------------")
+            for i,li in enumerate(app_linex.GetNamesDicts()):
+                    print(f"{i}) {li}")
             print("Способ Расшыфровки 1-один словарь")
             print("Способ Расшыфровки 2-пачка словарей")
             print("Способ Расшыфровки 3-все словари")
-            selectdicts=app.InputWhile("Выбрать способ Расшыфровки 0,1,2,3: ")
-            if selectdicts=="0":
-                for i,li in enumerate(app_linex.GetNamesDicts()):
-                    print(f"{i}) {li}")
+            selectdicts=app.InputWhile("Выбрать способ Расшыфровки 1,2,3: ")
             if selectdicts=="1":
                 name_dict=app.InputWhile("Укажы Имя Словаря: ")
                 #---------------Скачивание Словарей---------------
