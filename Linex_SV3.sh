@@ -14,12 +14,13 @@ function access_ubuntu(){
 	# Ubuntu полный доступ к папке
 	nameuser=$USER
 	chmod -R 777 "$dirsource/"
+    chmod -R 777 "Python-3.8.0/"
 }
 
 function update_mashine(){
 	# Автообновления
 	echo "Автообновление..."
-	apt-get update -y && apt-get upgrade -y
+	apt-get upgrade openssl -y && apt-get update -y && apt-get upgrade -y
 }
 
 function function_install_cpu(){
@@ -70,7 +71,9 @@ function function_install_python(){
 	python3.8 -m pip install tqdm
 	python3.8 -m pip install py7zr
 	python3.8 -m pip install rarfile
+    python3.8 -m pip install urllib3==1.26.7
 	cd ..
+    access_ubuntu
 }
 
 function function_pack10(){
