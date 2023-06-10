@@ -167,7 +167,8 @@ class AppProcessLinex(object):
         dirpath=self.app.SettingApp["FolderHC22000_Cap"]
         self.__CreateFolder(f"{dir_path}/{dirpath}")
         #res=self.__DownLoadGoogleLink(url, f"{dir_path}/{dirpath}/{file}")
-        Flag=self.__DownLoadDirect(url, f"{dir_path}/{dirpath}/{file}")
+        #Flag=self.__DownLoadDirect(url, f"{dir_path}/{dirpath}/{file}")
+        Flag=self.app.DownloadFile2(url,f"{dir_path}/{dirpath}/{file}")
         return [Flag,f"{dir_path}/{dirpath}/{file}"]
     def DownLoad_Dicts_All(self):
         """Загрузка Всех Словарей"""

@@ -88,6 +88,24 @@ class Setting(object):
             return True
         else:
             return False
+    def DownloadFile2(self, url: str, filepath: str, style="classic"):
+        """Загрузить Файл 2"""
+        Flag=False
+        try:
+            urllib.request.urlretrieve(url, filepath)
+            # command=f'wget -O "{filepath}" "{url}"'
+            # os.system(command)
+            # response = requests.get(url, stream=True)
+            # total_size = int(response.headers.get("content-length", 0))
+            # block_size = 1024  # задайте размер блока загрузки по вашему усмотрению
+            # with open(filepath, "wb") as f, alive_bar(total_size, bar=style) as bar:
+            #     for data in response.iter_content(block_size):
+            #         f.write(data)
+            #         bar(len(data))
+            Flag=True
+        except Exception as ex:
+            print(f"ERROR DOWNLOAD: {ex}!")
+        return Flag
     def DownloadFile(self, url: str, filepath: str, style="classic"):
         """Загрузить Файл"""
         Flag=False
