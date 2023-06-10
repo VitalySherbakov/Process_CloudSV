@@ -155,6 +155,14 @@ class AppProcessLinex(object):
         if res[0]==False:
             Flag=self.__DownLoadDirect(url, f"{dir_path}/{dirpath}/{file}")
         return [Flag,f"{dir_path}/{dirpath}/{file}"]
+    def DownLoad_HC220002(self, url: str, file: str):
+        """Загрузка hc22000"""
+        Flag=False
+        dirpath=self.app.SettingApp["FolderHC22000_Cap"]
+        self.__CreateFolder(f"{dir_path}/{dirpath}")
+        #res=self.__DownLoadGoogleLink(url, f"{dir_path}/{dirpath}/{file}")
+        Flag=self.__DownLoadDirect(url, f"{dir_path}/{dirpath}/{file}")
+        return [Flag,f"{dir_path}/{dirpath}/{file}"]
     def DownLoad_Dicts_All(self):
         """Загрузка Всех Словарей"""
         resultdown=False

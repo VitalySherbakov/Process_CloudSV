@@ -40,7 +40,7 @@ while True:
             filepath=app.InputWhile("Имя файла hc22000 или cap: ")
             if app.LinkValid(urldwn)==False:
                 print(f"Ссылка {urldwn} Указана Не Верно!")
-            res=app_linex.DownLoad_HC22000(urldwn, filepath)
+            res=app_linex.DownLoad_HC220002(urldwn, filepath)
             filepath=res[1]
             Accesss=app.GetFileInfo(filepath)[0]
         if hc22000cap=="f":
