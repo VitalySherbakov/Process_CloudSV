@@ -76,6 +76,7 @@ while True:
             selectdicts=app.InputWhile("Выбрать способ Расшыфровки 1,2,3: ")
             if selectdicts=="1":
                 numselect_dict=app.InputWhile("Номер Словаря: ")
+                numselect_dict=int(numselect_dict)
                 name_dict=listdictsall[numselect_dict]
                 print(f"Выбран Словарь: {name_dict}")
                 #---------------Скачивание Словарей---------------
@@ -185,6 +186,7 @@ while True:
             selectdicts=app.InputWhile("Выбрать способ Расшыфровки 1,2,3: ")
             if selectdicts=="1":
                 numselect_dict=app.InputWhile("Укажы Имя Словаря: ")
+                numselect_dict=int(numselect_dict)
                 name_dict=listdictsall[numselect_dict]
                 print(f"Выбран Словарь: {name_dict}")
                 #---------------Скачивание Словарей---------------
