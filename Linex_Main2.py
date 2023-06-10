@@ -36,13 +36,14 @@ while True:
     if select=="1":
         print("Выбрано CPU Медленый Процесс")
         print("--------------Cap--------------")
+        listwifis=[]
         listwifis=app_linex.Get_HC22000_Files()
         for wifi in listwifis:
             print(f'{wifi["Number"]}) {wifi["File"]}')
         print("s - если надо выбрать cap")
         print("dwn - если надо скачать cap")
         print("f - eсли надо указать путь к cap")
-        hc22000cap=app.InputWhile("Команда dwn/f: ")
+        hc22000cap=app.InputWhile("Команда s/dwn/f: ")
         if hc22000cap=="dwn":
             urldwn=app.InputWhile("Url: ")
             filepath=app.InputWhile("Имя файла cap: ")
@@ -146,13 +147,14 @@ while True:
     if select=="2":
         print("Выбрано GPU Ускоренный Процесс")
         print("--------------hc22000--------------")
+        listwifis=[]
         listwifis=app_linex.Get_HC22000_Files()
         for wifi in listwifis:
             print(f'{wifi["Number"]}) {wifi["File"]}')
         print("s - если надо выбрать hc22000")
         print("dwn - если надо скачать hc22000")
         print("f - eсли надо указать путь к hc22000")
-        hc22000cap=app.InputWhile("Команда dwn/f: ")
+        hc22000cap=app.InputWhile("Команда s/dwn/f: ")
         if hc22000cap=="dwn":
             urldwn=app.InputWhile("Url: ")
             filepath=app.InputWhile("Имя файла hc22000: ")
