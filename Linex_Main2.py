@@ -22,7 +22,9 @@ while True:
     current_date = datetime.datetime.now()
     current_date_str = current_date.strftime("%d.%m.%Y %H:%M:%S")
     print(f"-------------------------{current_date_str}--------------------------")
+    #-----------------Доступ-----------------
     app_linex.Access_Folder_Linex(dir_path,SelectPlatform.NONE) #Доступ
+    #----------------------------------------
     print(f"Платформа: {platform_name}")
     #print("Скачать GPU-CPU=3")
     print("Выбрать CPU=1")
