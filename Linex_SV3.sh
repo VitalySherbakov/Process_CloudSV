@@ -14,7 +14,6 @@ function access_ubuntu(){
 	# Ubuntu полный доступ к папке
 	nameuser=$USER
 	chmod -R 777 "$dirsource/"
-    chmod -R 777 "Python-3.8.0/"
 }
 
 function update_mashine(){
@@ -56,6 +55,7 @@ function function_install_python(){
 	wget https://www.python.org/ftp/python/3.8.0/Python-3.8.0.tgz
 	tar -xf Python-3.8.0.tgz
 	rm -r Python-3.8.0.tgz
+	chmod -R 777 "Python-3.8.0/"
 	cd Python-3.8.0
 	./configure --enable-optimizations
 	make -j $(nproc)

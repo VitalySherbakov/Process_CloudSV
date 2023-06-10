@@ -86,6 +86,29 @@ class AppProcessLinex(object):
             if li["Name"]==name:
                 listing=li["Files"]
         return listing
+    def GetFilesPackDict(self, number: int):
+        """Найти Список Файлов Словарей под Пачкай"""
+        listing,packslist=[],[]
+        if number==1:
+            packslist=self.app.SettingApp["ArhivesPack1"]
+        if number==2:
+            packslist=self.app.SettingApp["ArhivesPack2"]
+        if number==3:
+            packslist=self.app.SettingApp["ArhivesPack3"]
+        for li in self.app.Dicts:
+            for name in packslist:
+                if li["Name"]==name:
+                    for li2 in li["Files"]:
+                        if li2 in listing: #убирающий повторения
+                            listing.append(li2)
+        return listing
+    def GetFilesAllDict(self):
+        """Список Файлов Словарей Все"""
+        listing=[]
+        for li in self.app.Dicts:
+            for li2 in li["Files"]:
+                if li2 in listing: #убирающий повторения
+                    listing.append(li2)
     def DownLoad_Program(self, select: SelectProgram):
         """Загрузка Програмы CPU/GPU"""
         Flag=False
@@ -245,33 +268,38 @@ class AppProcessLinex(object):
         dictformats={"ZIP": "zip", "RAR": "rar", "7z": "7z"}
         resultdown=False
         for li in self.app.Dicts:
-            urldown=li["Urls"][keyarhiv]
-            urldirect=self.app.GetGoogleLink(urldown)
-            filepath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}.{dictformats[keyarhiv]}"
-            filepathname=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}"
-            dirpath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}"
-            dirpath_extract=f"{dir_path}/{self.app.SettingApp['FolderDicts']['Folder']}"
-            self.app.CreateDir(dirpath)
-            res=self.app.DownloadFile(urldirect, filepath)
-            if res==False:
-                urldown2=li["Urls"][keyarhiv2]
-                urldirect2=self.app.GetGoogleLink(urldown2)
-                res2=self.app.DownloadFile(urldirect2, filepath)
-                if res2==False:
-                    urldown3=li["Urls"][keyarhiv3]
-                    urldirect3=self.app.GetGoogleLink(urldown3)
-                    res3=self.app.DownloadFile(urldirect3, filepath)
-                    if res3==False:
-                        print(f"{li['Name']} Нету Словаря Вообще на Скачивание!")
+            #-----------------Проверка Наличия Словарей---------------
+            dirdicts=f"{dir_path}/{self.app.SettingApp['FolderDicts']['Folder']}"
+            filesdicts=li["Files"]
+            #---------------------------------------------------------
+            if self.__ExistFiles(dirdicts,filesdicts)==False:
+                urldown=li["Urls"][keyarhiv]
+                urldirect=self.app.GetGoogleLink(urldown)
+                filepath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}.{dictformats[keyarhiv]}"
+                filepathname=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}"
+                dirpath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}"
+                dirpath_extract=f"{dir_path}/{self.app.SettingApp['FolderDicts']['Folder']}"
+                self.app.CreateDir(dirpath)
+                res=self.app.DownloadFile(urldirect, filepath)
+                if res==False:
+                    urldown2=li["Urls"][keyarhiv2]
+                    urldirect2=self.app.GetGoogleLink(urldown2)
+                    res2=self.app.DownloadFile(urldirect2, filepath)
+                    if res2==False:
+                        urldown3=li["Urls"][keyarhiv3]
+                        urldirect3=self.app.GetGoogleLink(urldown3)
+                        res3=self.app.DownloadFile(urldirect3, filepath)
+                        if res3==False:
+                            print(f"{li['Name']} Нету Словаря Вообще на Скачивание!")
+                        else:
+                            resultdown=self.__ExtractArhiveKey(keyarhiv3, filepathname, dirpath_extract)
+                            #resultdown=True
                     else:
-                        resultdown=self.__ExtractArhiveKey(keyarhiv3, filepathname, dirpath_extract)
+                        resultdown=self.__ExtractArhiveKey(keyarhiv2, filepathname, dirpath_extract)
                         #resultdown=True
                 else:
-                    resultdown=self.__ExtractArhiveKey(keyarhiv2, filepathname, dirpath_extract)
+                    resultdown=self.__ExtractArhiveKey(keyarhiv, filepathname, dirpath_extract)
                     #resultdown=True
-            else:
-                resultdown=self.__ExtractArhiveKey(keyarhiv, filepathname, dirpath_extract)
-                #resultdown=True
         return resultdown
     def __GoogleLinks_Pack_Downloads(self,pack: int, keyarhiv: str, keyarhiv2: str, keyarhiv3: str):
         """Пачка Скачивание Словарей"""
@@ -286,33 +314,38 @@ class AppProcessLinex(object):
             names=self.app.SettingApp["ArhivesPack3"]
         for li in self.app.Dicts:
             if li["Name"] in names:
-                urldown=li["Urls"][keyarhiv]
-                urldirect=self.app.GetGoogleLink(urldown)
-                filepath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}.{dictformats[keyarhiv]}"
-                filepathname=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}"
-                dirpath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}"
-                dirpath_extract=f"{dir_path}/{self.app.SettingApp['FolderDicts']['Folder']}"
-                self.app.CreateDir(dirpath)
-                res=self.app.DownloadFile(urldirect, filepath)
-                if res==False:
-                    urldown2=li["Urls"][keyarhiv2]
-                    urldirect2=self.app.GetGoogleLink(urldown2)
-                    res2=self.app.DownloadFile(urldirect2, filepath)
-                    if res2==False:
-                        urldown3=li["Urls"][keyarhiv3]
-                        urldirect3=self.app.GetGoogleLink(urldown3)
-                        res3=self.app.DownloadFile(urldirect3, filepath)
-                        if res3==False:
-                            print(f"{li['Name']} Нету Словаря Вообще на Скачивание!")
+                #-----------------Проверка Наличия Словарей---------------
+                dirdicts=f"{dir_path}/{self.app.SettingApp['FolderDicts']['Folder']}"
+                filesdicts=li["Files"]
+                #---------------------------------------------------------
+                if self.__ExistFiles(dirdicts,filesdicts)==False:
+                    urldown=li["Urls"][keyarhiv]
+                    urldirect=self.app.GetGoogleLink(urldown)
+                    filepath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}.{dictformats[keyarhiv]}"
+                    filepathname=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}"
+                    dirpath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}"
+                    dirpath_extract=f"{dir_path}/{self.app.SettingApp['FolderDicts']['Folder']}"
+                    self.app.CreateDir(dirpath)
+                    res=self.app.DownloadFile(urldirect, filepath)
+                    if res==False:
+                        urldown2=li["Urls"][keyarhiv2]
+                        urldirect2=self.app.GetGoogleLink(urldown2)
+                        res2=self.app.DownloadFile(urldirect2, filepath)
+                        if res2==False:
+                            urldown3=li["Urls"][keyarhiv3]
+                            urldirect3=self.app.GetGoogleLink(urldown3)
+                            res3=self.app.DownloadFile(urldirect3, filepath)
+                            if res3==False:
+                                print(f"{li['Name']} Нету Словаря Вообще на Скачивание!")
+                            else:
+                                resultdown=self.__ExtractArhiveKey(keyarhiv3, filepathname, dirpath_extract)
+                                #resultdown=True
                         else:
-                            resultdown=self.__ExtractArhiveKey(keyarhiv3, filepathname, dirpath_extract)
+                            resultdown=self.__ExtractArhiveKey(keyarhiv2, filepathname, dirpath_extract)
                             #resultdown=True
                     else:
-                        resultdown=self.__ExtractArhiveKey(keyarhiv2, filepathname, dirpath_extract)
+                        resultdown=self.__ExtractArhiveKey(keyarhiv, filepathname, dirpath_extract)
                         #resultdown=True
-                else:
-                    resultdown=self.__ExtractArhiveKey(keyarhiv, filepathname, dirpath_extract)
-                    #resultdown=True
         return resultdown
     def __GoogleLinks_One_Downloads(self,name: str, keyarhiv: str, keyarhiv2: str, keyarhiv3: str):
         """Один Скачивание Словарей"""
@@ -320,6 +353,49 @@ class AppProcessLinex(object):
         resultdown=False
         for li in self.app.Dicts:
             if li["Name"]==name:
+                #-----------------Проверка Наличия Словарей---------------
+                dirdicts=f"{dir_path}/{self.app.SettingApp['FolderDicts']['Folder']}"
+                filesdicts=li["Files"]
+                #---------------------------------------------------------
+                if self.__ExistFiles(dirdicts,filesdicts)==False:
+                    urldown=li["Urls"][keyarhiv]
+                    urldirect=self.app.GetGoogleLink(urldown)
+                    filepath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}.{dictformats[keyarhiv]}"
+                    filepathname=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}"
+                    dirpath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}"
+                    dirpath_extract=f"{dir_path}/{self.app.SettingApp['FolderDicts']['Folder']}"
+                    self.app.CreateDir(dirpath)
+                    res=self.app.DownloadFile(urldirect, filepath)
+                    if res==False:
+                        urldown2=li["Urls"][keyarhiv2]
+                        urldirect2=self.app.GetGoogleLink(urldown2)
+                        res2=self.app.DownloadFile(urldirect2, filepath)
+                        if res2==False:
+                            urldown3=li["Urls"][keyarhiv3]
+                            urldirect3=self.app.GetGoogleLink(urldown3)
+                            res3=self.app.DownloadFile(urldirect3, filepath)
+                            if res3==False:
+                                print(f"{li['Name']} Нету Словаря Вообще на Скачивание!")
+                            else:
+                                resultdown=self.__ExtractArhiveKey(keyarhiv3, filepathname, dirpath_extract)
+                                #resultdown=True
+                        else:
+                            resultdown=self.__ExtractArhiveKey(keyarhiv2, filepathname, dirpath_extract)
+                            #resultdown=True
+                    else:
+                        resultdown=self.__ExtractArhiveKey(keyarhiv, filepathname, dirpath_extract)
+                        #resultdown=True
+        return resultdown
+    def __DirectLinks_Full_Downloads(self, keyarhiv: str, keyarhiv2: str, keyarhiv3: str):
+        """Скачивание Словарей"""
+        dictformats={"ZIP": "zip", "RAR": "rar", "7z": "7z"}
+        resultdown=False
+        for li in self.app.Dicts:
+            #-----------------Проверка Наличия Словарей---------------
+            dirdicts=f"{dir_path}/{self.app.SettingApp['FolderDicts']['Folder']}"
+            filesdicts=li["Files"]
+            #---------------------------------------------------------
+            if self.__ExistFiles(dirdicts,filesdicts)==False:
                 urldown=li["Urls"][keyarhiv]
                 urldirect=self.app.GetGoogleLink(urldown)
                 filepath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}.{dictformats[keyarhiv]}"
@@ -334,8 +410,7 @@ class AppProcessLinex(object):
                     res2=self.app.DownloadFile(urldirect2, filepath)
                     if res2==False:
                         urldown3=li["Urls"][keyarhiv3]
-                        urldirect3=self.app.GetGoogleLink(urldown3)
-                        res3=self.app.DownloadFile(urldirect3, filepath)
+                        res3=self.app.DownloadFile(urldown3, filepath)
                         if res3==False:
                             print(f"{li['Name']} Нету Словаря Вообще на Скачивание!")
                         else:
@@ -347,38 +422,6 @@ class AppProcessLinex(object):
                 else:
                     resultdown=self.__ExtractArhiveKey(keyarhiv, filepathname, dirpath_extract)
                     #resultdown=True
-        return resultdown
-    def __DirectLinks_Full_Downloads(self, keyarhiv: str, keyarhiv2: str, keyarhiv3: str):
-        """Скачивание Словарей"""
-        dictformats={"ZIP": "zip", "RAR": "rar", "7z": "7z"}
-        resultdown=False
-        for li in self.app.Dicts:
-            urldown=li["Urls"][keyarhiv]
-            urldirect=self.app.GetGoogleLink(urldown)
-            filepath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}.{dictformats[keyarhiv]}"
-            filepathname=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}"
-            dirpath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}"
-            dirpath_extract=f"{dir_path}/{self.app.SettingApp['FolderDicts']['Folder']}"
-            self.app.CreateDir(dirpath)
-            res=self.app.DownloadFile(urldirect, filepath)
-            if res==False:
-                urldown2=li["Urls"][keyarhiv2]
-                urldirect2=self.app.GetGoogleLink(urldown2)
-                res2=self.app.DownloadFile(urldirect2, filepath)
-                if res2==False:
-                    urldown3=li["Urls"][keyarhiv3]
-                    res3=self.app.DownloadFile(urldown3, filepath)
-                    if res3==False:
-                        print(f"{li['Name']} Нету Словаря Вообще на Скачивание!")
-                    else:
-                        resultdown=self.__ExtractArhiveKey(keyarhiv3, filepathname, dirpath_extract)
-                        #resultdown=True
-                else:
-                    resultdown=self.__ExtractArhiveKey(keyarhiv2, filepathname, dirpath_extract)
-                    #resultdown=True
-            else:
-                resultdown=self.__ExtractArhiveKey(keyarhiv, filepathname, dirpath_extract)
-                #resultdown=True
         return resultdown
     def __DirectLinks_Pack_Downloads(self,pack: int, keyarhiv: str, keyarhiv2: str, keyarhiv3: str):
         """Пачка Скачивание Словарей"""
@@ -393,65 +436,85 @@ class AppProcessLinex(object):
             names=self.app.SettingApp["ArhivesPack3"]
         for li in self.app.Dicts:
             if li in names:
-                urldown=li["Urls"][keyarhiv]
-                urldirect=self.app.GetGoogleLink(urldown)
-                filepath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}.{dictformats[keyarhiv]}"
-                filepathname=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}"
-                dirpath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}"
-                dirpath_extract=f"{dir_path}/{self.app.SettingApp['FolderDicts']['Folder']}"
-                self.app.CreateDir(dirpath)
-                res=self.app.DownloadFile(urldirect, filepath)
-                if res==False:
-                    urldown2=li["Urls"][keyarhiv2]
-                    res2=self.app.DownloadFile(urldown2, filepath)
-                    if res2==False:
-                        urldown3=li["Urls"][keyarhiv3]
-                        urldirect3=self.app.GetGoogleLink(urldown3)
-                        res3=self.app.DownloadFile(urldirect3, filepath)
-                        if res3==False:
-                            print(f"{li['Name']} Нету Словаря Вообще на Скачивание!")
+                #-----------------Проверка Наличия Словарей---------------
+                dirdicts=f"{dir_path}/{self.app.SettingApp['FolderDicts']['Folder']}"
+                filesdicts=li["Files"]
+                #---------------------------------------------------------
+                if self.__ExistFiles(dirdicts,filesdicts)==False:
+                    urldown=li["Urls"][keyarhiv]
+                    urldirect=self.app.GetGoogleLink(urldown)
+                    filepath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}.{dictformats[keyarhiv]}"
+                    filepathname=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}"
+                    dirpath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}"
+                    dirpath_extract=f"{dir_path}/{self.app.SettingApp['FolderDicts']['Folder']}"
+                    self.app.CreateDir(dirpath)
+                    res=self.app.DownloadFile(urldirect, filepath)
+                    if res==False:
+                        urldown2=li["Urls"][keyarhiv2]
+                        res2=self.app.DownloadFile(urldown2, filepath)
+                        if res2==False:
+                            urldown3=li["Urls"][keyarhiv3]
+                            urldirect3=self.app.GetGoogleLink(urldown3)
+                            res3=self.app.DownloadFile(urldirect3, filepath)
+                            if res3==False:
+                                print(f"{li['Name']} Нету Словаря Вообще на Скачивание!")
+                            else:
+                                resultdown=self.__ExtractArhiveKey(keyarhiv3, filepathname, dirpath_extract)
+                                #resultdown=True
                         else:
-                            resultdown=self.__ExtractArhiveKey(keyarhiv3, filepathname, dirpath_extract)
+                            resultdown=self.__ExtractArhiveKey(keyarhiv2, filepathname, dirpath_extract)
                             #resultdown=True
                     else:
-                        resultdown=self.__ExtractArhiveKey(keyarhiv2, filepathname, dirpath_extract)
+                        resultdown=self.__ExtractArhiveKey(keyarhiv, filepathname, dirpath_extract)
                         #resultdown=True
-                else:
-                    resultdown=self.__ExtractArhiveKey(keyarhiv, filepathname, dirpath_extract)
-                    #resultdown=True
         return resultdown
+    def __ExistFiles(self, dir: str, listfiles: list):
+        """Проверка наличия Файлов"""
+        Flag=False
+        for li in listfiles:
+            if self.app.GetFileInfo(f"{dir}/{li}")[0]==True:
+                Flag=True
+            else:
+                Flag=False
+                break
+        return Flag
     def __DirectLinks_One_Downloads(self,name: str, keyarhiv: str, keyarhiv2: str, keyarhiv3: str):
         """Один Скачивание Словарей"""
         dictformats={"ZIP": "zip", "RAR": "rar", "7z": "7z"}
         resultdown=False
         for li in self.app.Dicts:
             if li["Name"]==name:
-                urldown=li["Urls"][keyarhiv]
-                urldirect=self.app.GetGoogleLink(urldown)
-                filepath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}.{dictformats[keyarhiv]}"
-                filepathname=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}"
-                dirpath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}"
-                dirpath_extract=f"{dir_path}/{self.app.SettingApp['FolderDicts']['Folder']}"
-                self.app.CreateDir(dirpath)
-                res=self.app.DownloadFile(urldirect, filepath)
-                if res==False:
-                    urldown2=li["Urls"][keyarhiv2]
-                    res2=self.app.DownloadFile(urldown2, filepath)
-                    if res2==False:
-                        urldown3=li["Urls"][keyarhiv3]
-                        urldirect3=self.app.GetGoogleLink(urldown3)
-                        res3=self.app.DownloadFile(urldirect3, filepath)
-                        if res3==False:
-                            print(f"{li['Name']} Нету Словаря Вообще на Скачивание!")
+                #-----------------Проверка Наличия Словарей---------------
+                dirdicts=f"{dir_path}/{self.app.SettingApp['FolderDicts']['Folder']}"
+                filesdicts=li["Files"]
+                #---------------------------------------------------------
+                if self.__ExistFiles(dirdicts,filesdicts)==False:
+                    urldown=li["Urls"][keyarhiv]
+                    urldirect=self.app.GetGoogleLink(urldown)
+                    filepath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}.{dictformats[keyarhiv]}"
+                    filepathname=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}/{li['Name']}"
+                    dirpath=f"{dir_path}/{self.app.SettingApp['FolderDicts']['ArhivesDown']}"
+                    dirpath_extract=f"{dir_path}/{self.app.SettingApp['FolderDicts']['Folder']}"
+                    self.app.CreateDir(dirpath)
+                    res=self.app.DownloadFile(urldirect, filepath)
+                    if res==False:
+                        urldown2=li["Urls"][keyarhiv2]
+                        res2=self.app.DownloadFile(urldown2, filepath)
+                        if res2==False:
+                            urldown3=li["Urls"][keyarhiv3]
+                            urldirect3=self.app.GetGoogleLink(urldown3)
+                            res3=self.app.DownloadFile(urldirect3, filepath)
+                            if res3==False:
+                                print(f"{li['Name']} Нету Словаря Вообще на Скачивание!")
+                            else:
+                                resultdown=self.__ExtractArhiveKey(keyarhiv3, filepathname, dirpath_extract)
+                                #resultdown=True
                         else:
-                            resultdown=self.__ExtractArhiveKey(keyarhiv3, filepathname, dirpath_extract)
+                            resultdown=self.__ExtractArhiveKey(keyarhiv2, filepathname, dirpath_extract)
                             #resultdown=True
                     else:
-                        resultdown=self.__ExtractArhiveKey(keyarhiv2, filepathname, dirpath_extract)
+                        resultdown=self.__ExtractArhiveKey(keyarhiv, filepathname, dirpath_extract)
                         #resultdown=True
-                else:
-                    resultdown=self.__ExtractArhiveKey(keyarhiv, filepathname, dirpath_extract)
-                    #resultdown=True
         return resultdown
     def __ExtractArhiveKey(self, keyarhiv: str, name: str, dirpath_extract: str):
         """Распаковка в Зависимости Ключа 7z, ZIP, RAR"""
