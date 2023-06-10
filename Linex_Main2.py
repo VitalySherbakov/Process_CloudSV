@@ -66,14 +66,18 @@ while True:
         if Accesss:
             print(f"Файл {filepath} Есть!")
             print("--------------Словари--------------")
+            listdictsall=[]
             for i,li in enumerate(app_linex.GetNamesDicts()):
                     print(f"{i}) {li}")
+                    listdictsall.append(li)
             print("Способ Расшыфровки 1-один словарь")
             print("Способ Расшыфровки 2-пачка словарей")
             print("Способ Расшыфровки 3-все словари")
             selectdicts=app.InputWhile("Выбрать способ Расшыфровки 1,2,3: ")
             if selectdicts=="1":
-                name_dict=app.InputWhile("Укажы Имя Словаря: ")
+                numselect_dict=app.InputWhile("Номер Словаря: ")
+                name_dict=listdictsall[numselect_dict]
+                print(f"Выбран Словарь: {name_dict}")
                 #---------------Скачивание Словарей---------------
                 app_linex.DownLoad_Dicts_One(name_dict)
                 #---------------Програма CPU----------------------
@@ -171,14 +175,18 @@ while True:
         if Accesss:
             print(f"Файл {filepath} Есть!")
             print("--------------Словари--------------")
+            listdictsall=[]
             for i,li in enumerate(app_linex.GetNamesDicts()):
                     print(f"{i}) {li}")
+                    listdictsall.append(li)
             print("Способ Расшыфровки 1-один словарь")
             print("Способ Расшыфровки 2-пачка словарей")
             print("Способ Расшыфровки 3-все словари")
             selectdicts=app.InputWhile("Выбрать способ Расшыфровки 1,2,3: ")
             if selectdicts=="1":
-                name_dict=app.InputWhile("Укажы Имя Словаря: ")
+                numselect_dict=app.InputWhile("Укажы Имя Словаря: ")
+                name_dict=listdictsall[numselect_dict]
+                print(f"Выбран Словарь: {name_dict}")
                 #---------------Скачивание Словарей---------------
                 app_linex.DownLoad_Dicts_One(name_dict)
                 #---------------Програма CPU----------------------
