@@ -80,7 +80,7 @@ while True:
                 #-----------------Доступ-----------------
                 app_linex.Access_Folder_Linex(dir_path,SelectPlatform.NONE) #Доступ
                 #----------------------------------------
-                commandrun2=f'{commandsintez[0]} -w {commanddicts} "{dir_path}/{filecap}/{filepath}"'
+                commandrun2=f'{commandsintez[0]} -w {commanddicts} "{filepath}"'
                 print(commandrun2)
                 os.system(commandrun2)
             if selectdicts=="2":
@@ -103,7 +103,7 @@ while True:
                 #-----------------Доступ-----------------
                 app_linex.Access_Folder_Linex(dir_path,SelectPlatform.NONE) #Доступ
                 #----------------------------------------
-                commandrun2=f'{commandsintez[0]} -w {commanddicts} "{dir_path}/{filecap}/{filepath}"'
+                commandrun2=f'{commandsintez[0]} -w {commanddicts} "{filepath}"'
                 print(commandrun2)
                 #os.system(commandrun2)
             if selectdicts=="3":
@@ -124,7 +124,7 @@ while True:
                 #-----------------Доступ-----------------
                 app_linex.Access_Folder_Linex(dir_path,SelectPlatform.NONE) #Доступ
                 #----------------------------------------
-                commandrun2=f'{commandsintez[0]} -w {commanddicts} "{dir_path}/{filecap}/{filepath}"'
+                commandrun2=f'{commandsintez[0]} -w {commanddicts} "{filepath}"'
                 print(commandrun2)
                 #os.system(commandrun2)
     if select=="2":
