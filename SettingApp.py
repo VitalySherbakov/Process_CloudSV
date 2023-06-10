@@ -1,5 +1,5 @@
 import os, sys, time, re, json, datetime, random
-#import requests
+import requests
 import urllib.request
 #from alive_progress import alive_bar
 #from alive_progress.styles import showtime
