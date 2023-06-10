@@ -35,11 +35,8 @@ while True:
         if hc22000cap=="dwn":
             urldwn=app.InputWhile("Url: ")
             filepath=app.InputWhile("Имя файла hc22000 или cap: ")
-            # mask=app.InputWhile("Маска WIFI: ")
             if app.LinkValid(urldwn)==False:
                 print(f"Ссылка {urldwn} Указана Не Верно!")
-            # if app.MaskValide(mask)==False:
-            #     print(f"Или Маска {mask} Указана Не Верно!")
             if app.LinkValid(urldwn):
                 res=app_linex.DownLoad_HC22000(urldwn, filepath)
                 if res:
@@ -56,10 +53,6 @@ while True:
                         name_dict=app.InputWhile("Укажы Имя Словаря: ")
                         res2=app_linex.DownLoad_Dicts_One(name_dict)
                         commandsintez=app_linex.GetCommand(SelectProgram.CPU)
-                        #print(f"cd {commandsintez[2]}")
-                        #os.system(f"cd {commandsintez[2]}") #переход к програме
-                        #-----------------Тест------------------
-                        #os.system(f"{commandsintez[0]} --help")
                         #-----------------Данные------------------
                         folderdicts=app_linex.app.SettingApp["FolderDicts"]["Folder"]
                         filecap=app_linex.app.SettingApp["FolderHC22000_Cap"]
@@ -72,21 +65,38 @@ while True:
                         #----------------------------------------
                         #commandrun=f'{commandsintez[0]} -w {commanddicts} -b "{mask}" "{dir_path}/{filecap}/{filepath}"'
                         commandrun2=f'{commandsintez[0]} -w {commanddicts} "{dir_path}/{filecap}/{filepath}"'
-                        print(commandrun2)
+                        #print(commandrun2)
                         os.system(commandrun2)
                     if selectdicts=="2":
                         number_dict=app.InputWhile("Укажы Номер Пачки Словарей 1-3: ")
                         number_dict=int(number_dict)
-                        res2=app_linex.DownLoad_Dicts_Pack(number_dict)
+                        #-----------------Данные------------------
+                        folderdicts=app_linex.app.SettingApp["FolderDicts"]["Folder"]
+                        filecap=app_linex.app.SettingApp["FolderHC22000_Cap"]
+                        #-----------------Словари------------------
+                        commanddicts=""
+                        listdicts=app_linex.DownLoad_Dicts_Pack(number_dict)
+                        for li in listdicts:
+                            commanddicts+=f'"{dir_path}/{folderdicts}/{li}" '
+                        commanddicts=commanddicts[:-1]
+                        #----------------------------------------
                         commandsintez=app_linex.GetCommand(SelectProgram.CPU)
-                        os.system(f"cd {commandsintez[2]}") #переход к програме
-                        os.system(f"{commandsintez[0]} --help")
+                        commandrun2=f'{commandsintez[0]} -w {commanddicts} "{dir_path}/{filecap}/{filepath}"'
+                        os.system(commandrun2)
                     if selectdicts=="3":
-                        app_linex.DownLoad_Dicts_All()
-                        platform=app_linex.GetPlatform(platform_name)
-                        commandsintez=app_linex.GetCommand(SelectProgram.CPU,platform)
-                        os.system(f"cd {commandsintez[2]}") #переход к програме
-                        os.system(f"{commandsintez[0]} --help")
+                        #-----------------Данные------------------
+                        folderdicts=app_linex.app.SettingApp["FolderDicts"]["Folder"]
+                        filecap=app_linex.app.SettingApp["FolderHC22000_Cap"]
+                        #-----------------Словари------------------
+                        commanddicts=""
+                        listdicts=app_linex.DownLoad_Dicts_All()
+                        for li in listdicts:
+                            commanddicts+=f'"{dir_path}/{folderdicts}/{li}" '
+                        commanddicts=commanddicts[:-1]
+                         #----------------------------------------
+                        commandsintez=app_linex.GetCommand(SelectProgram.CPU)
+                        commandrun2=f'{commandsintez[0]} -w {commanddicts} "{dir_path}/{filecap}/{filepath}"'
+                        os.system(commandrun2)
                 else:
                     print(f"Файл {filepath} Не Скачен!")
         if hc22000cap=="f":
