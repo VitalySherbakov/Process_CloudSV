@@ -170,6 +170,15 @@ class AppProcessLinex(object):
         #Flag=self.__DownLoadDirect(url, f"{dir_path}/{dirpath}/{file}")
         Flag=self.app.DownloadFile2(url,f"{dir_path}/{dirpath}/{file}")
         return [Flag,f"{dir_path}/{dirpath}/{file}"]
+    def Get_HC22000_Files(self):
+        """Получить Спысок Файлив"""
+        listfiles=[]
+        dirpath=self.app.SettingApp["FolderHC22000_Cap"]
+        files=os.listdir(f"{dir_path}/{dirpath}")
+        for i,li in enumerate(files):
+            print(f"{i}) {li}")
+            listfiles.append({"Number": i, "File": li})
+        return listfiles
     def DownLoad_Dicts_All(self):
         """Загрузка Всех Словарей"""
         resultdown=False

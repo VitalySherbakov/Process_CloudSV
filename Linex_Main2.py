@@ -35,19 +35,30 @@ while True:
     #     app_linex.DownLoad_Program(SelectProgram.GPU) #Проверка GPU
     if select=="1":
         print("Выбрано CPU Медленый Процесс")
-        print("dwn - если надо скачать hc22000 или cap")
-        print("f - eсли надо указать путь к hc22000 или cap")
+        listwifis=app_linex.Get_HC22000_Files()
+        for wifi in listwifis:
+            print(f'{wifi["Number"]}) {wifi["File"]}')
+        print("s - если надо выбрать cap")
+        print("dwn - если надо скачать cap")
+        print("f - eсли надо указать путь к cap")
         hc22000cap=app.InputWhile("Команда dwn/f: ")
         if hc22000cap=="dwn":
             urldwn=app.InputWhile("Url: ")
-            filepath=app.InputWhile("Имя файла hc22000 или cap: ")
+            filepath=app.InputWhile("Имя файла cap: ")
             if app.LinkValid(urldwn)==False:
                 print(f"Ссылка {urldwn} Указана Не Верно!")
             res=app_linex.DownLoad_HC220002(urldwn, filepath)
             filepath=res[1]
             Accesss=app.GetFileInfo(filepath)[0]
         if hc22000cap=="f":
-            filepath=app.InputWhile("Имя файла hc22000 или cap: ")
+            filepath=app.InputWhile("Имя файла cap: ")
+            filecap=app_linex.app.SettingApp["FolderHC22000_Cap"]
+            filepath=f"{dir_path}/{filecap}/{filepath}"
+            Accesss=app.GetFileInfo(filepath)[0]
+        if hc22000cap=="s":
+            numbercap=app.InputWhile("Выбрать по номеру cap: ")
+            numbersel=int(numbercap)
+            filepath=listwifis[numbersel]["File"]
             filecap=app_linex.app.SettingApp["FolderHC22000_Cap"]
             filepath=f"{dir_path}/{filecap}/{filepath}"
             Accesss=app.GetFileInfo(filepath)[0]
@@ -129,6 +140,10 @@ while True:
                 #os.system(commandrun2)
     if select=="2":
         print("Выбрано GPU Ускоренный Процесс")
+        listwifis=app_linex.Get_HC22000_Files()
+        for wifi in listwifis:
+            print(f'{wifi["Number"]}) {wifi["File"]}')
+        print("s - если надо выбрать cap")
         print("dwn - если надо скачать hc22000 или cap")
         print("f - eсли надо указать путь к hc22000 или cap")
         hc22000cap=app.InputWhile("Команда dwn/f: ")
@@ -142,6 +157,13 @@ while True:
             Accesss=app.GetFileInfo(filepath)[0]
         if hc22000cap=="f":
             filepath=app.InputWhile("Имя файла hc22000 или cap: ")
+            filecap=app_linex.app.SettingApp["FolderHC22000_Cap"]
+            filepath=f"{dir_path}/{filecap}/{filepath}"
+            Accesss=app.GetFileInfo(filepath)[0]
+        if hc22000cap=="s":
+            numbercap=app.InputWhile("Выбрать по номеру cap: ")
+            numbersel=int(numbercap)
+            filepath=listwifis[numbersel]["File"]
             filecap=app_linex.app.SettingApp["FolderHC22000_Cap"]
             filepath=f"{dir_path}/{filecap}/{filepath}"
             Accesss=app.GetFileInfo(filepath)[0]
