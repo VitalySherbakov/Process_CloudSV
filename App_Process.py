@@ -177,7 +177,7 @@ class AppProcessLinex(object):
         self.__CreateFolder(f"{dir_path}/{dirpath}")
         files=os.listdir(f"{dir_path}/{dirpath}")
         for i,li in enumerate(files):
-            print(f"{i}) {li}")
+            #print(f"{i}) {li}")
             listfiles.append({"Number": i, "File": li})
         return listfiles
     def DownLoad_Dicts_All(self):
