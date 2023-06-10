@@ -36,13 +36,14 @@ while True:
         hc22000cap=app.InputWhile("Команда dwn/f: ")
         if hc22000cap=="dwn":
             urldwn=app.InputWhile("Url: ")
+            filepath=app.InputWhile("Имя файла hc22000 или cap: ")
             if app.LinkValid(urldwn)==False:
                 print(f"Ссылка {urldwn} Указана Не Верно!")
             res=app_linex.DownLoad_HC22000(urldwn, filepath)
             Accesss=app.GetFileInfo(filepath)[0]
         if hc22000cap=="f":
+            filepath=app.InputWhile("Имя файла hc22000 или cap: ")
             Accesss=app.GetFileInfo(filepath)[0]
-        filepath=app.InputWhile("Имя файла hc22000 или cap: ")
         if Accesss:
             print(f"Файл {filepath} Есть!")
             print("Список Словарей 0-Все Словари")
