@@ -174,6 +174,7 @@ class AppProcessLinex(object):
         """Получить Спысок Файлив"""
         listfiles=[]
         dirpath=self.app.SettingApp["FolderHC22000_Cap"]
+        self.__CreateFolder(f"{dir_path}/{dirpath}")
         files=os.listdir(f"{dir_path}/{dirpath}")
         for i,li in enumerate(files):
             print(f"{i}) {li}")
