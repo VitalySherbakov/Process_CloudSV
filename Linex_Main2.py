@@ -41,9 +41,12 @@ while True:
             if app.LinkValid(urldwn)==False:
                 print(f"Ссылка {urldwn} Указана Не Верно!")
             res=app_linex.DownLoad_HC22000(urldwn, filepath)
+            filepath=res[1]
             Accesss=app.GetFileInfo(filepath)[0]
         if hc22000cap=="f":
             filepath=app.InputWhile("Имя файла hc22000 или cap: ")
+            filecap=app_linex.app.SettingApp["FolderHC22000_Cap"]
+            filepath=f"{dir_path}/{filecap}/{filepath}"
             Accesss=app.GetFileInfo(filepath)[0]
         if Accesss:
             print(f"Файл {filepath} Есть!")

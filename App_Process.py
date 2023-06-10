@@ -154,7 +154,7 @@ class AppProcessLinex(object):
         Flag=res[0]
         if res[0]==False:
             Flag=self.__DownLoadDirect(url, f"{dir_path}/{dirpath}/{file}")
-        return Flag
+        return [Flag,f"{dir_path}/{dirpath}/{file}"]
     def DownLoad_Dicts_All(self):
         """Загрузка Всех Словарей"""
         resultdown=False
