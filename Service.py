@@ -72,7 +72,6 @@ def Main():
             if shab.Run_Dicts_Command=="2":
                 #---------------Скачивание Словарей---------------
                 number_dict=int(shab.Run_Dicts_Select)
-                number_dict=int(number_dict)
                 app_service.DownLoad_Dicts_Pack(number_dict)
                 #---------------Програма CPU----------------------
                 commandsintez=app_service.GetCommand(SelectProgram.CPU)
