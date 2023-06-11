@@ -88,7 +88,22 @@ def Main():
                 commandrun2=f'{commandsintez[0]} -w {commanddicts} "{filepath}"'
                 print(commandrun2)
             if shab.Run_Dicts_Command=="3":
-                pass
+                #---------------Скачивание Словарей---------------
+                app_service.DownLoad_Dicts_All()
+                #---------------Програма CPU----------------------
+                commandsintez=app_service.GetCommand(SelectProgram.CPU)
+                #-----------------Словари------------------
+                commanddicts=""
+                listdicts=app_service.GetFilesAllDict()
+                for li in listdicts:
+                    commanddicts+=f'"{dir_path}/{folderdicts}/{li}" '
+                commanddicts=commanddicts[:-1]
+                #----------------------------------------
+                #-----------------Доступ-----------------
+                app_service.Access_Folder_Linex(dir_path,SelectPlatform.NONE) #Доступ
+                #----------------------------------------
+                commandrun2=f'{commandsintez[0]} -w {commanddicts} "{filepath}"'
+                print(commandrun2)
     elif command_select != str(Commands.NONE.name.lower()) and \
         command_select != str(Commands.SHAB.name.lower()):
         print("Нету такой {0} команды!".format(command_select))
