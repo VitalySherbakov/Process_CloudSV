@@ -28,7 +28,7 @@ def Main():
         if res[0]:
             shab=res[2]
             #-------------Cap-------------
-            setting.CreateDir(shab.CapDir)
+            setting.CreateDir(f"{dir_path}/{shab.CapDir}")
             if shab.Run_Cap_Select=="dwn":
                 res=setting.DownloadFile(shab.Run_Cap_Url,f"{dir_path}/{shab.Run_Cap_Path}")
             if shab.Run_Cap_Select=="f":
