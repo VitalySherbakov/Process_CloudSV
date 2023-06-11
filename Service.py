@@ -30,7 +30,7 @@ def Main():
             #-------------Cap-------------
             setting.CreateDir(shab.CapDir)
             if shab.Run_Cap_Select=="dwn":
-                res=setting.DownloadFile(shab.Run_Cap_Url,shab.Run_Cap_Path)
+                res=setting.DownloadFile(shab.Run_Cap_Url,f"{dir_path}/{shab.Run_Cap_Path}")
             if shab.Run_Cap_Select=="f":
                 pass 
             #-------------Словари---------
