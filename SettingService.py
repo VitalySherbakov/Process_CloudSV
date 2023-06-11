@@ -63,10 +63,33 @@ class Shablon(object):
     """Файл Архиватора ZIP"""
 
 class Setting(object):
+    """Настройки Приложения"""
     Encode="utf-8"
+    """Кодировка"""
+    __settingfile=f"{dir_path}/SettingApp.json"
+    """Файл Настроек"""
+    Version=""
+    """Версия"""
+    Dicts=None
+    """Данные Словари"""
+    SettingApp=None
+    """Данные Настройки"""
     def __init__(self, encod="utf-8"):
         super(Setting, self).__init__()
         self.Encode=encod
+        if os.path.exists(self.__settingfile):
+            try:
+                with open(self.__settingfile, 'r', encoding=encod) as f:
+                    data = json.load(f)
+                    self.SettingApp=data
+                    self.Version = float(data['Version'])
+                    filedicts=data['FileDicts']
+                    fullfiledicts=f"{dir_path}/{filedicts}"
+                    self.Dicts=self.ReadDicts(fullfiledicts)
+            except Exception as ex:
+                print(f"ERROR SETTING: {ex}!")
+        else:
+            print(f"ERROR: Нету {self.__settingfile} Файла!")
     def ReadShablon(self, file: str):
         """Чтение Шаблона"""
         Flag,lines_shab=False,[]
