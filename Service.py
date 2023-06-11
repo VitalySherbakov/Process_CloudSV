@@ -49,6 +49,7 @@ def Main():
                     listdictsall.append(li)
             if shab.Run_Dicts_Command=="1":
                 numselect_dict=int(shab.Run_Dicts_Select)
+                print(numselect_dict)
                 name_dict=listdictsall[numselect_dict]
                 print(f"Выбран Словарь: {name_dict}")
                 #---------------Скачивание Словарей---------------
