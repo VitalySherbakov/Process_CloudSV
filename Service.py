@@ -41,17 +41,15 @@ def Main():
                 filepath=f"{dir_path}/{shab.Run_Cap_Path}"
             if shab.Run_Cap_Select=="f":
                 filepath=f"{dir_path}/{shab.Run_Cap_Path}" 
-            #-------------Словари---------
+            #----------------Словари-------------------
+            print("--------------Словари--------------")
+            for i,li in enumerate(app_service.GetNamesDicts()):
+                print(f"{i}) {li}")
+                listdictsall.append(li)
+            #-------------Словари Команды--------------
             if shab.Run_Dicts_Command=="0":
-                print("--------------Словари--------------")
-                for i,li in enumerate(app_service.GetNamesDicts()):
-                    print(f"{i}) {li}")
-                    listdictsall.append(li)
+                pass
             if shab.Run_Dicts_Command=="1":
-                print("--------------Словари--------------")
-                for i,li in enumerate(app_service.GetNamesDicts()):
-                    print(f"{i}) {li}")
-                    listdictsall.append(li)
                 numselect_dict=int(shab.Run_Dicts_Select)
                 print(numselect_dict)
                 name_dict=listdictsall[numselect_dict]
@@ -73,15 +71,25 @@ def Main():
                 commandrun2=f'{commandsintez[0]} -w {commanddicts} "{filepath}"'
                 print(commandrun2)
             if shab.Run_Dicts_Command=="2":
-                print("--------------Словари--------------")
-                for i,li in enumerate(app_service.GetNamesDicts()):
-                    print(f"{i}) {li}")
-                    listdictsall.append(li) 
+                #---------------Скачивание Словарей---------------
+                number_dict=int(number_dict)
+                app_service.DownLoad_Dicts_Pack(number_dict)
+                #---------------Програма CPU----------------------
+                commandsintez=app_service.GetCommand(SelectProgram.CPU)
+                #-----------------Словари------------------
+                commanddicts=""
+                listdicts=app_service.GetFilesPackDict(number_dict)
+                for li in listdicts:
+                    commanddicts+=f'"{dir_path}/{folderdicts}/{li}" '
+                commanddicts=commanddicts[:-1]
+                #----------------------------------------
+                #-----------------Доступ-----------------
+                app_service.Access_Folder_Linex(dir_path,SelectPlatform.NONE) #Доступ
+                #----------------------------------------
+                commandrun2=f'{commandsintez[0]} -w {commanddicts} "{filepath}"'
+                print(commandrun2)
             if shab.Run_Dicts_Command=="3":
-                print("--------------Словари--------------")
-                for i,li in enumerate(app_service.GetNamesDicts()):
-                    print(f"{i}) {li}")
-                    listdictsall.append(li) 
+                pass
     elif command_select != str(Commands.NONE.name.lower()) and \
         command_select != str(Commands.SHAB.name.lower()):
         print("Нету такой {0} команды!".format(command_select))
