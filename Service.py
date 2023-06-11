@@ -55,8 +55,12 @@ def Main():
                 print(f"Выбран Словарь: {name_dict}")
                 #---------------Скачивание Словарей---------------
                 app_service.DownLoad_Dicts_One(name_dict)
-                #---------------Програма CPU----------------------
-                commandsintez=app_service.GetCommand(SelectProgram.CPU)
+                #---------------Програма CPU/GPU----------------------
+                commandsintez=None
+                if shab.Select_Program=="cpu":
+                    commandsintez=app_service.GetCommand(SelectProgram.CPU)
+                if shab.Select_Program=="gpu":
+                    commandsintez=app_service.GetCommand(SelectProgram.GPU)
                 #-----------------Словари------------------
                 commanddicts=""
                 listdicts=app_service.GetFilesFindDict(name_dict)
@@ -67,14 +71,22 @@ def Main():
                 #-----------------Доступ-----------------
                 app_service.Access_Folder_Linex(dir_path,SelectPlatform.NONE) #Доступ
                 #----------------------------------------
-                commandrun2=f'{commandsintez[0]} -w {commanddicts} "{filepath}"'
-                print(commandrun2)
+                if shab.Select_Program=="cpu":
+                    commandrun2=f'{commandsintez[0]} -w {commanddicts} "{filepath}"'
+                    print(commandrun2)
+                if shab.Select_Program=="gpu":
+                    commandrun2=f'{commandsintez[0]} -m 22000 -a 0 -w 1 "{filepath}" {commanddicts}'
+                    print(commandrun2)
             if shab.Run_Dicts_Command=="2":
                 #---------------Скачивание Словарей---------------
                 number_dict=int(shab.Run_Dicts_Select)
                 app_service.DownLoad_Dicts_Pack(number_dict)
-                #---------------Програма CPU----------------------
-                commandsintez=app_service.GetCommand(SelectProgram.CPU)
+                #---------------Програма CPU/GPU----------------------
+                commandsintez=None
+                if shab.Select_Program=="cpu":
+                    commandsintez=app_service.GetCommand(SelectProgram.CPU)
+                if shab.Select_Program=="gpu":
+                    commandsintez=app_service.GetCommand(SelectProgram.GPU)
                 #-----------------Словари------------------
                 commanddicts=""
                 listdicts=app_service.GetFilesPackDict(number_dict)
@@ -85,13 +97,21 @@ def Main():
                 #-----------------Доступ-----------------
                 app_service.Access_Folder_Linex(dir_path,SelectPlatform.NONE) #Доступ
                 #----------------------------------------
-                commandrun2=f'{commandsintez[0]} -w {commanddicts} "{filepath}"'
-                print(commandrun2)
+                if shab.Select_Program=="cpu":
+                    commandrun2=f'{commandsintez[0]} -w {commanddicts} "{filepath}"'
+                    print(commandrun2)
+                if shab.Select_Program=="gpu":
+                    commandrun2=f'{commandsintez[0]} -m 22000 -a 0 -w 1 "{filepath}" {commanddicts}'
+                    print(commandrun2)
             if shab.Run_Dicts_Command=="3":
                 #---------------Скачивание Словарей---------------
                 app_service.DownLoad_Dicts_All()
-                #---------------Програма CPU----------------------
-                commandsintez=app_service.GetCommand(SelectProgram.CPU)
+                #---------------Програма CPU/GPU----------------------
+                commandsintez=None
+                if shab.Select_Program=="cpu":
+                    commandsintez=app_service.GetCommand(SelectProgram.CPU)
+                if shab.Select_Program=="gpu":
+                    commandsintez=app_service.GetCommand(SelectProgram.GPU)
                 #-----------------Словари------------------
                 commanddicts=""
                 listdicts=app_service.GetFilesAllDict()
@@ -102,8 +122,12 @@ def Main():
                 #-----------------Доступ-----------------
                 app_service.Access_Folder_Linex(dir_path,SelectPlatform.NONE) #Доступ
                 #----------------------------------------
-                commandrun2=f'{commandsintez[0]} -w {commanddicts} "{filepath}"'
-                print(commandrun2)
+                if shab.Select_Program=="cpu":
+                    commandrun2=f'{commandsintez[0]} -w {commanddicts} "{filepath}"'
+                    print(commandrun2)
+                if shab.Select_Program=="gpu":
+                    commandrun2=f'{commandsintez[0]} -m 22000 -a 0 -w 1 "{filepath}" {commanddicts}'
+                    print(commandrun2)
     elif command_select != str(Commands.NONE.name.lower()) and \
         command_select != str(Commands.SHAB.name.lower()):
         print("Нету такой {0} команды!".format(command_select))
