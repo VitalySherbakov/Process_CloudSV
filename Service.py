@@ -48,6 +48,10 @@ def Main():
                     print(f"{i}) {li}")
                     listdictsall.append(li)
             if shab.Run_Dicts_Command=="1":
+                print("--------------Словари--------------")
+                for i,li in enumerate(app_service.GetNamesDicts()):
+                    print(f"{i}) {li}")
+                    listdictsall.append(li)
                 numselect_dict=int(shab.Run_Dicts_Select)
                 print(numselect_dict)
                 name_dict=listdictsall[numselect_dict]
@@ -69,9 +73,15 @@ def Main():
                 commandrun2=f'{commandsintez[0]} -w {commanddicts} "{filepath}"'
                 print(commandrun2)
             if shab.Run_Dicts_Command=="2":
-                pass 
+                print("--------------Словари--------------")
+                for i,li in enumerate(app_service.GetNamesDicts()):
+                    print(f"{i}) {li}")
+                    listdictsall.append(li) 
             if shab.Run_Dicts_Command=="3":
-                pass 
+                print("--------------Словари--------------")
+                for i,li in enumerate(app_service.GetNamesDicts()):
+                    print(f"{i}) {li}")
+                    listdictsall.append(li) 
     elif command_select != str(Commands.NONE.name.lower()) and \
         command_select != str(Commands.SHAB.name.lower()):
         print("Нету такой {0} команды!".format(command_select))
