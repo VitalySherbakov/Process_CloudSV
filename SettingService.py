@@ -1,6 +1,9 @@
 import os, sys, time, re, json, datetime, random
 from os.path import basename
+import requests
 import urllib.request
+from alive_progress import alive_bar
+from alive_progress.styles import showtime
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -134,24 +137,24 @@ class Setting(object):
                     shab.Arhive_ZIP_Run=mass[1]
             Flag=True
         return [Flag,lines_shab,shab]
-    def DownloadFile(self, url: str, filepath: str):
+    def DownloadFile(self, url: str, filepath: str, style="classic"):
         """Скачивание Файлов"""
         Flag=False
         try:
             print(f"Скачивание {filepath}...")
             #pathdir=os.path.dirname(filepath)
             #self.CreateDir(pathdir)
-            urllib.request.urlretrieve(url, filepath)
-            print(f"Файл: {filepath} Загружен!")
+            # urllib.request.urlretrieve(url, filepath)
+            # print(f"Файл: {filepath} Загружен!")
             # command=f'wget -O "{filepath}" "{url}"'
             # os.system(command)
-            # response = requests.get(url, stream=True)
-            # total_size = int(response.headers.get("content-length", 0))
-            # block_size = 1024  # задайте размер блока загрузки по вашему усмотрению
-            # with open(filepath, "wb") as f, alive_bar(total_size, bar=style) as bar:
-            #     for data in response.iter_content(block_size):
-            #         f.write(data)
-            #         bar(len(data))
+            response = requests.get(url, stream=True)
+            total_size = int(response.headers.get("content-length", 0))
+            block_size = 1024  # задайте размер блока загрузки по вашему усмотрению
+            with open(filepath, "wb") as f, alive_bar(total_size, bar=style) as bar:
+                for data in response.iter_content(block_size):
+                    f.write(data)
+                    bar(len(data))
             Flag=True
         except Exception as ex:
             print(f"ERROR DOWNLOAD: {ex}!")
