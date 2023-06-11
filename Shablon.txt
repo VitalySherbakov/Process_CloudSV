@@ -27,7 +27,7 @@ arhive_pack3="WPS_Pins","TOP_VK-100M_WPA","Nummer_DB.Top_WPA","Hashkiller_WPA","
 #-------------------------------------
 #-------------------------------------
 #-----------------Тип Программы----------------------
-run_select_program=cpu
+run_select_program=gpu
 #--------------------Cap или HC22000-----------------
 run_cap_select=dwn
 run_cap_url=https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1pnzbTufmc4QytiQFPToemYbjd_-3jp24
