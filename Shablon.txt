@@ -1,0 +1,41 @@
+dict_dir=Dicts
+dict_down=DictsPack
+cap_dir=WIFI_Files
+#-----------------Архиваторы--------------------
+arhive_7z_dir=Arhivators/7z
+arhive_7z_run=
+arhive_rar_dir=Arhivators/Rar
+arhive_rar_run=
+arhive_zip_dir=Arhivators/Zip
+arhive_zip_run=
+#-------------------------------------
+cpu_dir=hashcat
+cpu_url=https://drive.google.com/file/d/13qLxk-JwIg8cHjhxQFMeCBYljWcAID9c/view?usp=sharing
+cpu_arhive=aircrack-ng2.7z
+cpu_run=hashcat
+#-------------------------------------
+gpu_dir=aircrack-ng
+gpu_url=https://drive.google.com/file/d/1kvvscwHVxB9ufD1s544ggrwA6qMshp3m/view?usp=sharing
+gpu_arhive=hashcat.7z
+gpu_run=aircrack-ng
+#-------------------------------------
+arhive_pack1="00000000_99999999","000000000_999999999_max","Datas","IMENA_DATOS_1","IMENA_DATOS_2","WiFi-DOM.ru-XXXX"
+#-------------------------------------
+arhive_pack2="RUS_MOB_9XXXXXXXXXX","RUS_MOB_89XXXXXXXXXX","UKR_MOB","UZB_MOB","BEL_MOB","KAZ_MOB"
+#-------------------------------------
+arhive_pack3="WPS_Pins","TOP_VK-100M_WPA","Nummer_DB.Top_WPA","Hashkiller_WPA","UKrtelecom","InsideProFull","Top306Million-WPA"
+#-------------------------------------
+#-------------------------------------
+#-----------------Тип Программы----------------------
+run_select_program=cpu
+#--------------------Cap или HC22000-----------------
+run_cap_select=dwn
+run_cap_url=https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1pnzbTufmc4QytiQFPToemYbjd_-3jp24
+run_cap_path=WLAD.cap
+#--------------------Словари-------------------------
+#----------Способ Расшыфровки 0-ничего не делать-----
+#----------Способ Расшыфровки 1-один словарь---------
+#----------Способ Расшыфровки 2-пачка словарей-------
+#----------Способ Расшыфровки 3-все словари----------
+run_dicts_command=0
+run_dicts_select=1
