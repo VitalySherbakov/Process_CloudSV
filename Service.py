@@ -51,7 +51,6 @@ def Main():
                 pass
             if shab.Run_Dicts_Command=="1":
                 numselect_dict=int(shab.Run_Dicts_Select)
-                print(numselect_dict)
                 name_dict=listdictsall[numselect_dict]
                 print(f"Выбран Словарь: {name_dict}")
                 #---------------Скачивание Словарей---------------
@@ -72,6 +71,7 @@ def Main():
                 print(commandrun2)
             if shab.Run_Dicts_Command=="2":
                 #---------------Скачивание Словарей---------------
+                number_dict=int(shab.Run_Dicts_Select)
                 number_dict=int(number_dict)
                 app_service.DownLoad_Dicts_Pack(number_dict)
                 #---------------Програма CPU----------------------
