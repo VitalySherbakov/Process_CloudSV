@@ -36,11 +36,10 @@ def Main():
             #-------------Словари---------
             if shab.Run_Dicts_Command=="0":
                 print("--------------Словари--------------")
-                pass
-                # listdictsall=[]
-                # for i,li in enumerate(app_service.GetNamesDicts()):
-                #     print(f"{i}) {li}")
-                #     listdictsall.append(li)
+                listdictsall=[]
+                for i,li in enumerate(app_service.GetNamesDicts()):
+                    print(f"{i}) {li}")
+                    listdictsall.append(li)
             if shab.Run_Dicts_Command=="1":
                 pass 
             if shab.Run_Dicts_Command=="2":
