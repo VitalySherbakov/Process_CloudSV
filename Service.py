@@ -25,6 +25,7 @@ def Main():
         fileshab=sys.argv[2]
         print(f"Шаблон: {fileshab}")
         res=setting.ReadShablon(fileshab)
+        print(res[0])
         if res[0]:
             shab=res[2]
             #-------------Cap-------------
