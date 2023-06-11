@@ -25,7 +25,6 @@ def Main():
         fileshab=sys.argv[2]
         print(f"Шаблон: {fileshab}")
         res=setting.ReadShablon(fileshab)
-        print(res[0])
         if res[0]:
             shab=res[2]
             #-------------Cap-------------
@@ -39,8 +38,8 @@ def Main():
                 print("--------------Словари--------------")
                 listdictsall=[]
                 for i,li in enumerate(app_service.GetNamesDicts()):
-                        print(f"{i}) {li}")
-                        listdictsall.append(li)
+                    print(f"{i}) {li}")
+                    listdictsall.append(li)
             if shab.Run_Dicts_Command=="1":
                 pass 
             if shab.Run_Dicts_Command=="2":
