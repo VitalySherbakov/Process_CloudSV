@@ -186,6 +186,18 @@ class Setting(object):
         """Создать Папку"""
         if os.path.exists(dir)==False:
             os.mkdir(dir)
+    def ReadDicts(self, file: str, encod="utf-8"):
+        """Чтение Словарей"""
+        data=None
+        if os.path.exists(file):
+            try:
+                with open(file, 'r', encoding=encod) as f:
+                    data = json.load(f)
+            except Exception as ex:
+                print(f"ERROR DICTS: {ex}!")
+        else:
+            print(f"ERROR: Нету {file} Файла!")
+        return data
     def GetGoogleLink(self, link: str):
         """Получить Прямую Ссылку на Google Link"""
         url_down=None
