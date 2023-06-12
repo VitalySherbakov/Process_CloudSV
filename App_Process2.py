@@ -113,7 +113,7 @@ class AppProcessLinex(object):
         listing=[]
         for li in self.app.Dicts:
             for li2 in li["Files"]:
-                if li2 in listing: #убирающий повторения
+                if (li2 in listing)==False: #убирающий повторения
                     listing.append(li2)
     def DownLoad_Program(self, select: SelectProgram):
         """Загрузка Програмы CPU/GPU"""
