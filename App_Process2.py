@@ -104,16 +104,9 @@ class AppProcessLinex(object):
         for name in packslist:
             res=[val for val in self.app.Dicts if val['Name']==name]
             for li in res:
-                print(li)
-                # for file in li["Files"]:
-                #     if file in listing:
-                #         listing.append(file)
-        # for li in self.app.Dicts:
-        #     # for name in packslist:
-        #     #     if li["Name"]==name:
-        #     #         for li2 in li["Files"]:
-        #     #             if li2 in listing: #убирающий повторения
-        #     #                 listing.append(li2)
+                for file in li["Files"]:
+                    if (file in listing)==False:
+                        listing.append(file)
         return listing
     def GetFilesAllDict(self):
         """Список Файлов Словарей Все"""
