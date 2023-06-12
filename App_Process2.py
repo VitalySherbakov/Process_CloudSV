@@ -101,13 +101,18 @@ class AppProcessLinex(object):
             packslist=self.app.SettingApp["ArhivesPack2"]
         if number==3:
             packslist=self.app.SettingApp["ArhivesPack3"]
-        for li in self.app.Dicts:
-            for name in packslist:
-                print(f"{li['Name']}|{name}")
-                if li["Name"]==name:
-                    for li2 in li["Files"]:
-                        if li2 in listing: #убирающий повторения
-                            listing.append(li2)
+        for name in packslist:
+            res=[val for val in self.app.Dicts if val['Name']==name]
+            for li in res:
+                for file in li["Files"]:
+                    if file in listing:
+                        listing.append(file)
+        # for li in self.app.Dicts:
+        #     # for name in packslist:
+        #     #     if li["Name"]==name:
+        #     #         for li2 in li["Files"]:
+        #     #             if li2 in listing: #убирающий повторения
+        #     #                 listing.append(li2)
         return listing
     def GetFilesAllDict(self):
         """Список Файлов Словарей Все"""
