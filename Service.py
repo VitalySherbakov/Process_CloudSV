@@ -89,11 +89,10 @@ def Main():
                     commandsintez=app_service.GetCommand(SelectProgram.GPU)
                 #-----------------Словари------------------
                 commanddicts=""
-                listdicts=app_service.GetFilesPackDict(number_dict)
+                listdicts=app_service.GetFilesPackDict(number_dict, shab.Arhive_Pack1, shab.Arhive_Pack2, shab.Arhive_Pack3)
                 for li in listdicts:
                     commanddicts+=f'"{dir_path}/{folderdicts}/{li}" '
                 commanddicts=commanddicts[:-1]
-                print(f"Словари: {commanddicts}")
                 #----------------------------------------
                 #-----------------Доступ-----------------
                 app_service.Access_Folder_Linex(dir_path,SelectPlatform.NONE) #Доступ
