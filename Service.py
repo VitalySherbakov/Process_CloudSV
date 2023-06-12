@@ -77,6 +77,7 @@ def Main():
                 if shab.Select_Program=="gpu":
                     commandrun2=f'{commandsintez[0]} -m 22000 -a 0 -w 1 "{filepath}" {commanddicts}'
                     print(commandrun2)
+                return commandrun2
             if shab.Run_Dicts_Command=="2":
                 #---------------Скачивание Словарей---------------
                 number_dict=int(shab.Run_Dicts_Select)
@@ -103,6 +104,7 @@ def Main():
                 if shab.Select_Program=="gpu":
                     commandrun2=f'{commandsintez[0]} -m 22000 -a 0 -w 1 "{filepath}" {commanddicts}'
                     print(commandrun2)
+                return commandrun2
             if shab.Run_Dicts_Command=="3":
                 #---------------Скачивание Словарей---------------
                 app_service.DownLoad_Dicts_All()
@@ -128,6 +130,7 @@ def Main():
                 if shab.Select_Program=="gpu":
                     commandrun2=f'{commandsintez[0]} -m 22000 -a 0 -w 1 "{filepath}" {commanddicts}'
                     print(commandrun2)
+                return commandrun2
     elif command_select != str(Commands.NONE.name.lower()) and \
         command_select != str(Commands.SHAB.name.lower()):
         print("Нету такой {0} команды!".format(command_select))
