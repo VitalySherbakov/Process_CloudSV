@@ -93,6 +93,7 @@ def Main():
                 for li in listdicts:
                     commanddicts+=f'"{dir_path}/{folderdicts}/{li}" '
                 commanddicts=commanddicts[:-1]
+                print(f"Словари: {commanddicts}")
                 #----------------------------------------
                 #-----------------Доступ-----------------
                 app_service.Access_Folder_Linex(dir_path,SelectPlatform.NONE) #Доступ
