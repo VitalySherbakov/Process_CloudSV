@@ -101,9 +101,9 @@ class AppProcessLinex(object):
             packslist=self.app.SettingApp["ArhivesPack2"]
         if number==3:
             packslist=self.app.SettingApp["ArhivesPack3"]
-        print(packslist)
         for li in self.app.Dicts:
             for name in packslist:
+                print(f"{li['Name']}|{name}")
                 if li["Name"]==name:
                     for li2 in li["Files"]:
                         if li2 in listing: #убирающий повторения
