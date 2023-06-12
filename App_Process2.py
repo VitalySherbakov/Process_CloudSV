@@ -103,11 +103,11 @@ class AppProcessLinex(object):
             packslist=self.app.SettingApp["ArhivesPack3"]
         for name in packslist:
             res=[val for val in self.app.Dicts if val['Name']==name]
-            print(res)
             for li in res:
-                for file in li["Files"]:
-                    if file in listing:
-                        listing.append(file)
+                print(li)
+                # for file in li["Files"]:
+                #     if file in listing:
+                #         listing.append(file)
         # for li in self.app.Dicts:
         #     # for name in packslist:
         #     #     if li["Name"]==name:
