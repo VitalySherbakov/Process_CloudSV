@@ -48,7 +48,13 @@ def Main():
                 listdictsall.append(li)
             #-------------Словари Команды--------------
             if shab.Run_Dicts_Command=="0":
-                pass
+                number_dict=int(shab.Run_Dicts_Select)
+                commanddicts=""
+                listdicts=app_service.GetFilesPackDict(number_dict)
+                for li in listdicts:
+                    commanddicts+=f'"{dir_path}/{folderdicts}/{li}" '
+                commanddicts=commanddicts[:-1]
+                print(f"Словари: {commanddicts}")
             if shab.Run_Dicts_Command=="1":
                 numselect_dict=int(shab.Run_Dicts_Select)
                 name_dict=listdictsall[numselect_dict]

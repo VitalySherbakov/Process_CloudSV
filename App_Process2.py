@@ -101,6 +101,7 @@ class AppProcessLinex(object):
             packslist=self.app.SettingApp["ArhivesPack2"]
         if number==3:
             packslist=self.app.SettingApp["ArhivesPack3"]
+        print(packslist)
         for li in self.app.Dicts:
             for name in packslist:
                 if li["Name"]==name:
