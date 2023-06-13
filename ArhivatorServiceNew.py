@@ -26,17 +26,17 @@ class ArhiveService(object):
         if select==SelectArhive.SEVENZ:
             exearhiv=self.app.SettingApp["Arhivators"]["7z"]
             exearhiv=f"{dir_path}/{exearhiv}"
-            os.system(f"!{exearhiv} a '{arhive_name}.7z' '{dir}/*'")
+            os.system(f'!"{exearhiv}" a "{arhive_name}.7z" "{dir}/*"')
             Flag=True
         if select==SelectArhive.ZIP:
             exearhiv=self.app.SettingApp["Arhivators"]["ZIP"]
             exearhiv=f"{dir_path}/{exearhiv}"
-            os.system(f"!{exearhiv} -r -j '{arhive_name}.zip' '{dir}/'")
+            os.system(f'!"{exearhiv}" -r -j "{arhive_name}.zip" "{dir}/"')
             Flag=True
         if select==SelectArhive.RAR:
             exearhiv=self.app.SettingApp["Arhivators"]["RAR"]
             exearhiv=f"{dir_path}/{exearhiv}"
-            os.system(f"!{exearhiv} a -ep1 '{arhive_name}.rar' '{dir}/'")
+            os.system(f'!"{exearhiv}" a -ep1 "{arhive_name}.rar" "{dir}/"')
             Flag=True
         return [Flag,arhivepath,dir]
     def Extract(self, arhive_name: str, dir: str, select: SelectArhive):
@@ -45,16 +45,16 @@ class ArhiveService(object):
         if select==SelectArhive.SEVENZ:
             exearhiv=self.app.SettingApp["Arhivators"]["7z"]
             exearhiv=f"{dir_path}/{exearhiv}"
-            os.system(f"!{exearhiv} x '{arhive_name}.7z' -o '{dir}'")
+            os.system(f'!"{exearhiv}" x "{arhive_name}.7z" -o "{dir}"')
             Flag=True
         if select==SelectArhive.ZIP:
             exearhiv=self.app.SettingApp["Arhivators"]["ZIP"]
             exearhiv=f"{dir_path}/{exearhiv}"
-            os.system(f"!{exearhiv} '{arhive_name}.zip' -d '{dir}'")
+            os.system(f'!"{exearhiv}" "{arhive_name}.zip" -d "{dir}"')
             Flag=True
         if select==SelectArhive.RAR:
             exearhiv=self.app.SettingApp["Arhivators"]["RAR"]
             exearhiv=f"{dir_path}/{exearhiv}"
-            os.system(f"!{exearhiv} '{arhive_name}.rar' x '{dir}'")
+            os.system(f'!"{exearhiv}" "{arhive_name}.rar" x "{dir}"')
             Flag=True
         return [Flag,arhivepath,dir] 
