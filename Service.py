@@ -138,6 +138,9 @@ def Main():
     elif command_select != str(Commands.NONE.name.lower()) and \
         command_select != str(Commands.SHAB.name.lower()):
         print("Нету такой {0} команды!".format(command_select))
+    #------------Получить последнюю
+    maxlen=len(commandrun2_new)
+    commandrun2_new=commandrun2_new[maxlen]
     return commandrun2_new
     
 
