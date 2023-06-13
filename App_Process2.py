@@ -6,7 +6,7 @@ from os.path import basename
 from SettingService import Setting
 #from ArhivatorLib import Arhive, SelectArhive
 #from ArhivatorLinexLib import ArhiveLinex, SelectArhive
-from ArhiveServiceNew import ArhiveService, SelectArhive
+from ArhivatorServiceNew import ArhiveService, SelectArhive
 from enum import Enum
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
