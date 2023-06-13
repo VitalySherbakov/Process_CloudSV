@@ -5,7 +5,8 @@ import os, sys, time, re, json, datetime, random
 from os.path import basename
 from SettingService import Setting
 #from ArhivatorLib import Arhive, SelectArhive
-from ArhivatorLinexLib import ArhiveLinex, SelectArhive
+#from ArhivatorLinexLib import ArhiveLinex, SelectArhive
+from ArhiveServiceNew import ArhiveService, SelectArhive
 from enum import Enum
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -30,7 +31,7 @@ class AppProcessLinex(object):
     app=None
     """Приложение"""
     #arh: Arhive
-    arh: ArhiveLinex
+    arh: ArhiveService
     """Архиватор"""
     platform: SelectProgram
     """Платформа"""
@@ -38,7 +39,7 @@ class AppProcessLinex(object):
         super(AppProcessLinex, self).__init__()
         self.app = Setting()
         #self.arh=Arhive()
-        self.arh=ArhiveLinex()
+        self.arh=ArhiveService()
         self.platform=self.GetPlatform(platform_name)
     def GetCommand(self, program: SelectProgram):
         """Команды Запуска Прогамы"""

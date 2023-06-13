@@ -16,6 +16,11 @@
             "File": "aircrack-ng2.7z",
             "Run": "aircrack-ng"
         }],
+    "Arhivators": {
+        "7z":"Arhivators/7z/7z",
+        "RAR":"",
+        "ZIP":""
+    },
     "Prioritet": {"7z": 1, "RAR": 3, "ZIP": 2},
     "PrioritetDown": {"GoogleLink": 1, "Directlink": 0}, 
     "ArhivesPack1": [
