@@ -1,6 +1,7 @@
 from enum import Enum
 import os
 from SettingService import Setting
+import py7zr
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -24,9 +25,13 @@ class ArhiveService(object):
         """Создание Архива"""
         Flag,arhivepath=False,""
         if select==SelectArhive.SEVENZ:
-            exearhiv=self.app.SettingApp["Arhivators"]["7z"]
-            exearhiv=f"{dir_path}/{exearhiv}"
-            os.system(f'"{exearhiv}" a "{arhive_name}.7z" "{dir}/*"')
+            # exearhiv=self.app.SettingApp["Arhivators"]["7z"]
+            # exearhiv=f"{dir_path}/{exearhiv}"
+            # os.system(f'"{exearhiv}" a "{arhive_name}.7z" "{dir}/*"')
+            # Создаем объект архива
+            with py7zr.SevenZipFile(f'{arhive_name}.7z', 'w') as archive:
+                # Добавляем файлы в архив
+                archive.writeall(dir)
             Flag=True
         if select==SelectArhive.ZIP:
             exearhiv=self.app.SettingApp["Arhivators"]["ZIP"]
@@ -43,9 +48,11 @@ class ArhiveService(object):
         """Распаковка Архива"""
         Flag,arhivepath=False,""
         if select==SelectArhive.SEVENZ:
-            exearhiv=self.app.SettingApp["Arhivators"]["7z"]
-            exearhiv=f"{dir_path}/{exearhiv}"
-            os.system(f'"{exearhiv}" x "{arhive_name}.7z" -o "{dir}"')
+            # exearhiv=self.app.SettingApp["Arhivators"]["7z"]
+            # exearhiv=f"{dir_path}/{exearhiv}"
+            # os.system(f'"{exearhiv}" x "{arhive_name}.7z" -o "{dir}"')
+            with py7zr.SevenZipFile(f"{arhive_name}.7z", mode='r') as archive:
+                archive.extractall(dir)
             Flag=True
         if select==SelectArhive.ZIP:
             exearhiv=self.app.SettingApp["Arhivators"]["ZIP"]
