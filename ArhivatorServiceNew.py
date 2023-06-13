@@ -45,6 +45,7 @@ class ArhiveService(object):
         if select==SelectArhive.SEVENZ:
             exearhiv=self.app.SettingApp["Arhivators"]["7z"]
             exearhiv=f"{dir_path}/{exearhiv}"
+            print(exearhiv)
             os.system(f"{exearhiv} x '{arhive_name}.7z' -o '{dir}'")
             Flag=True
         if select==SelectArhive.ZIP:
