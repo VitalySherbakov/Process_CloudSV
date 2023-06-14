@@ -143,7 +143,7 @@ class AppProcessLinex(object):
             self.__CreateFolder(dirextract)
             self.arh.ExtractFull(downprogram,dirextract,SelectArhive.TAR)
             if os.path.exists(downprogram): #Удаляем Архив
-                #os.remove(downprogram)
+                os.remove(downprogram)
                 pass
         return [Flag]
     def DownLoad_Program(self, select: SelectProgram):

@@ -72,7 +72,7 @@ class ArhiveService(object):
         Flag,arhivepath=False,""
         if select==SelectArhive.TAR:
             command=f'tar -xvf "{arhive_full}" -C "{dir}"'
-            print(command)
+            #print(command)
             os.system(command)
             Flag=True
         if select==SelectArhive.SEVENZ:
