@@ -64,4 +64,25 @@ class ArhiveService(object):
             exearhiv=f"{dir_path}/{exearhiv}"
             os.system(f'"{exearhiv}" "{arhive_name}.rar" x "{dir}"')
             Flag=True
-        return [Flag,arhivepath,dir] 
+        return [Flag,arhivepath,dir]
+    def ExtractFull(self, arhive_full: str, dir: str, select: SelectArhive):
+        """Распаковка Архива"""
+        Flag,arhivepath=False,""
+        if select==SelectArhive.SEVENZ:
+            # exearhiv=self.app.SettingApp["Arhivators"]["7z"]
+            # exearhiv=f"{dir_path}/{exearhiv}"
+            # os.system(f'"{exearhiv}" x "{arhive_name}.7z" -o "{dir}"')
+            with py7zr.SevenZipFile(arhive_full, mode='r') as archive:
+                archive.extractall(dir)
+            Flag=True
+        if select==SelectArhive.ZIP:
+            exearhiv=self.app.SettingApp["Arhivators"]["ZIP"]
+            exearhiv=f"{dir_path}/{exearhiv}"
+            os.system(f'"{exearhiv}" "{arhive_full}" -d "{dir}"')
+            Flag=True
+        if select==SelectArhive.RAR:
+            exearhiv=self.app.SettingApp["Arhivators"]["RAR"]
+            exearhiv=f"{dir_path}/{exearhiv}"
+            os.system(f'"{exearhiv}" "{arhive_full}" x "{dir}"')
+            Flag=True
+        return [Flag,arhivepath,dir]
