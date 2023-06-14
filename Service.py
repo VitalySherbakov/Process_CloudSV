@@ -30,9 +30,14 @@ def Main():
     command_select=command_select.lower()
     #----------------------------------------
     if command_select == str(Commands.PROG.name.lower()):
-        app_service.Download_ProgramNew(SelectProgram.CPU)
-        app_service.Download_ProgramNew(SelectProgram.GPU)
-        print("Програмы Закачены!")
+        progsel=sys.argv[2]
+        progsel=progsel.lower()
+        print(f"Програма: {progsel}")
+        if progsel=="cpu":
+            app_service.Download_ProgramNew(SelectProgram.CPU)
+        if progsel=="gpu":
+            app_service.Download_ProgramNew(SelectProgram.GPU)
+        print(f"Програма {progsel} Загружена!")
     if command_select == str(Commands.TEST.name.lower()):
         progsel=sys.argv[2]
         progsel=progsel.lower()
