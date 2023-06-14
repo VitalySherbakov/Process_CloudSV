@@ -131,7 +131,7 @@ class AppProcessLinex(object):
             url=self.app.SettingApp["Urls_GPU_CPU_Full"][1]["CPU"]
             dirpath=self.app.SettingApp["Urls_GPU_CPU_Full"][1]["Dir"]
             file=self.app.SettingApp["Urls_GPU_CPU_Full"][1]["File"]
-        dir_path=os.getcwd()
+        #dir_path=os.getcwd()
         downprogram=f"{dir_path}/{file}" #загрузка програмы
         dirextract=f"{dir_path}/{dirpath}" #распаковка
         print(f"D: {dir_path}")
