@@ -138,7 +138,8 @@ class AppProcessLinex(object):
             self.arh.ExtractFull(downprogram,dirextract,SelectArhive.SEVENZ)
             #self.__ExtractArhive(downprogram,dirextract, SelectArhive.SEVENZ)
             if os.path.exists(downprogram): #Удаляем Архив
-                os.remove(downprogram)
+                pass
+                #os.remove(downprogram)
         return [Flag]
     def DownLoad_Program(self, select: SelectProgram):
         """Загрузка Програмы CPU/GPU"""
