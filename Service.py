@@ -104,12 +104,14 @@ def Main():
                     os.system(command1)
                     commandrun2=f'{commandsintez[1]} -w {commanddicts} "{filepath}"'
                     print(commandrun2)
+                    os.system(commandrun2)
                     commandrun2_new=commandrun2
                 if shab.Select_Program=="gpu":
                     command1=f"chmod +x {commandsintez[1]}"
                     os.system(command1)
                     commandrun2=f'{commandsintez[1]} -m 22000 -a 0 -w 1 "{filepath}" {commanddicts}'
                     print(commandrun2)
+                    os.system(commandrun2)
                     commandrun2_new=commandrun2
             if shab.Run_Dicts_Command=="2":
                 #---------------Скачивание Словарей---------------
@@ -136,12 +138,14 @@ def Main():
                     os.system(command1)
                     commandrun2=f'{commandsintez[1]} -w {commanddicts} "{filepath}"'
                     print(commandrun2)
+                    os.system(commandrun2)
                     commandrun2_new=commandrun2
                 if shab.Select_Program=="gpu":
                     command1=f"chmod +x {commandsintez[1]}"
                     os.system(command1)
                     commandrun2=f'{commandsintez[1]} -m 22000 -a 0 -w 1 "{filepath}" {commanddicts}'
                     print(commandrun2)
+                    os.system(commandrun2)
                     commandrun2_new=commandrun2
             if shab.Run_Dicts_Command=="3":
                 #---------------Скачивание Словарей---------------
@@ -167,12 +171,14 @@ def Main():
                     os.system(command1)
                     commandrun2=f'{commandsintez[1]} -w {commanddicts} "{filepath}"'
                     print(commandrun2)
+                    os.system(commandrun2)
                     commandrun2_new=commandrun2
                 if shab.Select_Program=="gpu":
                     command1=f"chmod +x {commandsintez[1]}"
                     os.system(command1)
                     commandrun2=f'{commandsintez[1]} -m 22000 -a 0 -w 1 "{filepath}" {commanddicts}'
                     print(commandrun2)
+                    os.system(commandrun2)
                     commandrun2_new=commandrun2
     elif command_select != str(Commands.NONE.name.lower()) and \
         command_select != str(Commands.PROG.name.lower()) and \
