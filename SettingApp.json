@@ -5,15 +5,15 @@
     "FolderHC22000_Cap": "WIFI_Files",
     "Urls_GPU_CPU_Full": [
         {
-            "GPU": "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1kvvscwHVxB9ufD1s544ggrwA6qMshp3m",
+            "GPU": "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1mhrXCSbpOaFkW3h6mlONptUd_YirgEH2",
             "Dir": "hashcat",
-            "File": "hashcat.7z",
+            "File": "hashcat.tar",
             "Run": "hashcat"
         }, 
         {
-            "CPU": "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=13qLxk-JwIg8cHjhxQFMeCBYljWcAID9c",
+            "CPU": "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1MMf2S-iLGjasYAf7nLr0VQwJ0dtSF3JE",
             "Dir": "aircrack-ng",
-            "File": "aircrack-ng2.7z",
+            "File": "aircrack-ng2.tar",
             "Run": "aircrack-ng"
         }],
     "Arhivators": {

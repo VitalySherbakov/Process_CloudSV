@@ -13,6 +13,8 @@ class SelectArhive(Enum):
     """ZIP Архив"""
     SEVENZ=3
     """7z Архив"""
+    TAR=4
+    """TAR Архив"""
 
 class ArhiveService(object):
     """Архиваторы Service"""
@@ -68,6 +70,9 @@ class ArhiveService(object):
     def ExtractFull(self, arhive_full: str, dir: str, select: SelectArhive):
         """Распаковка Архива"""
         Flag,arhivepath=False,""
+        if select==SelectArhive.TAR:
+            os.system(f'!tar -xvf "{exearhiv}" -C "{dir}"')
+            Flag=True
         if select==SelectArhive.SEVENZ:
             # exearhiv=self.app.SettingApp["Arhivators"]["7z"]
             # exearhiv=f"{dir_path}/{exearhiv}"
