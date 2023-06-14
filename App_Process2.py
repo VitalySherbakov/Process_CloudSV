@@ -135,7 +135,7 @@ class AppProcessLinex(object):
         dirextract=f"{dir_path}/{dirpath}" #распаковка
         Flag=self.app.DownloadFile(url,downprogram)
         if Flag:
-            self.__ExtractArhive(downprogram,dirextract)
+            self.__ExtractArhive(downprogram,dirextract, SelectArhive.SEVENZ)
             if os.path.exists(downprogram): #Удаляем Архив
                 os.remove(downprogram)
         return [Flag]
