@@ -119,6 +119,23 @@ class AppProcessLinex(object):
             for li2 in li["Files"]:
                 if (li2 in listing)==False: #убирающий повторения
                     listing.append(li2)
+    def Download_ProgramNew(self, select: SelectProgram):
+        """Загрузка Програмы CPU/GPU"""
+        Flag=False
+        url,dirpath,file="","",""
+        if select==SelectProgram.GPU:
+            url=self.app.SettingApp["Urls_GPU_CPU_Full"][0]["GPU"]
+            dirpath=self.app.SettingApp["Urls_GPU_CPU_Full"][0]["Dir"]
+            file=self.app.SettingApp["Urls_GPU_CPU_Full"][0]["File"]
+        if select==SelectProgram.CPU:
+            url=self.app.SettingApp["Urls_GPU_CPU_Full"][1]["CPU"]
+            dirpath=self.app.SettingApp["Urls_GPU_CPU_Full"][1]["Dir"]
+            file=self.app.SettingApp["Urls_GPU_CPU_Full"][1]["File"]
+        downprogram=f"{dir_path}/{file}" #загрузка програмы
+        dirextract=f"{dir_path}/{dirpath}" #распаковка
+        Flag=self.app.DownloadFile(url,downprogram)
+        #self.__ExtractArhive
+        return [Flag]
     def DownLoad_Program(self, select: SelectProgram):
         """Загрузка Програмы CPU/GPU"""
         Flag=False

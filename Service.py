@@ -13,7 +13,8 @@ app_service=AppProcessLinex("none")
 class Commands(Enum):
     """Команды"""
     NONE=0,
-    SHAB=1
+    SHAB=1,
+    PROG=2
 
 def Main():
     listdictsall=[] #Список Имен Словарей
@@ -27,6 +28,10 @@ def Main():
     #----------------------------------------
     command_select=command_select.lower()
     #----------------------------------------
+    if command_select == str(Commands.PROG.name.lower()):
+        app_service.Download_ProgramNew(SelectProgram.CPU)
+        app_service.Download_ProgramNew(SelectProgram.GPU)
+        print("Програмы Закачены!")
     if command_select == str(Commands.NONE.name.lower()):
         print("Тест!")
     if command_select == str(Commands.SHAB.name.lower()):
@@ -136,6 +141,7 @@ def Main():
                     print(commandrun2)
                     commandrun2_new=commandrun2
     elif command_select != str(Commands.NONE.name.lower()) and \
+        command_select != str(Commands.PROG.name.lower()) and \
         command_select != str(Commands.SHAB.name.lower()):
         print("Нету такой {0} команды!".format(command_select))
     return commandrun2_new
