@@ -50,8 +50,8 @@ def Main():
             commandsintez=app_service.GetCommand(SelectProgram.GPU)
         command1=f"chmod +x {commandsintez[1]}"
         command2=f"{commandsintez[1]} --help"
-        print(command1)
-        print(command2)
+        #print(command1)
+        #print(command2)
         os.system(command1)
         os.system(command2)
     if command_select == str(Commands.NONE.name.lower()):
@@ -100,11 +100,15 @@ def Main():
                 app_service.Access_Folder_Linex(dir_path,SelectPlatform.NONE) #Доступ
                 #----------------------------------------
                 if shab.Select_Program=="cpu":
-                    commandrun2=f'{commandsintez[0]} -w {commanddicts} "{filepath}"'
+                    command1=f"chmod +x {commandsintez[1]}"
+                    os.system(command1)
+                    commandrun2=f'{commandsintez[1]} -w {commanddicts} "{filepath}"'
                     print(commandrun2)
                     commandrun2_new=commandrun2
                 if shab.Select_Program=="gpu":
-                    commandrun2=f'{commandsintez[0]} -m 22000 -a 0 -w 1 "{filepath}" {commanddicts}'
+                    command1=f"chmod +x {commandsintez[1]}"
+                    os.system(command1)
+                    commandrun2=f'{commandsintez[1]} -m 22000 -a 0 -w 1 "{filepath}" {commanddicts}'
                     print(commandrun2)
                     commandrun2_new=commandrun2
             if shab.Run_Dicts_Command=="2":
@@ -128,11 +132,15 @@ def Main():
                 app_service.Access_Folder_Linex(dir_path,SelectPlatform.NONE) #Доступ
                 #----------------------------------------
                 if shab.Select_Program=="cpu":
-                    commandrun2=f'{commandsintez[0]} -w {commanddicts} "{filepath}"'
+                    command1=f"chmod +x {commandsintez[1]}"
+                    os.system(command1)
+                    commandrun2=f'{commandsintez[1]} -w {commanddicts} "{filepath}"'
                     print(commandrun2)
                     commandrun2_new=commandrun2
                 if shab.Select_Program=="gpu":
-                    commandrun2=f'{commandsintez[0]} -m 22000 -a 0 -w 1 "{filepath}" {commanddicts}'
+                    command1=f"chmod +x {commandsintez[1]}"
+                    os.system(command1)
+                    commandrun2=f'{commandsintez[1]} -m 22000 -a 0 -w 1 "{filepath}" {commanddicts}'
                     print(commandrun2)
                     commandrun2_new=commandrun2
             if shab.Run_Dicts_Command=="3":
@@ -155,11 +163,15 @@ def Main():
                 app_service.Access_Folder_Linex(dir_path,SelectPlatform.NONE) #Доступ
                 #----------------------------------------
                 if shab.Select_Program=="cpu":
-                    commandrun2=f'{commandsintez[0]} -w {commanddicts} "{filepath}"'
+                    command1=f"chmod +x {commandsintez[1]}"
+                    os.system(command1)
+                    commandrun2=f'{commandsintez[1]} -w {commanddicts} "{filepath}"'
                     print(commandrun2)
                     commandrun2_new=commandrun2
                 if shab.Select_Program=="gpu":
-                    commandrun2=f'{commandsintez[0]} -m 22000 -a 0 -w 1 "{filepath}" {commanddicts}'
+                    command1=f"chmod +x {commandsintez[1]}"
+                    os.system(command1)
+                    commandrun2=f'{commandsintez[1]} -m 22000 -a 0 -w 1 "{filepath}" {commanddicts}'
                     print(commandrun2)
                     commandrun2_new=commandrun2
     elif command_select != str(Commands.NONE.name.lower()) and \
