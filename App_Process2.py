@@ -134,15 +134,16 @@ class AppProcessLinex(object):
         #dir_path=os.getcwd()
         downprogram=f"{dir_path}/{file}" #загрузка програмы
         dirextract=f"{dir_path}/{dirpath}" #распаковка
-        print(f"D: {dir_path}")
-        print(f"F: {file}")
-        print(f"D1: {dirpath}")
-        print(f"P: {downprogram}")
+        # print(f"D: {dir_path}")
+        # print(f"F: {file}")
+        # print(f"D1: {dirpath}")
+        # print(f"P: {downprogram}")
         Flag=self.app.DownloadFile(url,downprogram)
         if Flag:
             self.arh.ExtractFull(downprogram,dirextract,SelectArhive.TAR)
             if os.path.exists(downprogram): #Удаляем Архив
-                os.remove(downprogram)
+                #os.remove(downprogram)
+                pass
         return [Flag]
     def DownLoad_Program(self, select: SelectProgram):
         """Загрузка Програмы CPU/GPU"""
