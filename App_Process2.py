@@ -133,8 +133,7 @@ class AppProcessLinex(object):
             file=self.app.SettingApp["Urls_GPU_CPU_Full"][1]["File"]
         downprogram=f"{dir_path}/{file}" #загрузка програмы
         dirextract=f"{dir_path}/{dirpath}" #распаковка
-        print(dirpath)
-        print(file)
+        print(downprogram)
         Flag=self.app.DownloadFile(url,downprogram)
         if Flag:
             self.arh.ExtractFull(downprogram,dirextract,SelectArhive.TAR)
