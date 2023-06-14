@@ -134,7 +134,10 @@ class AppProcessLinex(object):
         downprogram=f"{dir_path}/{file}" #загрузка програмы
         dirextract=f"{dir_path}/{dirpath}" #распаковка
         Flag=self.app.DownloadFile(url,downprogram)
-        #self.__ExtractArhive
+        if Flag:
+            self.__ExtractArhive(downprogram,dirextract)
+            if os.path.exists(downprogram): #Удаляем Архив
+                os.remove(downprogram)
         return [Flag]
     def DownLoad_Program(self, select: SelectProgram):
         """Загрузка Програмы CPU/GPU"""
