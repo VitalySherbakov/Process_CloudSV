@@ -44,6 +44,7 @@ def Main():
         if progsel=="gpu":
             commandsintez=app_service.GetCommand(SelectProgram.GPU)
         command=f"{commandsintez[0]} --help"
+        print(command)
         os.system(command)
     if command_select == str(Commands.NONE.name.lower()):
         print("Тест!")
