@@ -48,9 +48,12 @@ def Main():
             commandsintez=app_service.GetCommand(SelectProgram.CPU)
         if progsel=="gpu":
             commandsintez=app_service.GetCommand(SelectProgram.GPU)
-        command=f"{commandsintez[1]} --help"
-        print(command)
-        os.system(command)
+        command1=f"!chmod +x {commandsintez[1]}"
+        command2=f"{commandsintez[1]} --help"
+        print(command1)
+        print(command2)
+        os.system(command1)
+        os.system(command2)
     if command_select == str(Commands.NONE.name.lower()):
         print("Тест!")
     if command_select == str(Commands.SHAB.name.lower()):
