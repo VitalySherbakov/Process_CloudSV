@@ -3,7 +3,7 @@ from SettingApp import Setting
 from App_Process import AppProcessLinex, SelectProgram, SelectPlatform
 from ArhivatorLinexLib import ArhiveLinex, SelectArhive
 
-dir_path = os.getcwd()#os.path.dirname(os.path.realpath(__file__))
+dir_path = os.path.dirname(os.path.realpath(__file__))
 
 platform_name=sys.argv[1] #Получить Платформу для доступа
 
