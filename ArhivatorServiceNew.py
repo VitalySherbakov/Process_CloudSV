@@ -71,7 +71,8 @@ class ArhiveService(object):
         """Распаковка Архива"""
         Flag,arhivepath=False,""
         if select==SelectArhive.TAR:
-            os.system(f'!tar -xvf "{exearhiv}" -C "{dir}"')
+            command=f'!tar -xvf "{arhive_full}" -C "{dir}"'
+            os.system(command)
             Flag=True
         if select==SelectArhive.SEVENZ:
             # exearhiv=self.app.SettingApp["Arhivators"]["7z"]
