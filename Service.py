@@ -14,7 +14,8 @@ class Commands(Enum):
     """Команды"""
     NONE=0,
     SHAB=1,
-    PROG=2
+    PROG=2,
+    TEST=3
 
 def Main():
     listdictsall=[] #Список Имен Словарей
@@ -32,6 +33,18 @@ def Main():
         app_service.Download_ProgramNew(SelectProgram.CPU)
         app_service.Download_ProgramNew(SelectProgram.GPU)
         print("Програмы Закачены!")
+    if command_select == str(Commands.TEST.name.lower()):
+        progsel=sys.argv[2]
+        progsel=progsel.lower()
+        print(f"Програма: {progsel}")
+        #---------------Програма CPU/GPU----------------------
+        commandsintez=None
+        if progsel=="cpu":
+            commandsintez=app_service.GetCommand(SelectProgram.CPU)
+        if progsel=="gpu":
+            commandsintez=app_service.GetCommand(SelectProgram.GPU)
+        command=f"{commandsintez[0]} --help"
+        os.system(command)
     if command_select == str(Commands.NONE.name.lower()):
         print("Тест!")
     if command_select == str(Commands.SHAB.name.lower()):
@@ -142,6 +155,7 @@ def Main():
                     commandrun2_new=commandrun2
     elif command_select != str(Commands.NONE.name.lower()) and \
         command_select != str(Commands.PROG.name.lower()) and \
+        command_select != str(Commands.TEST.name.lower()) and \
         command_select != str(Commands.SHAB.name.lower()):
         print("Нету такой {0} команды!".format(command_select))
     return commandrun2_new
