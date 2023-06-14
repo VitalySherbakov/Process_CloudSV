@@ -140,6 +140,7 @@ class AppProcessLinex(object):
         # print(f"P: {downprogram}")
         Flag=self.app.DownloadFile(url,downprogram)
         if Flag:
+            self.__CreateFolder(dirextract)
             self.arh.ExtractFull(downprogram,dirextract,SelectArhive.TAR)
             if os.path.exists(downprogram): #Удаляем Архив
                 #os.remove(downprogram)
