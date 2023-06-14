@@ -5,7 +5,7 @@ import urllib.request
 from alive_progress import alive_bar
 from alive_progress.styles import showtime
 
-dir_path = os.path.dirname(os.path.realpath(__file__))
+dir_path = os.getcwd()#os.path.dirname(os.path.realpath(__file__))
 
 class Shablon(object):
     """Шаблон"""

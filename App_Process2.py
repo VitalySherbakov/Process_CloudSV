@@ -9,7 +9,7 @@ from SettingService import Setting
 from ArhivatorServiceNew import ArhiveService, SelectArhive
 from enum import Enum
 
-dir_path = os.path.dirname(os.path.realpath(__file__))
+dir_path = os.getcwd()#os.path.dirname(os.path.realpath(__file__))
 
 class SelectProgram(Enum):
     """Выбор Програмы CPU/GPU"""

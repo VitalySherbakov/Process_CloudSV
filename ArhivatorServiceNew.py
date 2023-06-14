@@ -3,7 +3,7 @@ import os
 from SettingService import Setting
 import py7zr
 
-dir_path = os.path.dirname(os.path.realpath(__file__))
+dir_path = os.getcwd()#os.path.dirname(os.path.realpath(__file__))
 
 class SelectArhive(Enum):
     """Выбор Архиватора"""

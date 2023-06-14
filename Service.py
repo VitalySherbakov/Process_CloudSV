@@ -3,7 +3,7 @@ from enum import Enum
 from SettingService import Setting, Shablon
 from App_Process2 import AppProcessLinex, SelectProgram, SelectPlatform
 
-dir_path = os.path.dirname(os.path.realpath(__file__))
+dir_path = os.getcwd()#os.path.dirname(os.path.realpath(__file__))
 
 #---------Библиотека-----------
 setting=Setting()
