@@ -71,7 +71,7 @@ class ArhiveService(object):
         """Распаковка Архива"""
         Flag,arhivepath=False,""
         if select==SelectArhive.TAR:
-            command=f'!tar -xvf "{arhive_full}" -C "{dir}"'
+            command=f'tar -xvf "{arhive_full}" -C "{dir}"'
             print(command)
             os.system(command)
             Flag=True
