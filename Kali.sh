@@ -79,7 +79,7 @@ function main(){
 		function_pack10
 	fi
     if [ "$command" == "run" ]; then
-        python3.8 "./$dirsource/Linex_Main2.py" "$1"
+        python "./$dirsource/Kali.py" "$1"
 	fi
     if [ "$command" == "exit" ]; then
 		break
@@ -93,7 +93,7 @@ do
     echo "Платформа: $distributivelinex"
     echo "Версия: $numberversionlinex"
     if [ "$distributivelinex" == "Kali" ]; then
-        main
+        main "$distributivelinex"
     fi
     read -p "Нажмите Enter, чтобы продолжить"
 done
