@@ -40,6 +40,16 @@ class Setting(object):
         """Создать Папку"""
         if os.path.exists(dir)==False:
             os.mkdir(dir)
+    def ReadFile(self, file: str, encod="utf-8"):
+        """Чтение Файла"""
+        text=""
+        if os.path.exists(file):
+            try:
+                with open(file, 'r', encoding=encod) as f:
+                    text = f.read()
+            except Exception as ex:
+                print(f"ERROR FILE: {ex}!")
+        return text
     def ReadDicts(self, file: str, encod="utf-8"):
         """Чтение Словарей"""
         data=None

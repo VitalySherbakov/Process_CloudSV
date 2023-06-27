@@ -76,6 +76,8 @@ class AppProcessLinex(object):
         select=SelectPlatform.NONE
         if platform_name=="Debian":
             select=SelectPlatform.Debian
+        if platform_name=="None":
+            select=SelectPlatform.Debian
         if platform_name=="Ubuntu":
             select=SelectPlatform.Ubuntu
         return select
@@ -170,6 +172,17 @@ class AppProcessLinex(object):
         #Flag=self.__DownLoadDirect(url, f"{dir_path}/{dirpath}/{file}")
         Flag=self.app.DownloadFile2(url,f"{dir_path}/{dirpath}/{file}")
         return [Flag,f"{dir_path}/{dirpath}/{file}"]
+    def Get_Pass_Files(self):
+        """Получить Спысок Файлив"""
+        listfiles=[]
+        dirpath=self.app.SettingApp["FolderPassSave"]
+        self.__CreateFolder(f"{dir_path}/{dirpath}")
+        files=os.listdir(f"{dir_path}/{dirpath}")
+        for i,li in enumerate(files):
+            #print(f"{i}) {li}")
+            passw=self.app.ReadFile(li)
+            listfiles.append({"Number": i,"Pass": passw, "File": li})
+        return listfiles
     def Get_HC22000_Files(self):
         """Получить Спысок Файлив"""
         listfiles=[]

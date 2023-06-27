@@ -25,22 +25,29 @@ class SelectPlatform(Enum):
     """Debian"""
     Ubuntu=2
     """Ubuntu"""
+    Windows=3
+    """Windows"""
 
-class AppProcessLinex(object):
+class AppProcessWindows(object):
     """Процесс Общий"""
     app=None
     """Приложение"""
     #arh: Arhive
     arh: ArhiveService
     """Архиватор"""
-    platform: SelectProgram
-    """Платформа"""
-    def __init__(self, platform_name: str):
-        super(AppProcessLinex, self).__init__()
+    def __init__(self):
+        super(AppProcessWindows, self).__init__()
         self.app = Setting()
         #self.arh=Arhive()
         self.arh=ArhiveService()
-        self.platform=self.GetPlatform(platform_name)
+    def LogWrite(self, content: str, file="Log.txt", encod="utf-8"):
+        """Запись Логов"""
+        current_date = datetime.datetime.now()
+        current_date_str = current_date.strftime("%d.%m.%Y %H:%M:%S")
+        with open(file, "a", encoding=encod) as f:
+            f.write(f"----------------{current_date_str}----------------")
+            f.write(content)
+            f.write("------------------------------------------------")
     def GetCommand(self, program: SelectProgram):
         """Команды Запуска Прогамы"""
         if program==SelectProgram.CPU:
@@ -54,32 +61,6 @@ class AppProcessLinex(object):
             runfile=f"{dir_path}/{dir}/{file}"
             rundir=f"{dir_path}/{dir}"
         return [file, runfile, rundir]
-    def Access_Folder_Linex(self, folder: str, selectplatform:  SelectPlatform):
-        """Дать Полный Доступ к Папке и ей Подкоталогов"""
-        Flag=False
-        #----------------Доступ-----------------
-        if selectplatform==SelectPlatform.Debian:
-            os.system(f"chmod -R +x {folder}/*")
-            os.system(f'chmod -R 777 "{folder}"')
-            Flag=True
-        if selectplatform==SelectPlatform.Ubuntu:
-            os.system(f"chmod -R +x {folder}/*")
-            os.system(f'chmod -R 777 "{folder}"')
-            Flag=True
-        if selectplatform==SelectPlatform.NONE:
-            os.system(f"chmod -R +x {folder}/*")
-            os.system(f'chmod -R 777 "{folder}"')
-            Flag=True
-        #---------------------------------------
-        return Flag
-    def GetPlatform(self, platform_name: str):
-        """Получить Платформу"""
-        select=SelectPlatform.NONE
-        if platform_name=="Debian":
-            select=SelectPlatform.Debian
-        if platform_name=="Ubuntu":
-            select=SelectPlatform.Ubuntu
-        return select
     def GetNamesDicts(self):
         """Список Имен Словарей"""
         listing=[]
@@ -201,17 +182,6 @@ class AppProcessLinex(object):
         #Flag=self.__DownLoadDirect(url, f"{dir_path}/{dirpath}/{file}")
         Flag=self.app.DownloadFile2(url,f"{dir_path}/{dirpath}/{file}")
         return [Flag,f"{dir_path}/{dirpath}/{file}"]
-    def Get_Pass_Files(self):
-        """Получить Спысок Файлив"""
-        listfiles=[]
-        dirpath=self.app.SettingApp["FolderPassSave"]
-        self.__CreateFolder(f"{dir_path}/{dirpath}")
-        files=os.listdir(f"{dir_path}/{dirpath}")
-        for i,li in enumerate(files):
-            #print(f"{i}) {li}")
-            passw=self.app.ReadFile(li)
-            listfiles.append({"Number": i,"Pass": passw, "File": li})
-        return listfiles
     def Get_HC22000_Files(self):
         """Получить Спысок Файлив"""
         listfiles=[]

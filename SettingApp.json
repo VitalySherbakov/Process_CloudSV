@@ -3,6 +3,8 @@
     "FileDicts":"DictsDownload.json",
     "FolderDicts": {"Folder": "Dicts", "ArhivesDown": "DictsPack"},
     "FolderHC22000_Cap": "WIFI_Files",
+    "FolderPassSave": "Pass",
+    "EconomySize": false,
     "Urls_GPU_CPU_Full": [
         {
             "GPU": "https://drive.google.com/uc?export=download&confirm=no_antivirus&id=1mhrXCSbpOaFkW3h6mlONptUd_YirgEH2",

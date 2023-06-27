@@ -1,29 +1,26 @@
 import os, sys, time, re, json, datetime, random
 from SettingApp import Setting
-from App_Process import AppProcessLinex, SelectProgram, SelectPlatform
+from App_Process3 import AppProcessWindows, SelectProgram, SelectPlatform
 from ArhivatorLinexLib import ArhiveLinex, SelectArhive
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 
 #platform_name=sys.argv[1] #Получить Платформу для доступа
-platform_name="None"
-sessionfile="session.txt"
 
 app = Setting()
-app_linex=AppProcessLinex(platform_name)
+app_linex=AppProcessWindows()
 app_arhive=ArhiveLinex()
 
 Accesss=False #Доступ
-filepath, filenamecap="",""
+filepath=""
 
 while True:
     current_date = datetime.datetime.now()
     current_date_str = current_date.strftime("%d.%m.%Y %H:%M:%S")
     print(f"-------------------------{current_date_str}--------------------------")
     #-----------------Доступ-----------------
-    app_linex.Access_Folder_Linex(dir_path,SelectPlatform.NONE) #Доступ
+    #app_linex.Access_Folder_Linex(dir_path,SelectPlatform.NONE) #Доступ
     #----------------------------------------
-    print(f"Платформа: {platform_name}")
     #print("Скачать GPU-CPU=3")
     print("Выбрать CPU=1")
     print("Выбрать GPU=2")
@@ -33,17 +30,11 @@ while True:
     #     app_linex.DownLoad_Program(SelectProgram.GPU) #Проверка GPU
     if select=="1":
         print("Выбрано CPU Медленый Процесс")
-        print("--------------Пароль--------------")
-        listwifis=app_linex.Get_Pass_Files()
-        for passw in listwifis:
-            print(f'{passw["Number"]}) {passw["File"]} - [{passw["Pass"]}]')
-        print("----------------------------------")
         print("--------------Cap--------------")
         listwifis=[]
         listwifis=app_linex.Get_HC22000_Files()
         for wifi in listwifis:
             print(f'{wifi["Number"]}) {wifi["File"]}')
-        print("-------------------------------")
         print("s - если надо выбрать cap")
         print("dwn - если надо скачать cap")
         print("f - eсли надо указать путь к cap")
@@ -55,25 +46,19 @@ while True:
                 print(f"Ссылка {urldwn} Указана Не Верно!")
             res=app_linex.DownLoad_HC220002(urldwn, filepath)
             filepath=res[1]
-            capres=app.GetFileInfo(filepath)
-            Accesss=capres[0]
-            filenamecap=capres[1]
+            Accesss=app.GetFileInfo(filepath)[0]
         if hc22000cap=="f":
             filepath=app.InputWhile("Имя файла cap: ")
             filecap=app_linex.app.SettingApp["FolderHC22000_Cap"]
             filepath=f"{dir_path}/{filecap}/{filepath}"
-            capres=app.GetFileInfo(filepath)
-            Accesss=capres[0]
-            filenamecap=capres[1]
+            Accesss=app.GetFileInfo(filepath)[0]
         if hc22000cap=="s":
             numbercap=app.InputWhile("Выбрать по номеру cap: ")
             numbersel=int(numbercap)
             filepath=listwifis[numbersel]["File"]
             filecap=app_linex.app.SettingApp["FolderHC22000_Cap"]
             filepath=f"{dir_path}/{filecap}/{filepath}"
-            capres=app.GetFileInfo(filepath)
-            Accesss=capres[0]
-            filenamecap=capres[1]
+            Accesss=app.GetFileInfo(filepath)[0]
         if Accesss:
             print(f"Файл {filepath} Есть!")
             print("--------------Словари--------------")
@@ -97,10 +82,6 @@ while True:
                 #-----------------Данные------------------
                 folderdicts=app_linex.app.SettingApp["FolderDicts"]["Folder"]
                 filecap=app_linex.app.SettingApp["FolderHC22000_Cap"]
-                folderpass=app_linex.app.SettingApp["FolderPassSave"]
-                #-----------------Папка Паролями------------------
-                app.CreateDir(folderpass) #создание папки
-                filepass=f"{dir_path}/{folderpass}/{filenamecap}.txt"
                 #-----------------Словари------------------
                 commanddicts=""
                 listdicts=app_linex.GetFilesFindDict(name_dict)
@@ -108,17 +89,17 @@ while True:
                     commanddicts+=f'"{dir_path}/{folderdicts}/{li}" '
                 commanddicts=commanddicts[:-1]
                 #----------------------------------------
-                #-----------------Доступ-----------------
-                app_linex.Access_Folder_Linex(dir_path,SelectPlatform.NONE) #Доступ
                 #----------------------------------------
-                commandrun2=""
-                existsession=app.GetFileInfo(sessionfile)[0] #наличие сессии
-                if existsession:
-                    commandrun2=f'{commandsintez[0]} -w {commanddicts} -R "{sessionfile}" -l "{filepass}" "{filepath}"'
-                else:
-                    commandrun2=f'{commandsintez[0]} -w {commanddicts} -N "{sessionfile}" -l "{filepass}" "{filepath}"'
+                commandrun2=f'{commandsintez[0]} -w {commanddicts} "{filepath}"'
                 #print(commandrun2)
                 os.system(commandrun2)
+                app_linex.LogWrite(commandrun2)
+                #-----------------Словари Економия------------------
+                if bool(app_linex.app.SettingApp["EconomySize"])==True:
+                    listdicts=app_linex.GetFilesFindDict(name_dict)
+                    for li in listdicts:
+                        filedel=f'{dir_path}/{folderdicts}/{li}'
+                        os.remove(filedel)
             if selectdicts=="2":
                 number_dict=app.InputWhile("Укажы Номер Пачки Словарей 1-3: ")
                 #---------------Скачивание Словарей---------------
@@ -129,10 +110,6 @@ while True:
                 #-----------------Данные------------------
                 folderdicts=app_linex.app.SettingApp["FolderDicts"]["Folder"]
                 filecap=app_linex.app.SettingApp["FolderHC22000_Cap"]
-                folderpass=app_linex.app.SettingApp["FolderPassSave"]
-                #-----------------Папка Паролями------------------
-                app.CreateDir(folderpass) #создание папки
-                filepass=f"{dir_path}/{folderpass}/{filenamecap}.txt"
                 #-----------------Словари------------------
                 commanddicts=""
                 listdicts=app_linex.GetFilesPackDict(number_dict)
@@ -140,15 +117,8 @@ while True:
                     commanddicts+=f'"{dir_path}/{folderdicts}/{li}" '
                 commanddicts=commanddicts[:-1]
                 #----------------------------------------
-                #-----------------Доступ-----------------
-                app_linex.Access_Folder_Linex(dir_path,SelectPlatform.NONE) #Доступ
                 #----------------------------------------
-                commandrun2=""
-                existsession=app.GetFileInfo(sessionfile)[0] #наличие сессии
-                if existsession:
-                    commandrun2=f'{commandsintez[0]} -w {commanddicts} -R "{sessionfile}" -l "{filepass}" "{filepath}"'
-                else:
-                    commandrun2=f'{commandsintez[0]} -w {commanddicts} -N "{sessionfile}" -l "{filepass}" "{filepath}"'
+                commandrun2=f'{commandsintez[0]} -w {commanddicts} "{filepath}"'
                 #print(commandrun2)
                 os.system(commandrun2)
             if selectdicts=="3":
@@ -159,10 +129,6 @@ while True:
                 #-----------------Данные------------------
                 folderdicts=app_linex.app.SettingApp["FolderDicts"]["Folder"]
                 filecap=app_linex.app.SettingApp["FolderHC22000_Cap"]
-                folderpass=app_linex.app.SettingApp["FolderPassSave"]
-                #-----------------Папка Паролями------------------
-                app.CreateDir(folderpass) #создание папки
-                filepass=f"{dir_path}/{folderpass}/{filenamecap}.txt"
                 #-----------------Словари------------------
                 commanddicts=""
                 listdicts=app_linex.GetFilesAllDict()
@@ -170,24 +136,12 @@ while True:
                     commanddicts+=f'"{dir_path}/{folderdicts}/{li}" '
                 commanddicts=commanddicts[:-1]
                 #----------------------------------------
-                #-----------------Доступ-----------------
-                app_linex.Access_Folder_Linex(dir_path,SelectPlatform.NONE) #Доступ
                 #----------------------------------------
-                commandrun2=""
-                existsession=app.GetFileInfo(sessionfile)[0] #наличие сессии
-                if existsession:
-                    commandrun2=f'{commandsintez[0]} -w {commanddicts} -R "{sessionfile}" -l "{filepass}" "{filepath}"'
-                else:
-                    commandrun2=f'{commandsintez[0]} -w {commanddicts} -N "{sessionfile}" -l "{filepass}" "{filepath}"'
+                commandrun2=f'{commandsintez[0]} -w {commanddicts} "{filepath}"'
                 #print(commandrun2)
                 os.system(commandrun2)
     if select=="2":
         print("Выбрано GPU Ускоренный Процесс")
-        print("--------------Пароль--------------")
-        listwifis=app_linex.Get_Pass_Files()
-        for passw in listwifis:
-            print(f'{passw["Number"]}) {passw["File"]} - [{passw["Pass"]}]')
-        print("----------------------------------")
         print("--------------hc22000--------------")
         listwifis=[]
         listwifis=app_linex.Get_HC22000_Files()
@@ -240,10 +194,6 @@ while True:
                 #-----------------Данные------------------
                 folderdicts=app_linex.app.SettingApp["FolderDicts"]["Folder"]
                 filecap=app_linex.app.SettingApp["FolderHC22000_Cap"]
-                folderpass=app_linex.app.SettingApp["FolderPassSave"]
-                #-----------------Папка Паролями------------------
-                app.CreateDir(folderpass) #создание папки
-                filepass=f"{dir_path}/{folderpass}/{filenamecap}.txt"
                 #-----------------Словари------------------
                 commanddicts=""
                 listdicts=app_linex.GetFilesFindDict(name_dict)
@@ -251,8 +201,6 @@ while True:
                     commanddicts+=f'"{dir_path}/{folderdicts}/{li}" '
                 commanddicts=commanddicts[:-1]
                 #----------------------------------------
-                #-----------------Доступ-----------------
-                app_linex.Access_Folder_Linex(dir_path,SelectPlatform.NONE) #Доступ
                 #----------------------------------------
                 commandrun2=f'{commandsintez[0]} -m 22000 -a 0 -w 1 "{filepath}" {commanddicts}'
                 #print(commandrun2)
@@ -267,10 +215,6 @@ while True:
                 #-----------------Данные------------------
                 folderdicts=app_linex.app.SettingApp["FolderDicts"]["Folder"]
                 filecap=app_linex.app.SettingApp["FolderHC22000_Cap"]
-                folderpass=app_linex.app.SettingApp["FolderPassSave"]
-                #-----------------Папка Паролями------------------
-                app.CreateDir(folderpass) #создание папки
-                filepass=f"{dir_path}/{folderpass}/{filenamecap}.txt"
                 #-----------------Словари------------------
                 commanddicts=""
                 listdicts=app_linex.GetFilesPackDict(number_dict)
@@ -278,8 +222,6 @@ while True:
                     commanddicts+=f'"{dir_path}/{folderdicts}/{li}" '
                 commanddicts=commanddicts[:-1]
                 #----------------------------------------
-                #-----------------Доступ-----------------
-                app_linex.Access_Folder_Linex(dir_path,SelectPlatform.NONE) #Доступ
                 #----------------------------------------
                 commandrun2=f'{commandsintez[0]} -m 22000 -a 0 -w 1 "{filepath}" {commanddicts}'
                 #print(commandrun2)
@@ -292,10 +234,6 @@ while True:
                 #-----------------Данные------------------
                 folderdicts=app_linex.app.SettingApp["FolderDicts"]["Folder"]
                 filecap=app_linex.app.SettingApp["FolderHC22000_Cap"]
-                folderpass=app_linex.app.SettingApp["FolderPassSave"]
-                #-----------------Папка Паролями------------------
-                app.CreateDir(folderpass) #создание папки
-                filepass=f"{dir_path}/{folderpass}/{filenamecap}.txt"
                 #-----------------Словари------------------
                 commanddicts=""
                 listdicts=app_linex.GetFilesAllDict()
@@ -303,8 +241,6 @@ while True:
                     commanddicts+=f'"{dir_path}/{folderdicts}/{li}" '
                 commanddicts=commanddicts[:-1]
                 #----------------------------------------
-                #-----------------Доступ-----------------
-                app_linex.Access_Folder_Linex(dir_path,SelectPlatform.NONE) #Доступ
                 #----------------------------------------
                 commandrun2=f'{commandsintez[0]} -m 22000 -a 0 -w 1 "{filepath}" {commanddicts}'
                 #print(commandrun2)
