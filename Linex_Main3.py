@@ -117,7 +117,7 @@ while True:
                     commandrun2=f'{commandsintez[0]} -w {commanddicts} -R "{sessionfile}" -l "{filepass}" "{filepath}"'
                 else:
                     commandrun2=f'{commandsintez[0]} -w {commanddicts} -N "{sessionfile}" -l "{filepass}" "{filepath}"'
-                #print(commandrun2)
+                print(commandrun2)
                 os.system(commandrun2)
             if selectdicts=="2":
                 number_dict=app.InputWhile("Укажы Номер Пачки Словарей 1-3: ")
@@ -149,7 +149,7 @@ while True:
                     commandrun2=f'{commandsintez[0]} -w {commanddicts} -R "{sessionfile}" -l "{filepass}" "{filepath}"'
                 else:
                     commandrun2=f'{commandsintez[0]} -w {commanddicts} -N "{sessionfile}" -l "{filepass}" "{filepath}"'
-                #print(commandrun2)
+                print(commandrun2)
                 os.system(commandrun2)
             if selectdicts=="3":
                 #---------------Скачивание Словарей---------------
@@ -179,7 +179,7 @@ while True:
                     commandrun2=f'{commandsintez[0]} -w {commanddicts} -R "{sessionfile}" -l "{filepass}" "{filepath}"'
                 else:
                     commandrun2=f'{commandsintez[0]} -w {commanddicts} -N "{sessionfile}" -l "{filepass}" "{filepath}"'
-                #print(commandrun2)
+                print(commandrun2)
                 os.system(commandrun2)
     if select=="2":
         print("Выбрано GPU Ускоренный Процесс")
