@@ -7,7 +7,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 
 #platform_name=sys.argv[1] #Получить Платформу для доступа
 platform_name="None"
-sessionfile="session.txt"
+sessionfile="home.session"
 sessionfile=f"{dir_path}/{sessionfile}"
 
 app = Setting()
@@ -115,7 +115,8 @@ while True:
                 commandrun2=""
                 existsession=app.GetFileInfo(sessionfile)[0] #наличие сессии
                 if existsession:
-                    commandrun2=f'{commandsintez[0]} -w {commanddicts} -R "{sessionfile}" -l "{filepass}" "{filepath}"'
+                    #commandrun2=f'{commandsintez[0]} -w {commanddicts} -R "{sessionfile}" -l "{filepass}" "{filepath}"'
+                    commandrun2=f'{commandsintez[0]} -R "{sessionfile}"'
                 else:
                     commandrun2=f'{commandsintez[0]} -w {commanddicts} -N "{sessionfile}" -l "{filepass}" "{filepath}"'
                 print(commandrun2)
@@ -147,7 +148,8 @@ while True:
                 commandrun2=""
                 existsession=app.GetFileInfo(sessionfile)[0] #наличие сессии
                 if existsession:
-                    commandrun2=f'{commandsintez[0]} -w {commanddicts} -R "{sessionfile}" -l "{filepass}" "{filepath}"'
+                    #commandrun2=f'{commandsintez[0]} -w {commanddicts} -R "{sessionfile}" -l "{filepass}" "{filepath}"'
+                    commandrun2=f'{commandsintez[0]} -R "{sessionfile}"'
                 else:
                     commandrun2=f'{commandsintez[0]} -w {commanddicts} -N "{sessionfile}" -l "{filepass}" "{filepath}"'
                 print(commandrun2)
@@ -177,7 +179,8 @@ while True:
                 commandrun2=""
                 existsession=app.GetFileInfo(sessionfile)[0] #наличие сессии
                 if existsession:
-                    commandrun2=f'{commandsintez[0]} -w {commanddicts} -R "{sessionfile}" -l "{filepass}" "{filepath}"'
+                    #commandrun2=f'{commandsintez[0]} -w {commanddicts} -R "{sessionfile}" -l "{filepass}" "{filepath}"'
+                    commandrun2=f'{commandsintez[0]} -R "{sessionfile}"'
                 else:
                     commandrun2=f'{commandsintez[0]} -w {commanddicts} -N "{sessionfile}" -l "{filepass}" "{filepath}"'
                 print(commandrun2)
