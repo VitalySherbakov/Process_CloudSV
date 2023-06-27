@@ -99,6 +99,7 @@ function main(){
     echo "Конвентация *.cap в *.hc22000 по адресу https://hashcat.net/cap2hashcat/"
     echo "Команда: pack (Установка необходимых пакетов)"
     echo "Команда: run (Запуск Скрипта)"
+	echo "Команда: delses (Удаление Сессии придыдущей работы CPU)"
     echo "Команда: exit (Выход)"
     echo "Введите Команду:"
     read command
@@ -107,6 +108,10 @@ function main(){
 	fi
     if [ "$command" == "run" ]; then
         python3.8 "./$dirsource/Linex_Main3.py"
+	fi
+	if [ "$command" == "delses" ]; then
+        rm -r "./$dirsource/home.session"
+		echo "Файл ./$dirsource/home.session Сессии Удален!"
 	fi
     if [ "$command" == "exit" ]; then
 		break
