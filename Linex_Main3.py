@@ -8,6 +8,7 @@ dir_path = os.path.dirname(os.path.realpath(__file__))
 #platform_name=sys.argv[1] #Получить Платформу для доступа
 platform_name="None"
 sessionfile="session.txt"
+sessionfile=f"{dir_path}/{sessionfile}"
 
 app = Setting()
 app_linex=AppProcessLinex(platform_name)
